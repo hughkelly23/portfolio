@@ -127,31 +127,54 @@
   </main>
 
   <script>
-  const rows = 6;
-  const columns = 28;
+  const isMobile = window.matchMedia("(max-width: 700px)").matches;
+
+  const rows = isMobile ? 9 : 6;
+  const columns = isMobile ? 9 : 28;
+
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   const board = document.getElementById("board");
   const boardShell = document.getElementById("boardShell");
 
   const layouts = {
-    home: [
+    home: isMobile ? [
+      { text: "HUGH", row: 1, column: 1 },
+      { text: "KELLY", row: 2, column: 3 },
+      { text: "UX", row: 4, column: 1 },
+      { text: "PORT", row: 6, column: 2 },
+      { text: "FOLIO", row: 7, column: 3 }
+    ] : [
       { text: "HUGH", row: 1, column: 3 },
       { text: "KELLY", row: 2, column: 10 },
       { text: "UX", row: 3, column: 8 },
       { text: "PORTFOLIO", row: 4, column: 13 }
     ],
-    about: [
+
+    about: isMobile ? [
+      { text: "HI", row: 1, column: 1 },
+      { text: "I'M", row: 3, column: 3 },
+      { text: "HUGH", row: 5, column: 2 }
+    ] : [
       { text: "HI,", row: 1, column: 4 },
       { text: "I'M", row: 3, column: 10 },
       { text: "HUGH", row: 4, column: 15 }
     ],
-    work: [
+
+    work: isMobile ? [
+      { text: "CASE", row: 2, column: 1 },
+      { text: "STUDIES", row: 4, column: 2 }
+    ] : [
       { text: "SELECTED", row: 1, column: 3 },
       { text: "WORK", row: 2, column: 13 },
       { text: "CASE", row: 3, column: 8 },
       { text: "STUDIES", row: 4, column: 15 }
     ],
-    contact: [
+
+    contact: isMobile ? [
+      { text: "GET", row: 1, column: 1 },
+      { text: "IN", row: 2, column: 4 },
+      { text: "TOUCH", row: 4, column: 2 }
+    ] : [
       { text: "GET", row: 1, column: 4 },
       { text: "IN", row: 2, column: 12 },
       { text: "TOUCH", row: 3, column: 16 },
@@ -223,7 +246,11 @@
 
       const row = Math.floor(tileObj.index / columns);
       const col = tileObj.index % columns;
-      const delay = col * 45 + row * 35 + Math.random() * 90;
+
+      const delay = isMobile
+        ? col * 35 + row * 42 + Math.random() * 70
+        : col * 45 + row * 35 + Math.random() * 90;
+
       const flips = isInitialLoad
         ? 2 + Math.floor(Math.random() * 4)
         : 1 + Math.floor(Math.random() * 3);
@@ -258,7 +285,7 @@
 
     setTimeout(() => {
       board.classList.remove("is-animating");
-    }, 1900);
+    }, isMobile ? 1500 : 1900);
   }
 
   document.querySelectorAll("[data-trigger]").forEach(item => {
@@ -279,7 +306,7 @@
   animateBoard(initialPage, true);
   showPage(initialPage);
 
-  if (boardShell) {
+  if (boardShell && !isMobile) {
     boardShell.addEventListener("mousemove", event => {
       const rect = boardShell.getBoundingClientRect();
       const x = event.clientX - rect.left;
@@ -307,7 +334,7 @@
     setTimeout(() => {
       chosen.tile.classList.remove("ambient-flash");
     }, 420);
-  }, 1300);
+  }, isMobile ? 1800 : 1300);
 </script>
   
   <footer class="site-footer">
