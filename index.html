@@ -251,9 +251,11 @@
         ? col * 35 + row * 42 + Math.random() * 70
         : col * 45 + row * 35 + Math.random() * 90;
 
-      const flips = isInitialLoad
-        ? 2 + Math.floor(Math.random() * 4)
-        : 1 + Math.floor(Math.random() * 3);
+      const flips = isMobile
+        ? 1 + Math.floor(Math.random() * 2)
+        : isInitialLoad
+          ? 2 + Math.floor(Math.random() * 4)
+          : 1 + Math.floor(Math.random() * 3);
 
       const finalLetter = finalMap.get(tileObj.index);
 
@@ -279,13 +281,13 @@
             tileObj.tile.classList.remove("final");
             tileObj.tile.classList.add("empty");
           }
-        }, 110 + Math.random() * 45);
+        }, isMobile ? 145 + Math.random() * 55 : 110 + Math.random() * 45);
       }, delay);
     });
 
     setTimeout(() => {
       board.classList.remove("is-animating");
-    }, isMobile ? 1500 : 1900);
+    }, isMobile ? 1700 : 1900);
   }
 
   document.querySelectorAll("[data-trigger]").forEach(item => {
@@ -323,18 +325,20 @@
     });
   }
 
-  setInterval(() => {
-    const visibleTiles = tiles.filter(tileObj => !tileObj.tile.classList.contains("empty"));
-    const chosen = visibleTiles[Math.floor(Math.random() * visibleTiles.length)];
+  if (!isMobile) {
+    setInterval(() => {
+      const visibleTiles = tiles.filter(tileObj => !tileObj.tile.classList.contains("empty"));
+      const chosen = visibleTiles[Math.floor(Math.random() * visibleTiles.length)];
 
-    if (!chosen) return;
+      if (!chosen) return;
 
-    chosen.tile.classList.add("ambient-flash");
+      chosen.tile.classList.add("ambient-flash");
 
-    setTimeout(() => {
-      chosen.tile.classList.remove("ambient-flash");
-    }, 420);
-  }, isMobile ? 1800 : 1300);
+      setTimeout(() => {
+        chosen.tile.classList.remove("ambient-flash");
+      }, 420);
+    }, 1300);
+  }
 </script>
   
   <footer class="site-footer">
