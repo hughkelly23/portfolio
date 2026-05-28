@@ -239,6 +239,26 @@
   function animateBoard(layoutName = "home", isInitialLoad = false) {
     buildFinalMap(layouts[layoutName] || layouts.home);
 
+    if (isMobile) {
+  tiles.forEach(tileObj => {
+    const finalLetter = finalMap.get(tileObj.index);
+
+    tileObj.tile.classList.remove("flipping");
+
+    if (finalLetter) {
+      tileObj.char.textContent = finalLetter;
+      tileObj.tile.classList.add("final");
+      tileObj.tile.classList.remove("empty");
+    } else {
+      tileObj.char.textContent = " ";
+      tileObj.tile.classList.remove("final");
+      tileObj.tile.classList.add("empty");
+    }
+  });
+
+  return;
+}
+
     board.classList.add("is-animating");
 
     tiles.forEach(tileObj => {
