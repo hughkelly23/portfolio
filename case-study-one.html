@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Macy the Robot</title>
+
+  <style>
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: #f5c400;
+      z-index: 2000;
+      transition: width 0.1s linear;
+    }
+
+    .js-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .js-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 1rem;
+      bottom: 3.6rem;
+      border: 1px solid rgba(17,17,17,0.15);
+      background: #efe0cd;
+      color: #111;
+      border-radius: 999px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1200;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+    }
+
+    .floating-features {
+  position: relative;
+  min-height: 620px;
+  display: block;
+  overflow: hidden;
+}
+
+.floating-features .feature-pill {
+  position: absolute;
+  width: 190px;
+  min-height: 130px;
+  margin: 0;
+  transform: none;
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.floating-features .feature-pill:nth-child(odd) {
+  transform: none;
+}
+  </style>
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <div class="logo" data-trigger="home">
+      <img src="images/logo.png" alt="HK logo">
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html?page=work">Work</a>
+      <a href="index.html?page=about">About</a>
+      <a href="index.html?page=contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main class="case-study">
+
+  <section class="case-hero js-reveal">
+    <div>
+      <p class="case-kicker">Research in Progress</p>
+      <h1>Macy the Robot</h1>
+      <p class="case-meta">UX Research / Human-Robot Interaction · 2026</p>
+      <p class="case-intro">
+        Exploring how children and parents might emotionally engage with a soft social robot through touch, movement, play, and non-verbal interaction.
+      </p>
+    </div>
+
+    <div class="hero-image-stack" id="heroVisual">
+      <div class="image-placeholder hero-main-image">
+        HERO IMAGE PLACEHOLDER<br>
+        Add robot render, sketch, or prototype photo
+      </div>
+
+      <div class="image-placeholder hero-small-image">
+        SECONDARY IMAGE PLACEHOLDER<br>
+        Add research notes or process image
+      </div>
+
+      <div class="floating-note">
+        Current stage: literature review, survey planning, and early prototype research.
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section js-reveal">
+    <div class="project-facts">
+      <div class="fact-card">
+        <span>Project Type</span>
+        <p>Research-led UX case study</p>
+      </div>
+
+      <div class="fact-card">
+        <span>Current Stage</span>
+        <p>Research and planning</p>
+      </div>
+
+      <div class="fact-card">
+        <span>Methods</span>
+        <p>Literature review, survey planning, prototype planning</p>
+      </div>
+
+      <div class="fact-card">
+        <span>Role</span>
+        <p>UX Research, Product Design</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>01 / Context</span>
+      <h2>Project Overview</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Macy the Robot is an early-stage Human-Robot Interaction project exploring how emotionally responsive robots could support children through touch, movement, play, and companionship.
+      </p>
+
+      <p>
+        The project is currently focused on understanding existing research, identifying possible interaction features, and planning future user research with both children and parents.
+      </p>
+
+      <div class="image-placeholder wide-placeholder">
+        IMAGE PLACEHOLDER<br>
+        Add concept sketch, moodboard, or early robot form exploration
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>02 / Problem Space</span>
+      <h2>The Challenge</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Many emotional AI and robot interaction systems rely heavily on facial expressions, speech, and screen-based interaction. Macy explores a more embodied form of emotional communication through touch, movement, softness, and playful physical interaction.
+      </p>
+
+      <p>
+        Because the project involves children, the research must also consider safety, trust, privacy, parental confidence, and whether the robot supports real-world wellbeing rather than replacing human relationships.
+      </p>
+
+      <div class="image-break">
+        <div class="image-placeholder wide-placeholder">
+          IMAGE PLACEHOLDER<br>
+          Add diagram of problem space or emotional interaction map
+        </div>
+
+        <div class="image-placeholder tall-placeholder">
+          IMAGE PLACEHOLDER<br>
+          Add notes, sketches, or research wall photo
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>03 / Research</span>
+      <h2>Literature Review Themes</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        The literature review surfaced early design opportunities. These are not final features, but research-informed directions to test through surveys, prototyping, and usability sessions.
+      </p>
+
+      <div class="research-board">
+        <article class="research-card">
+          <h3>Emotional Support & Play</h3>
+          <p>
+            Emotionally responsive robots may increase engagement through comfort, encouragement, humour, storytelling, games, and playful interaction.
+          </p>
+        </article>
+
+        <article class="research-card">
+          <h3>Memory-Based Personalisation</h3>
+          <p>
+            Long-term interaction studies suggest children may form stronger attachments when robots remember preferences, routines, and previous interactions.
+          </p>
+        </article>
+
+        <article class="research-card">
+          <h3>Trust, Privacy & Parent Control</h3>
+          <p>
+            Visible privacy controls could help parents and children understand when sensing, memory, cameras, or microphones are active.
+          </p>
+        </article>
+
+        <article class="research-card">
+          <h3>Soft, Expressive, Personal Form</h3>
+          <p>
+            A soft exterior, expressive LED eyes, responsive gestures, portable body, and customisable appearance could make Macy feel safer and more engaging.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>04 / Direction</span>
+      <h2>Feature Opportunities</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        These feature areas are being treated as starting points for research, not final design decisions.
+      </p>
+
+      <div class="feature-cloud floating-features" id="floatingFeatures">
+        <div class="feature-pill">Emotion recognition and support responses</div>
+        <div class="feature-pill">Memory-based personalisation</div>
+        <div class="feature-pill">Collaborative play and games</div>
+        <div class="feature-pill">Privacy control dashboard</div>
+        <div class="feature-pill">Offline social activity prompts</div>
+        <div class="feature-pill">Soft hug-friendly exterior</div>
+        <div class="feature-pill">Expressive LED eyes</div>
+        <div class="feature-pill">Compact portable body</div>
+        <div class="feature-pill">Responsive gestures</div>
+        <div class="feature-pill">Customisable appearance</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>05 / Process</span>
+      <h2>Work Completed So Far</h2>
+    </div>
+
+    <div class="section-content">
+      <div class="timeline">
+
+        <div class="timeline-row">
+          <span>Stage One</span>
+          <div>
+            <h3>Literature Review</h3>
+            <p>
+              Reviewed research around social robots, emotional support, tactile interaction, child engagement, trust, privacy, and play.
+            </p>
+          </div>
+          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
+        </div>
+
+        <div class="timeline-row">
+          <span>Stage Two</span>
+          <div>
+            <h3>Feature Mapping</h3>
+            <p>
+              Translated research findings into possible design directions, including emotional responses, soft form, privacy controls, and expressive behaviours.
+            </p>
+          </div>
+          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
+        </div>
+
+        <div class="timeline-row">
+          <span>Stage Three</span>
+          <div>
+            <h3>Survey Planning</h3>
+            <p>
+              Planned separate research approaches for children and parents to capture trust, comfort, expectations, and emotional response.
+            </p>
+          </div>
+          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
+        </div>
+
+        <div class="timeline-row">
+          <span>Stage Four</span>
+          <div>
+            <h3>Prototype Testing Plan</h3>
+            <p>
+              Outlined future usability testing to explore how participants respond to Macy’s form, movement, interaction behaviours, and emotional cues.
+            </p>
+          </div>
+          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>06 / Placeholders</span>
+      <h2>To Be Added Later</h2>
+    </div>
+
+    <div class="section-content">
+      <div class="placeholder-gallery">
+
+        <article class="gallery-card">
+          <div class="image-placeholder">
+            IMAGE PLACEHOLDER<br>
+            Survey screenshots
+          </div>
+          <h3>Survey Materials</h3>
+          <p></p>
+        </article>
+
+        <article class="gallery-card">
+          <div class="image-placeholder">
+            IMAGE PLACEHOLDER<br>
+            Prototype visuals
+          </div>
+          <h3>Prototype</h3>
+          <p></p>
+        </article>
+
+        <article class="gallery-card">
+          <div class="image-placeholder">
+            IMAGE PLACEHOLDER<br>
+            Testing notes or findings
+          </div>
+          <h3>Usability Testing</h3>
+          <p></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="next-section js-reveal">
+    <h2 class="underline-wrap">
+      <span class="underline-reveal">
+        Next Steps
+      </span>
+    </h2>
+    <p>
+      The next phase will focus on finalising research materials, developing an initial prototype, and preparing for usability testing with children and parents.
+    </p>
+  </section>
+
+</main>
+
+<button class="back-to-top" id="backToTop">Top ↑</button>
+
+<footer class="site-footer">
+  <img src="images/footer-logo.png" alt="Hugh Kelly">
+  <p style="font-size: 10px;">© 2026 Hugh Kelly</p>
+</footer>
+
+<a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="linkedin-fixed">
+  <svg viewBox="0 0 24 24" width="18" height="18">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6 1.11 6 0 4.88 0 3.5 0 2.12 1.11 1 2.49 1 3.87 1 4.98 2.12 4.98 3.5zM.22 8.22h4.54V24H.22zM7.98 8.22h4.35v2.16h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.49 3.05 5.49 7.01V24h-4.54v-7.74c0-1.85-.03-4.23-2.58-4.23-2.58 0-2.97 2.01-2.97 4.1V24H7.98z"/>
+  </svg>
+</a>
+
+<script>
+  const revealElements = document.querySelectorAll(".js-reveal");
+  const progressBar = document.getElementById("scrollProgress");
+  const backToTop = document.getElementById("backToTop");
+  const heroVisual = document.getElementById("heroVisual");
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / pageHeight) * 100;
+
+    progressBar.style.width = `${scrollPercent}%`;
+
+    if (scrollTop > 700) {
+      backToTop.classList.add("visible");
+    } else {
+      backToTop.classList.remove("visible");
+    }
+
+    if (heroVisual && scrollTop < 900) {
+      heroVisual.style.transform = `translateY(${scrollTop * 0.035}px)`;
+    }
+  });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  const underline = document.querySelector(".underline-reveal");
+
+  const underlineObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        underline.classList.add("active");
+      }
+    });
+  }, {
+    threshold: 0.6
+  });
+
+  underlineObserver.observe(underline);
+
+  const floatingArea = document.getElementById("floatingFeatures");
+
+if (floatingArea && window.innerWidth > 800) {
+  const pills = [...floatingArea.querySelectorAll(".feature-pill")];
+
+  const areaWidth = floatingArea.clientWidth;
+  const areaHeight = floatingArea.clientHeight;
+
+  const items = [];
+
+  function overlaps(a, b) {
+    return (
+      a.x < b.x + b.width &&
+      a.x + a.width > b.x &&
+      a.y < b.y + b.height &&
+      a.y + a.height > b.y
+    );
+  }
+
+  pills.forEach((pill) => {
+    const width = 190;
+    const height = 130;
+
+    let item;
+    let attempts = 0;
+
+    do {
+      item = {
+        el: pill,
+        x: Math.random() * (areaWidth - width),
+        y: Math.random() * (areaHeight - height),
+        vx: (Math.random() > 0.5 ? 1 : -1) * (0.65 + Math.random() * 0.35),
+        vy: (Math.random() > 0.5 ? 1 : -1) * (0.65 + Math.random() * 0.35),
+        width,
+        height
+      };
+
+      attempts++;
+    } while (items.some((other) => overlaps(item, other)) && attempts < 500);
+
+    pill.style.width = `${width}px`;
+    pill.style.minHeight = `${height}px`;
+
+    items.push(item);
+  });
+
+  function animateFeatures() {
+    items.forEach((item, index) => {
+      item.x += item.vx;
+      item.y += item.vy;
+
+      if (item.x <= 0) {
+        item.x = 0;
+        item.vx *= -1;
+      }
+
+      if (item.x + item.width >= areaWidth) {
+        item.x = areaWidth - item.width;
+        item.vx *= -1;
+      }
+
+      if (item.y <= 0) {
+        item.y = 0;
+        item.vy *= -1;
+      }
+
+      if (item.y + item.height >= areaHeight) {
+        item.y = areaHeight - item.height;
+        item.vy *= -1;
+      }
+
+      for (let i = index + 1; i < items.length; i++) {
+        const other = items[i];
+
+        if (overlaps(item, other)) {
+          const tempVx = item.vx;
+          const tempVy = item.vy;
+
+          item.vx = other.vx;
+          item.vy = other.vy;
+
+          other.vx = tempVx;
+          other.vy = tempVy;
+
+          item.x += item.vx * 4;
+          item.y += item.vy * 4;
+          other.x += other.vx * 4;
+          other.y += other.vy * 4;
+        }
+      }
+
+      item.el.style.left = `${item.x}px`;
+      item.el.style.top = `${item.y}px`;
+    });
+
+    requestAnimationFrame(animateFeatures);
+  }
+
+  animateFeatures();
+}
+</script>
+
+</body>
+</html>

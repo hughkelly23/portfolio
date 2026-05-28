@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/tablogo.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
+  <title>Hugh Kelly — UX Portfolio</title>
+	</head>
+
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <div class="logo" data-trigger="home">
+      <img src="images/logo.png" alt="HK logo">
+    </div>
+
+    <div class="nav-links">
+	  <a data-trigger="home">Home</a>
+	  <a data-trigger="work">Work</a>
+      <a data-trigger="about">About</a>
+      <a data-trigger="contact">Contact</a>
+    </div>
+  </nav>
+  </header>
+
+  <section class="hero">
+  <div class="hero-bg-glow"></div>
+
+  <div class="hero-inner">
+    <div class="hero-topline">
+      <span>UX / Product Design</span>
+      <span>Edinburgh</span>
+    </div>
+
+    <div class="board-shell" id="boardShell">
+      <div class="board" id="board"></div>
+    </div>
+
+    <div class="hero-bottomline">
+      <span>Interactive portfolio</span>
+      <span>Scroll / explore</span>
+    </div>
+  </div>
+</section>
+
+  <main>
+	  <section class="page-section active" id="home">
+		<section class="intro">
+		  <p class="section-label">Profile</p>
+		  <p class="intro-text">
+			Edinburgh-based <u>problem stolver</u> and <u>design enthusiast</u> focused on finding clear, useful and <b>creative solutions</b> for <b>complex problems.</b>
+		  </p>
+		</section>
+
+		<section class="featured-image">
+		  <img src="images/footerimg.png" alt="Featured project preview">
+		</section>
+	  </section>
+
+	  <section class="page-section" id="about">
+      <section class="about-page">
+        <div class="about-image">
+          <img src="images/me.png" alt="Hugh Kelly portrait">
+        </div>
+
+        <div>
+          <p class="section-label"></p>
+		  <br>
+          <p class="intro-text" style="font-size: 40px;">
+          <u>It's nice to meet you!</u>
+          </p>
+		  <br>
+          <p class="intro-text" style="font-size: 20px; line-height: 155%;">
+            I spent a large chunk of my 20's working in the music industry. This gave me a lot of interesting experiences and stories, from 
+			<a href="https://www.thesun.co.uk/tvandshowbiz/10070098/bill-murray-student-party-fife/">jamming with Bill Murray</a> and accidentally getting him involved in a tabloid scandal (sorry Bill), to winning Best Original Score 
+			at the Berlin Independent Film Festival (which I still haven't collected, eek).
+          </p>
+		  <br>
+		  <p class="intro-text" style="font-size: 20px; line-height: 155%;">
+           Eventually, I wanted to channel that same creativity into solving practical problems for people. UX and Product Design
+		   turned out to be the right fit, and I haven’t looked back. Drop me a wee email to say hello if you would like to chat more!
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <section class="page-section" id="work">
+      <section class="work-preview">
+        <p class="section-label">Selected work</p>
+
+        <div class="work-list">
+          <a class="work-item" href="case-study-one.html">
+            <span>Case study one | Macy the Robot</span>
+            <span>UX Research / Product Design</span>
+          </a>
+
+          <a class="work-item" href="case-study-two.html">
+            <span>Case study two | ROOST.</span>
+            <span>UX Research / Branding / UX/UI Design</span>
+          </a>
+
+          <a class="work-item" href="case-study-three.html">
+            <span>Case study three</span>
+            <span>Service Design</span>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <section class="page-section" id="contact">
+      <section class="contact-page">
+        <p class="section-label">Contact</p>
+        <p class="intro-text">
+          Interested in working together? <u>Get in touch</u> and let’s talk.
+        </p>
+		<br>
+		<p class="intro-text"> Drop me an email <a href= "mailto:hughkelly23@icloud.com">here</a> or connect with me on <a href= "https://www.linkedin.com/in/hugh-kelly-a348a1112/">LinkedIn.</a>
+		</p>
+		<br>
+		<a href="files/HughKellyCV.pdf" target="_blank">
+	  View Resume
+	</a>
+      </section>
+    </section>
+  </main>
+
+  <script>
+  const rows = 6;
+  const columns = 28;
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const board = document.getElementById("board");
+  const boardShell = document.getElementById("boardShell");
+
+  const layouts = {
+    home: [
+      { text: "HUGH", row: 1, column: 3 },
+      { text: "KELLY", row: 2, column: 10 },
+      { text: "UX", row: 3, column: 8 },
+      { text: "PORTFOLIO", row: 4, column: 13 }
+    ],
+    about: [
+      { text: "HI,", row: 1, column: 4 },
+      { text: "I'M", row: 3, column: 10 },
+      { text: "HUGH", row: 4, column: 15 }
+    ],
+    work: [
+      { text: "SELECTED", row: 1, column: 3 },
+      { text: "WORK", row: 2, column: 13 },
+      { text: "CASE", row: 3, column: 8 },
+      { text: "STUDIES", row: 4, column: 15 }
+    ],
+    contact: [
+      { text: "GET", row: 1, column: 4 },
+      { text: "IN", row: 2, column: 12 },
+      { text: "TOUCH", row: 3, column: 16 },
+      { text: "SOON", row: 4, column: 8 }
+    ]
+  };
+
+  let finalMap = new Map();
+  const tiles = [];
+
+  board.style.setProperty("--columns", columns);
+
+  for (let i = 0; i < rows * columns; i++) {
+    const tile = document.createElement("div");
+    tile.className = "tile";
+
+    const char = document.createElement("span");
+    char.className = "char";
+    char.textContent = randomLetter();
+
+    tile.appendChild(char);
+    board.appendChild(tile);
+
+    tiles.push({ tile, char, index: i });
+  }
+
+  function randomLetter() {
+    return alphabet[Math.floor(Math.random() * alphabet.length)];
+  }
+
+  function flip(tileObj, value) {
+    tileObj.tile.classList.remove("flipping");
+    void tileObj.tile.offsetWidth;
+    tileObj.tile.classList.add("flipping");
+    tileObj.char.textContent = value;
+  }
+
+  function buildFinalMap(words) {
+    finalMap = new Map();
+
+    words.forEach(word => {
+      [...word.text].forEach((letter, i) => {
+        const index = word.row * columns + word.column + i;
+        finalMap.set(index, letter);
+      });
+    });
+  }
+
+  function showPage(pageName) {
+    document.querySelectorAll(".page-section").forEach(section => {
+      section.classList.remove("active");
+    });
+
+    const targetPage = document.getElementById(pageName);
+    if (targetPage) targetPage.classList.add("active");
+
+    document.querySelectorAll("[data-trigger]").forEach(link => {
+      link.classList.toggle("active-nav", link.dataset.trigger === pageName);
+    });
+  }
+
+  function animateBoard(layoutName = "home", isInitialLoad = false) {
+    buildFinalMap(layouts[layoutName] || layouts.home);
+
+    board.classList.add("is-animating");
+
+    tiles.forEach(tileObj => {
+      tileObj.tile.classList.remove("empty");
+
+      const row = Math.floor(tileObj.index / columns);
+      const col = tileObj.index % columns;
+      const delay = col * 45 + row * 35 + Math.random() * 90;
+      const flips = isInitialLoad
+        ? 2 + Math.floor(Math.random() * 4)
+        : 1 + Math.floor(Math.random() * 3);
+
+      const finalLetter = finalMap.get(tileObj.index);
+
+      setTimeout(() => {
+        let count = 0;
+
+        const interval = setInterval(() => {
+          count++;
+
+          if (count < flips) {
+            flip(tileObj, randomLetter());
+            return;
+          }
+
+          clearInterval(interval);
+
+          if (finalLetter) {
+            flip(tileObj, finalLetter);
+            tileObj.tile.classList.add("final");
+            tileObj.tile.classList.remove("empty");
+          } else {
+            flip(tileObj, " ");
+            tileObj.tile.classList.remove("final");
+            tileObj.tile.classList.add("empty");
+          }
+        }, 110 + Math.random() * 45);
+      }, delay);
+    });
+
+    setTimeout(() => {
+      board.classList.remove("is-animating");
+    }, 1900);
+  }
+
+  document.querySelectorAll("[data-trigger]").forEach(item => {
+    item.addEventListener("click", () => {
+      const page = item.dataset.trigger || "home";
+      animateBoard(page, false);
+      showPage(page);
+      history.replaceState(null, "", page === "home" ? "index.html" : `index.html?page=${page}`);
+    });
+  });
+
+  function getPageFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("page") || "home";
+  }
+
+  const initialPage = getPageFromURL();
+  animateBoard(initialPage, true);
+  showPage(initialPage);
+
+  if (boardShell) {
+    boardShell.addEventListener("mousemove", event => {
+      const rect = boardShell.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const rotateY = ((x / rect.width) - 0.5) * 5;
+      const rotateX = ((y / rect.height) - 0.5) * -5;
+
+      boardShell.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    boardShell.addEventListener("mouseleave", () => {
+      boardShell.style.transform = "rotateX(0deg) rotateY(0deg)";
+    });
+  }
+
+  setInterval(() => {
+    const visibleTiles = tiles.filter(tileObj => !tileObj.tile.classList.contains("empty"));
+    const chosen = visibleTiles[Math.floor(Math.random() * visibleTiles.length)];
+
+    if (!chosen) return;
+
+    chosen.tile.classList.add("ambient-flash");
+
+    setTimeout(() => {
+      chosen.tile.classList.remove("ambient-flash");
+    }, 420);
+  }, 1300);
+</script>
+  
+  <footer class="site-footer">
+  <img src="images/footer-logo.png" alt="Hugh Kelly">
+  <p class="intro-text" style="font-size: 10px;">© 2026 Hugh Kelly</p>
+</footer>
+
+<a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="linkedin-fixed">
+  <svg viewBox="0 0 24 24" width="18" height="18">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6 1.11 6 0 4.88 0 3.5 0 2.12 1.11 1 2.49 1 3.87 1 4.98 2.12 4.98 3.5zM.22 8.22h4.54V24H.22zM7.98 8.22h4.35v2.16h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.49 3.05 5.49 7.01V24h-4.54v-7.74c0-1.85-.03-4.23-2.58-4.23-2.58 0-2.97 2.01-2.97 4.1V24H7.98z"/>
+  </svg>
+</a>
+
+</body>
+</html>

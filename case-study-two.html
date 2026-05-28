@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Roost</title>
+
+  <style>
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: #f5c400;
+      z-index: 2000;
+      transition: width 0.1s linear;
+    }
+
+    .js-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .js-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 1rem;
+      bottom: 3.6rem;
+      border: 1px solid rgba(17,17,17,0.15);
+      background: #efe0cd;
+      color: #111;
+      border-radius: 999px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1200;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+    }
+
+    .roost-hero-visual img,
+    .persona-image img {
+      box-shadow: 0 18px 50px rgba(17,17,17,0.08);
+    }
+
+    .roost-wide-img img {
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <div class="logo" data-trigger="home">
+      <img src="images/logo.png" alt="HK logo">
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html?page=work">Work</a>
+      <a href="index.html?page=about">About</a>
+      <a href="index.html?page=contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main class="roost-case">
+
+  <section class="roost-hero js-reveal">
+    <div>
+      <p class="case-kicker">UX / Product Design</p>
+      <h1>Roost.</h1>
+      <p class="case-meta">Mobile app concept · Roast dinner planning · 2026</p>
+      <p class="case-intro">
+        A calm cooking companion that helps users plan, coordinate, and time every part of a roast dinner without the usual last-minute stress.
+      </p>
+    </div>
+
+    <div class="roost-hero-visual" id="heroVisual">
+      <img 
+        src="images/roostlogo.png" 
+        alt="Roost app preview"
+        style="width:100%; height:auto; border-radius:24px; display:block;"
+      >
+    </div>
+  </section>
+
+  <section class="roost-facts js-reveal">
+    <div class="fact-card">
+      <span>Problem</span>
+      <p>Coordinating roast timings across multiple dishes and appliances.</p>
+    </div>
+
+    <div class="fact-card">
+      <span>Audience</span>
+      <p>UK-based beginner to intermediate home cooks aged 25–70.</p>
+    </div>
+
+    <div class="fact-card">
+      <span>Goal</span>
+      <p>Reduce cooking stress and increase confidence.</p>
+    </div>
+
+    <div class="fact-card">
+      <span>Role</span>
+      <p>UX Research, Branding, UX/UI Design</p>
+    </div>
+  </section>
+
+  <section class="roost-section roost-split js-reveal">
+    <div class="section-label">
+      <span>01 / Product</span>
+      <h2>Product Description</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Roost is a mobile app concept designed to help people cook a full roast dinner by working backwards from the time they want to serve. Instead of forcing users to manually calculate when each dish needs to start, Roost creates a coordinated cooking plan with clear timings, appliance choices, and step-by-step guidance.
+      </p>
+
+      <div class="roost-note-grid">
+        <article>
+          <h3>Core Problem</h3>
+          <p>Roast dinners are stressful because several elements need to finish at the same time. Users need support with timings, sequencing, pressure, and confidence.</p>
+        </article>
+
+        <article>
+          <h3>Minimum Viable Product</h3>
+          <p>Users enter their serving time, choose a roast, select sides and appliances, then receive a timed cooking schedule with in-app reminders.</p>
+        </article>
+
+        <article>
+          <h3>Project Goals</h3>
+          <p>Reduce stress, improve confidence, simplify coordination, and support independent cooking through contextual guidance.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="roost-section roost-split js-reveal">
+    <div class="section-label">
+      <span>02 / Journey</span>
+      <h2>Customer Journey</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        The journey maps how a user might discover Roost, consider whether it solves their problem, complete their first roast plan, return for future meals, and eventually recommend it to others.
+      </p>
+
+      <div class="roost-wide-img" style="text-align:center;">
+        <img 
+          src="images/custjourney.png" 
+          alt="Customer journey map"
+          style="width:100%; max-width:1200px; height:auto; border-radius:24px; display:block;"
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="roost-section roost-split js-reveal">
+    <div class="section-label">
+      <span>03 / Research</span>
+      <h2>Competitor Analysis</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Competitor analysis explored recipe apps and roast-timing tools to understand where Roost could sit in the market. The opportunity was to combine the clarity of a timing tool with the polish and guidance of a modern cooking app.
+      </p>
+
+      <div class="roost-opportunity-strip">
+        <div>
+          <h3>Market Gap</h3>
+          <p>Existing products either focus on broad recipe discovery or simple roast timers. Roost sits between both: a guided orchestration tool for a specific, high-pressure meal.</p>
+        </div>
+
+        <div>
+          <h3>Opportunity</h3>
+          <p>Create a focused app that reduces cognitive load during stressful cooking moments through clear sequencing, failsafe reminders, and appliance flexibility.</p>
+        </div>
+      </div>
+
+      <div class="roost-wide-img" style="text-align:center;">
+        <img 
+          src="images/companalysis.png" 
+          alt="Competitor analysis grid"
+          style="width:100%; max-width:1200px; height:auto; border-radius:24px; display:block;"
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="roost-section roost-split js-reveal">
+    <div class="section-label">
+      <span>04 / Users</span>
+      <h2>Personas</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Two working personas helped frame Roost around different levels of cooking confidence and digital confidence.
+      </p>
+
+      <div class="persona-grid">
+        <article class="persona-card">
+          <div class="persona-image">
+            <img 
+              src="images/jamiecarter.png" 
+              alt="Jamie Carter persona"
+              style="width:100%; height:100%; object-fit:cover; border-radius:24px; display:block;"
+            >
+          </div>
+
+          <h3>Jamie Carter</h3>
+          <p class="persona-role">Beginner student cook</p>
+
+          <p>
+            Jamie is comfortable with technology but lacks cooking confidence. He wants simple step-by-step guidance and finds full roast dinners stressful to coordinate.
+          </p>
+        </article>
+
+        <article class="persona-card">
+          <div class="persona-image">
+            <img 
+              src="images/lizfoster.png" 
+              alt="Liz Foster persona"
+              style="width:100%; height:100%; object-fit:cover; border-radius:24px; display:block;"
+            >
+          </div>
+
+          <h3>Liz Foster</h3>
+          <p class="persona-role">Intermediate home cook</p>
+
+          <p>
+            Liz cooks regularly but prefers clear written instructions, readable layouts, and simple interfaces. She wants support without unnecessary complexity.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="roost-section roost-split js-reveal">
+    <div class="section-label">
+      <span>05 / Brand</span>
+      <h2>Visual System</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Roost’s identity uses a warm, muted palette inspired by home cooking. The chicken-and-clock logo combines the core product idea: roast preparation shaped around time.
+      </p>
+
+      <div class="brand-grid">
+        <div class="image-placeholder">IMAGE PLACEHOLDER<br>Add colour system</div>
+        <div class="image-placeholder">IMAGE PLACEHOLDER<br>Add logo variations</div>
+        <div class="image-placeholder">IMAGE PLACEHOLDER<br>Add typography system</div>
+        <div class="image-placeholder">IMAGE PLACEHOLDER<br>Add spacing guide</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="roost-section roost-split js-reveal">
+    <div class="section-label">
+      <span>06 / Flow</span>
+      <h2>App Structure</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        The core flow starts with a serving time, then guides users through roast selection, trimming choices, appliance setup, and a generated cooking timeline.
+      </p>
+
+      <div class="flow-steps">
+        <div>Set serving time</div>
+        <div>Choose roast</div>
+        <div>Add sides</div>
+        <div>Select appliances</div>
+        <div>Generate timeline</div>
+        <div>Start cook mode</div>
+      </div>
+
+      <div class="image-placeholder roost-wide-img">
+        IMAGE PLACEHOLDER<br>
+        Add user flow / low-fidelity wireframes
+      </div>
+    </div>
+  </section>
+
+  <section class="roost-section roost-split js-reveal">
+    <div class="section-label">
+      <span>07 / Design</span>
+      <h2>Wireframes & UI</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Wireframes focused on reducing setup friction and making the cooking timeline feel simple, readable, and trustworthy during a high-pressure cooking moment.
+      </p>
+
+      <div class="screen-gallery">
+        <div class="image-placeholder">IMAGE PLACEHOLDER<br>Wireframes</div>
+        <div class="image-placeholder">IMAGE PLACEHOLDER<br>Final UI screens</div>
+        <div class="image-placeholder">IMAGE PLACEHOLDER<br>Cook mode timeline</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="roost-final js-reveal">
+    <p class="case-kicker">Design Direction</p>
+    <h2 class="underline-wrap">
+      <span class="underline-reveal">
+        A confidence engine for roast dinners.
+      </span>
+    </h2>
+    <p>
+      Roost is strongest when it stays focused: not another recipe app, but a clear orchestration tool for helping home cooks feel calm, prepared, and in control.
+    </p>
+  </section>
+
+</main>
+
+<button class="back-to-top" id="backToTop">Top ↑</button>
+
+<footer class="site-footer">
+  <img src="images/footer-logo.png" alt="Hugh Kelly">
+  <p style="font-size: 10px;">© 2026 Hugh Kelly</p>
+</footer>
+
+<a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="linkedin-fixed">
+  <svg viewBox="0 0 24 24" width="18" height="18">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6 1.11 6 0 4.88 0 3.5 0 2.12 1.11 1 2.49 1 3.87 1 4.98 2.12 4.98 3.5zM.22 8.22h4.54V24H.22zM7.98 8.22h4.35v2.16h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.49 3.05 5.49 7.01V24h-4.54v-7.74c0-1.85-.03-4.23-2.58-4.23-2.58 0-2.97 2.01-2.97 4.1V24H7.98z"/>
+  </svg>
+</a>
+
+<script>
+  const revealElements = document.querySelectorAll(".js-reveal");
+  const progressBar = document.getElementById("scrollProgress");
+  const backToTop = document.getElementById("backToTop");
+  const heroVisual = document.getElementById("heroVisual");
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / pageHeight) * 100;
+
+    progressBar.style.width = `${scrollPercent}%`;
+
+    if (scrollTop > 700) {
+      backToTop.classList.add("visible");
+    } else {
+      backToTop.classList.remove("visible");
+    }
+
+    if (heroVisual && scrollTop < 900) {
+      heroVisual.style.transform = `translateY(${scrollTop * 0.035}px)`;
+    }
+  });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+    const underline = document.querySelector(".underline-reveal");
+
+  const underlineObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        underline.classList.add("active");
+      }
+    });
+  }, {
+    threshold: 0.6
+  });
+
+  underlineObserver.observe(underline);
+</script>
+
+</body>
+</html>
