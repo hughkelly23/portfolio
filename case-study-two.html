@@ -5,37 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="images/tablogo.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
-  <title>Roost — Hugh Kelly</title>
+	<link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
+  <title>Macy the Robot</title>
 
   <style>
-    :root {
-      --paper: #efe0cd;
-      --ink: #111;
-      --muted: rgba(17, 17, 17, 0.58);
-      --faint: rgba(17, 17, 17, 0.1);
-      --mid: rgba(17, 17, 17, 0.18);
-      --yellow: #f5c400;
-      --soft: rgba(255, 255, 255, 0.24);
-      --max: 1160px;
-      --measure: 760px;
-    }
-
     .scroll-progress {
       position: fixed;
       top: 0;
       left: 0;
       height: 3px;
       width: 0%;
-      background: var(--yellow);
+      background: #f5c400;
       z-index: 2000;
       transition: width 0.1s linear;
     }
 
     .js-reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
     .js-reveal.visible {
@@ -47,9 +35,9 @@
       position: fixed;
       right: 1rem;
       bottom: 3.6rem;
-      border: 1px solid var(--mid);
-      background: var(--paper);
-      color: var(--ink);
+      border: 1px solid rgba(17,17,17,0.15);
+      background: #efe0cd;
+      color: #111;
       border-radius: 999px;
       padding: 0.7rem 0.9rem;
       font-size: 0.7rem;
@@ -72,450 +60,26 @@
       transform: translateY(-3px);
     }
 
-    .roost-page {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 118px 24px 96px;
-    }
-
-    .roost-page img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .case-hero {
-      padding: 64px 0 72px;
-      border-bottom: 1px solid var(--faint);
-    }
-
-    .case-kicker,
-    .section-kicker,
-    .caption,
-    .table-label {
-      margin: 0;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .case-hero h1 {
-      margin: 22px 0 28px;
-      max-width: 900px;
-      font-size: clamp(72px, 15vw, 170px);
-      line-height: 0.82;
-      letter-spacing: -0.095em;
-    }
-
-    .hero-statement {
-      max-width: 940px;
-      margin: 0;
-      font-size: clamp(28px, 4.6vw, 58px);
-      line-height: 1.02;
-      letter-spacing: -0.065em;
-      font-weight: 600;
-    }
-
-    .hero-summary {
-      max-width: var(--measure);
-      margin: 34px 0 0 auto;
-      font-size: clamp(18px, 2vw, 23px);
-      line-height: 1.55;
-      letter-spacing: -0.025em;
-    }
-
-    .project-meta {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 64px;
-    }
-
-    .project-meta div {
-      border-top: 1px solid var(--mid);
-      padding-top: 16px;
-    }
-
-    .project-meta dt {
-      margin: 0 0 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .project-meta dd {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.45;
-    }
-
-    .hero-image {
-      margin: 44px 0 0;
-      border-radius: 34px;
-      padding: 18px;
-      border: 1px solid var(--faint);
-      background: var(--soft);
-    }
-
-    .hero-image img {
-      width: 100%;
-      max-height: 520px;
-      object-fit: contain;
-      border-radius: 24px;
-    }
-
-    .section {
-      padding: 92px 0;
-      border-bottom: 1px solid var(--faint);
-    }
-
-    .section-narrow {
-      max-width: var(--measure);
-      margin: 0 auto;
-    }
-
-    .section-wide {
-      max-width: var(--max);
-      margin: 0 auto;
-    }
-
-    .section h2 {
-      margin: 18px 0 28px;
-      max-width: 940px;
-      font-size: clamp(38px, 6vw, 82px);
-      line-height: 0.95;
-      letter-spacing: -0.07em;
-    }
-
-    .section h3 {
-      margin: 0 0 12px;
-      font-size: 24px;
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-    }
-
-    .section p {
-      margin: 0 0 22px;
-      font-size: 19px;
-      line-height: 1.7;
-      letter-spacing: -0.015em;
-    }
-
-    .section p:last-child {
-      margin-bottom: 0;
-    }
-
-    .pullout {
-      margin: 46px 0 0;
-      padding: 28px 0 0;
-      border-top: 1px solid var(--mid);
-      font-size: clamp(24px, 3.2vw, 38px) !important;
-      line-height: 1.18 !important;
-      letter-spacing: -0.055em !important;
-      font-weight: 600;
-    }
-
-    .artifact {
-      margin: 48px 0 0;
-    }
-
-    .artifact img {
-      width: 100%;
-      border-radius: 28px;
-      border: 1px solid var(--faint);
-      background: var(--soft);
-    }
-
-    .caption {
-      margin-top: 14px;
-      line-height: 1.55;
-      text-transform: none;
-      letter-spacing: 0;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .research-table,
-    .validation-table {
-      width: 100%;
-      margin-top: 36px;
-      border-collapse: collapse;
-      border-top: 1px solid var(--mid);
-    }
-
-    .research-table th,
-    .research-table td,
-    .validation-table th,
-    .validation-table td {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--faint);
-      vertical-align: top;
-      text-align: left;
-      font-size: 17px;
-      line-height: 1.5;
-    }
-
-    .research-table th,
-    .validation-table th {
-      width: 34%;
-      padding-right: 32px;
-      font-size: 12px;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .insight-stack {
-      display: grid;
-      gap: 34px;
-      margin-top: 42px;
-    }
-
-    .insight {
-      display: grid;
-      grid-template-columns: 0.55fr 1fr;
-      gap: 48px;
-      padding-top: 30px;
-      border-top: 1px solid var(--faint);
-    }
-
-    .insight span {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .insight p {
-      margin: 0;
-    }
-
-    .persona-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 44px;
-
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .persona-card {
-      border: 1px solid var(--faint);
-      border-radius: 32px;
-      background: var(--soft);
-      overflow: hidden;
-    }
-
-    .persona-card img {
-      width: 100%;
-      max-height: 260px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .persona-copy {
-      padding: 28px;
-    }
-
-    .persona-role {
-      margin: -4px 0 18px !important;
-      font-size: 13px !important;
-      line-height: 1.3 !important;
-      text-transform: uppercase;
-      letter-spacing: 0.12em !important;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .flow-line {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 0;
-      margin-top: 48px;
-      border-top: 1px solid var(--mid);
-      border-bottom: 1px solid var(--mid);
-    }
-
-    .flow-step {
-      min-height: 190px;
-      padding: 24px 20px;
-      border-right: 1px solid var(--faint);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .flow-step:last-child {
-      border-right: none;
-    }
-
-    .flow-step span {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .flow-step strong {
-      display: block;
-      font-size: 22px;
-      line-height: 1.08;
-      letter-spacing: -0.045em;
-    }
-
-    .placeholder-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 42px;
-    }
-
-    .placeholder-row.four {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .placeholder {
-      min-height: 220px;
-      border: 1px dashed var(--mid);
-      border-radius: 26px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.14);
-    }
-
-    .placeholder strong {
-      color: var(--ink);
-      font-size: 18px;
-      line-height: 1.2;
-      letter-spacing: -0.03em;
-    }
-
-    .placeholder span {
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .closing {
-      padding: 120px 0 48px;
-      text-align: center;
-      border-bottom: none;
-    }
-
-    .closing h2 {
-      max-width: 980px;
-      margin: 18px auto 32px;
-      font-size: clamp(48px, 8vw, 112px);
-      line-height: 0.9;
-      letter-spacing: -0.08em;
-    }
-
-    .closing p {
-      max-width: 720px;
-      margin: 0 auto;
-      font-size: 20px;
-      line-height: 1.65;
-      color: rgba(17, 17, 17, 0.72);
-    }
-
-    .underline-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
-    .underline-reveal {
-      position: relative;
-      display: inline;
-      background-image: linear-gradient(var(--yellow), var(--yellow));
-      background-repeat: no-repeat;
-      background-size: 0% 0.22em;
-      background-position: 0 94.5%;
-      transition: background-size 1.4s ease;
-    }
-
-    .underline-reveal.active {
-      background-size: 100% 0.22em;
-    }
-
-    @media (max-width: 900px) {
-      .project-meta,
-      .persona-grid,
-      .placeholder-row,
-      .placeholder-row.four {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .insight {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .flow-line {
-        grid-template-columns: 1fr;
-      }
-
-      .flow-step {
-        min-height: 130px;
-        border-right: none;
-        border-bottom: 1px solid var(--faint);
-      }
-
-      .flow-step:last-child {
-        border-bottom: none;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .roost-page {
-        padding: 92px 16px 72px;
-      }
-
-      .case-hero {
-        padding-top: 40px;
-      }
-
-      .project-meta,
-      .persona-grid,
-      .placeholder-row,
-      .placeholder-row.four {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-summary {
-        margin-left: 0;
-      }
-
-      .section {
-        padding: 68px 0;
-      }
-
-      .research-table th,
-      .research-table td,
-      .validation-table th,
-      .validation-table td {
-        display: block;
-        width: 100%;
-        padding: 14px 0;
-      }
-
-      .research-table th,
-      .validation-table th {
-        padding-bottom: 0;
-      }
-
-      .persona-card img {
-        height: 260px;
-      }
-    }
+    .floating-features {
+  position: relative;
+  min-height: 620px;
+  display: block;
+  overflow: hidden;
+}
+
+.floating-features .feature-pill {
+  position: absolute;
+  width: 190px;
+  min-height: 130px;
+  margin: 0;
+  transform: none;
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.floating-features .feature-pill:nth-child(odd) {
+  transform: none;
+}
   </style>
 </head>
 
@@ -538,336 +102,284 @@
   </nav>
 </header>
 
-<main class="roost-page">
+<main class="case-study">
 
   <section class="case-hero js-reveal">
-    <p class="case-kicker">UX Research / Branding / UX/UI Design</p>
-    <h1>Roost.</h1>
+    <div>
+      <p class="case-kicker">Research in Progress</p>
+      <h1>Macy the Robot</h1>
+      <p class="case-meta">UX Research / Human-Robot Interaction · 2026</p>
+      <p class="case-intro">
+        Exploring how children and parents might emotionally engage with a soft social robot through touch, movement, play, and non-verbal interaction.
+      </p>
+    </div>
 
-    <p class="hero-statement">
-      A roast dinner planning app inspired by my Dad’s strangely useful Christmas spreadsheet.
-    </p>
-
-    <p class="hero-summary">
-      Roost helps users work backwards from a serving time, build a realistic cooking timeline, and feel less panicked when every dish suddenly seems to need attention at once.
-    </p>
-
-    <dl class="project-meta">
-      <div>
-        <dt>Project type</dt>
-        <dd>Mobile app concept</dd>
+    <div class="hero-image-stack" id="heroVisual">
+      <div class="image-placeholder hero-main-image">
+        HERO IMAGE PLACEHOLDER<br>
+        Add robot render, sketch, or prototype photo
       </div>
-      <div>
-        <dt>Audience</dt>
-        <dd>Beginner to intermediate UK home cooks, aged 25–70</dd>
+
+      <div class="image-placeholder hero-small-image">
+        SECONDARY IMAGE PLACEHOLDER<br>
+        Add research notes or process image
       </div>
-      <div>
-        <dt>Role</dt>
-        <dd>UX Research, Branding, UX/UI Design</dd>
+
+      <div class="floating-note">
+        Current stage: literature review, survey planning, and early prototype research.
       </div>
-      <div>
-        <dt>Status</dt>
-        <dd>Case study in progress, visual system still being refined</dd>
-      </div>
-    </dl>
-
-    <figure class="hero-image">
-      <img src="images/RoostLogo.png" alt="Roost logo and concept preview">
-      <figcaption class="caption">Current project visual. This should eventually become a stronger hero mockup with the logo supporting the app screens rather than carrying the whole section.</figcaption>
-    </figure>
-  </section>
-
-  <section class="section section-narrow js-reveal">
-    <p class="section-kicker">Overview</p>
-    <h2>The idea started at Christmas</h2>
-
-    <p>
-      For years, my Dad used an Excel spreadsheet to cook the turkey on Christmas Day. Weird, right? We thought so too. The spreadsheet only needed one thing from him: the time we wanted to eat. From there, it worked backwards through the cooking process and gave him exact times for each step.
-    </p>
-
-    <p>
-      After years of giving him a hard time for it, we realised he may have actually been onto something. Friends started asking for the spreadsheet, and what looked like a family joke suddenly felt like a real design problem.
-    </p>
-
-    <p>
-      It made me think about how stressful roast dinners can be. Different recipes, multiple appliances, several ingredients, and a fairly unforgiving serving time. Through user research and competitor analysis, it became clear that the stress was less about cooking ability and more about keeping everything coordinated.
-    </p>
-  </section>
-
-  <section class="section section-narrow js-reveal">
-    <p class="section-kicker">Problem</p>
-    <h2>Most cooking apps help you choose what to make. They do not always help you get it all ready together.</h2>
-
-    <p>
-      Roast dinners are awkward because they involve lots of small decisions happening at the same time. The oven is full. The potatoes need checking. Something has to rest. Something else is boiling over. Even confident cooks can feel the pressure when the meal depends on several things landing at once.
-    </p>
-
-    <p>
-      Existing tools tend to sit at either end of the problem. Recipe apps offer inspiration and instructions, while simple calculators give timings without much reassurance. Roost sits between the two: less of a recipe library, more of a calm planning companion.
-    </p>
-
-    <p class="pullout">
-      The design challenge was to turn a useful spreadsheet logic into something that felt calm, readable, and human in the middle of a busy kitchen.
-    </p>
-  </section>
-
-  <section class="section section-narrow js-reveal">
-    <p class="section-kicker">Research</p>
-    <h2>Everyone recognised the stress, but younger users felt it most sharply.</h2>
-
-    <p>
-      I conducted interviews with users aged 25–70. Every participant had experienced stress while making a roast dinner, but the most obvious pressure appeared in the 25–40 group. Older users still described stressful moments, though many had built habits over time and were more set in their routines.
-    </p>
-
-    <p>
-      A useful contradiction also appeared. Most users already used technology while cooking, but every participant had also felt more stressed because of apps or devices in the kitchen. That shaped the direction of the product. Roost could not just add more information. It had to reduce the noise.
-    </p>
-
-    <table class="research-table" aria-label="User research findings">
-      <tbody>
-        <tr>
-          <th scope="row">5 out of 5</th>
-          <td>users had experienced stress while making a roast dinner.</td>
-        </tr>
-        <tr>
-          <th scope="row">4 out of 5</th>
-          <td>regularly used technology or apps while cooking.</td>
-        </tr>
-        <tr>
-          <th scope="row">5 out of 5</th>
-          <td>had experienced increased stress because of apps or technology while cooking.</td>
-        </tr>
-        <tr>
-          <th scope="row">3 out of 5</th>
-          <td>had thrown away food while making a roast because something had spoiled, burned, or gone wrong.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section section-wide js-reveal">
-    <p class="section-kicker">Customer Journey</p>
-    <h2>Mapping the roast around the moments where confidence drops</h2>
-
-    <p class="section-narrow">
-      The journey map helped me think beyond the cooking instructions themselves. I wanted to understand where a user might discover the product, what would make them trust it, and where stress would be most likely to creep back in during the cooking process.
-    </p>
-
-    <figure class="artifact">
-      <img src="images/custjourney.png" alt="Roost customer journey map">
-      <figcaption class="caption">Customer journey map exploring discovery, planning, cooking, and repeat use.</figcaption>
-    </figure>
-  </section>
-
-  <section class="section section-wide js-reveal">
-    <p class="section-kicker">Competitor Analysis</p>
-    <h2>The gap sat between inspiration and orchestration</h2>
-
-    <p class="section-narrow">
-      Looking at recipe apps and roast timing tools helped clarify where Roost could sit. Recipe apps were often polished, but not focused on coordinating a whole meal. Timing tools were useful, but often felt narrow or functional. The opportunity was to combine enough guidance with enough calm.
-    </p>
-
-    <figure class="artifact">
-      <img src="images/companalysis.png" alt="Roost competitor analysis grid">
-      <figcaption class="caption">Competitor analysis looking at recipe discovery, roast calculators, timing tools, and cooking support.</figcaption>
-    </figure>
-  </section>
-
-  <section class="section section-narrow js-reveal">
-    <p class="section-kicker">Insights</p>
-    <h2>The app had to feel trustworthy before it felt clever.</h2>
-
-    <div class="insight-stack">
-      <article class="insight">
-        <span>Insight 01</span>
-        <p>Users did not want another screen full of cooking content. They wanted help knowing what to do next and when to do it.</p>
-      </article>
-
-      <article class="insight">
-        <span>Insight 02</span>
-        <p>The most stressed users were often comfortable with technology, but less confident with the cooking routine itself.</p>
-      </article>
-
-      <article class="insight">
-        <span>Insight 03</span>
-        <p>If the interface became too busy, it risked becoming part of the problem. Calmness had to be treated as a product feature.</p>
-      </article>
     </div>
   </section>
 
-  <section class="section section-wide js-reveal">
-    <p class="section-kicker">Users</p>
-    <h2>Two levels of confidence shaped the design direction</h2>
+  <section class="case-section js-reveal">
+    <div class="project-facts">
+      <div class="fact-card">
+        <span>Project Type</span>
+        <p>Research-led UX case study</p>
+      </div>
 
-    <p class="section-narrow">
-      I used two working personas to keep the product grounded. One represented a younger, digitally confident user who needed reassurance with the cooking process. The other represented someone with more cooking experience who still wanted clarity when the kitchen became busy.
-    </p>
+      <div class="fact-card">
+        <span>Current Stage</span>
+        <p>Research and planning</p>
+      </div>
 
-    <div class="persona-grid">
-      <article class="persona-card">
-        <img src="images/JamieCarter.png" alt="Jamie Carter persona">
-        <div class="persona-copy">
-          <h3>Jamie Carter</h3>
-          <p class="persona-role">Beginner student cook</p>
-          <p>Jamie is comfortable with apps, but not especially confident cooking a full roast. He needs the process broken down clearly without feeling patronised or overloaded.</p>
+      <div class="fact-card">
+        <span>Methods</span>
+        <p>Literature review, survey planning, prototype planning</p>
+      </div>
+
+      <div class="fact-card">
+        <span>Role</span>
+        <p>UX Research, Product Design</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>01 / Context</span>
+      <h2>Project Overview</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Macy the Robot is an early-stage Human-Robot Interaction project exploring how emotionally responsive robots could support children through touch, movement, play, and companionship.
+      </p>
+
+      <p>
+        The project is currently focused on understanding existing research, identifying possible interaction features, and planning future user research with both children and parents.
+      </p>
+
+      <div class="image-placeholder wide-placeholder">
+        IMAGE PLACEHOLDER<br>
+        Add concept sketch, moodboard, or early robot form exploration
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>02 / Problem Space</span>
+      <h2>The Challenge</h2>
+    </div>
+
+    <div class="section-content">
+      <p>
+        Many emotional AI and robot interaction systems rely heavily on facial expressions, speech, and screen-based interaction. Macy explores a more embodied form of emotional communication through touch, movement, softness, and playful physical interaction.
+      </p>
+
+      <p>
+        Because the project involves children, the research must also consider safety, trust, privacy, parental confidence, and whether the robot supports real-world wellbeing rather than replacing human relationships.
+      </p>
+
+      <div class="image-break">
+        <div class="image-placeholder wide-placeholder">
+          IMAGE PLACEHOLDER<br>
+          Add diagram of problem space or emotional interaction map
         </div>
-      </article>
 
-      <article class="persona-card">
-        <img src="images/LizFoster.png" alt="Liz Foster persona">
-        <div class="persona-copy">
-          <h3>Liz Foster</h3>
-          <p class="persona-role">Intermediate home cook</p>
-          <p>Liz cooks more regularly and has her own habits, but she still values readable instructions, simple layouts, and a clear plan when several things are happening at once.</p>
+        <div class="image-placeholder tall-placeholder">
+          IMAGE PLACEHOLDER<br>
+          Add notes, sketches, or research wall photo
         </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section section-narrow js-reveal">
-    <p class="section-kicker">Ideation</p>
-    <h2>Once the app worked backwards, the product started to make sense.</h2>
-
-    <p>
-      The spreadsheet logic became the heart of the product. Instead of asking users to calculate when everything should start, Roost begins with the time they want to serve and builds the cooking plan backwards.
-    </p>
-
-    <p>
-      That changed the role of the app. It was not there to impress the user with features. It was there to quietly remove uncertainty.
-    </p>
-  </section>
-
-  <section class="section section-wide js-reveal">
-    <p class="section-kicker">Core Flow</p>
-    <h2>A simple setup leading into a timed cooking plan</h2>
-
-    <div class="flow-line">
-      <div class="flow-step">
-        <span>01</span>
-        <strong>Set serving time</strong>
-      </div>
-      <div class="flow-step">
-        <span>02</span>
-        <strong>Add roast and sides</strong>
-      </div>
-      <div class="flow-step">
-        <span>03</span>
-        <strong>Select appliances</strong>
-      </div>
-      <div class="flow-step">
-        <span>04</span>
-        <strong>Generate timeline</strong>
-      </div>
-      <div class="flow-step">
-        <span>05</span>
-        <strong>Start cook mode</strong>
-      </div>
-    </div>
-
-    <figure class="artifact">
-      <img src="images/roostwireframe.png" alt="Roost wireframe or user flow">
-      <figcaption class="caption">Current wireframe/user flow placeholder. Replace or refine this once the full screen sequence is ready.</figcaption>
-    </figure>
-  </section>
-
-  <section class="section section-narrow js-reveal">
-    <p class="section-kicker">Solution</p>
-    <h2>A calm cooking companion, not another recipe app</h2>
-
-    <p>
-      Roost allows the user to enter a serving time, add produce, select appliances, and receive a plotted cooking timeline. The main value is not novelty. It is the reassurance of knowing when each step needs to happen.
-    </p>
-
-    <p>
-      A future cook mode would make the experience even simpler during live cooking. The user would see the current task, the next two steps, and essential timings, with a simple tap to move through the instructions as they go.
-    </p>
-  </section>
-
-  <section class="section section-wide js-reveal">
-    <p class="section-kicker">Interface Design</p>
-    <h2>Screens still to be finalised</h2>
-
-    <p class="section-narrow">
-      This section is intentionally left open while the UI is being developed. The final screens should show how Roost handles setup, timeline generation, and cook mode without crowding the user.
-    </p>
-
-    <div class="placeholder-row">
-      <div class="placeholder">
-        <strong>Setup screens</strong>
-        <span>Add serving time, roast selection, sides, and appliance screens.</span>
-      </div>
-      <div class="placeholder">
-        <strong>Generated timeline</strong>
-        <span>Add the main backwards-planned cooking schedule.</span>
-      </div>
-      <div class="placeholder">
-        <strong>Cook mode</strong>
-        <span>Add the simplified live cooking interface and timer behaviour.</span>
       </div>
     </div>
   </section>
 
-  <section class="section section-wide js-reveal">
-    <p class="section-kicker">Branding</p>
-    <h2>Warm, clear, and still being refined</h2>
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>03 / Research</span>
+      <h2>Literature Review Themes</h2>
+    </div>
 
-    <p class="section-narrow">
-      The brand direction is built around warmth and steadiness rather than a loud food-app personality. It should feel like something you would trust in the kitchen: calm enough to follow, but still memorable.
-    </p>
+    <div class="section-content">
+      <p>
+        The literature review surfaced early design opportunities. These are not final features, but research-informed directions to test through surveys, prototyping, and usability sessions.
+      </p>
 
-    <div class="placeholder-row four">
-      <div class="placeholder">
-        <strong>Colour system</strong>
-        <span>Add palette, contrast checks, and usage examples.</span>
-      </div>
-      <div class="placeholder">
-        <strong>Logo development</strong>
-        <span>Add mark refinements, lockups, and rejected routes.</span>
-      </div>
-      <div class="placeholder">
-        <strong>Typography</strong>
-        <span>Add type scale, hierarchy, and interface examples.</span>
-      </div>
-      <div class="placeholder">
-        <strong>Components</strong>
-        <span>Add buttons, cards, timeline blocks, timers, and states.</span>
+      <div class="research-board">
+        <article class="research-card">
+          <h3>Emotional Support & Play</h3>
+          <p>
+            Emotionally responsive robots may increase engagement through comfort, encouragement, humour, storytelling, games, and playful interaction.
+          </p>
+        </article>
+
+        <article class="research-card">
+          <h3>Memory-Based Personalisation</h3>
+          <p>
+            Long-term interaction studies suggest children may form stronger attachments when robots remember preferences, routines, and previous interactions.
+          </p>
+        </article>
+
+        <article class="research-card">
+          <h3>Trust, Privacy & Parent Control</h3>
+          <p>
+            Visible privacy controls could help parents and children understand when sensing, memory, cameras, or microphones are active.
+          </p>
+        </article>
+
+        <article class="research-card">
+          <h3>Soft, Expressive, Personal Form</h3>
+          <p>
+            A soft exterior, expressive LED eyes, responsive gestures, portable body, and customisable appearance could make Macy feel safer and more engaging.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section section-narrow js-reveal">
-    <p class="section-kicker">Reflection</p>
-    <h2>The idea resonated because the problem was familiar.</h2>
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>04 / Direction</span>
+      <h2>Feature Opportunities</h2>
+    </div>
 
-    <p>
-      The response to the concept was encouraging. All five users said Roost would help with stress around making a roast. Three users also asked about in-app timers, which suggested that the live cooking experience should become a bigger part of the next design iteration.
-    </p>
+    <div class="section-content">
+      <p>
+        These feature areas are being treated as starting points for research, not final design decisions.
+      </p>
 
-    <table class="validation-table" aria-label="Validation findings">
-      <tbody>
-        <tr>
-          <th scope="row">5 out of 5</th>
-          <td>said the app would help reduce their stress around cooking a roast.</td>
-        </tr>
-        <tr>
-          <th scope="row">3 out of 5</th>
-          <td>asked about in-app timers, suggesting that live cooking support should be prioritised next.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p class="pullout">
-      If I took this further, I would focus on what happens when the plan slips. A good roast app should not only create the ideal timeline. It should help users recover when real life gets in the way.
-    </p>
+      <div class="feature-cloud floating-features" id="floatingFeatures">
+        <div class="feature-pill">Emotion recognition and support responses</div>
+        <div class="feature-pill">Memory-based personalisation</div>
+        <div class="feature-pill">Collaborative play and games</div>
+        <div class="feature-pill">Privacy control dashboard</div>
+        <div class="feature-pill">Offline social activity prompts</div>
+        <div class="feature-pill">Soft hug-friendly exterior</div>
+        <div class="feature-pill">Expressive LED eyes</div>
+        <div class="feature-pill">Compact portable body</div>
+        <div class="feature-pill">Responsive gestures</div>
+        <div class="feature-pill">Customisable appearance</div>
+      </div>
+    </div>
   </section>
 
-  <section class="section closing js-reveal">
-    <p class="case-kicker">Design Direction</p>
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>05 / Process</span>
+      <h2>Work Completed So Far</h2>
+    </div>
+
+    <div class="section-content">
+      <div class="timeline">
+
+        <div class="timeline-row">
+          <span>Stage One</span>
+          <div>
+            <h3>Literature Review</h3>
+            <p>
+              Reviewed research around social robots, emotional support, tactile interaction, child engagement, trust, privacy, and play.
+            </p>
+          </div>
+          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
+        </div>
+
+        <div class="timeline-row">
+          <span>Stage Two</span>
+          <div>
+            <h3>Feature Mapping</h3>
+            <p>
+              Translated research findings into possible design directions, including emotional responses, soft form, privacy controls, and expressive behaviours.
+            </p>
+          </div>
+          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
+        </div>
+
+        <div class="timeline-row">
+          <span>Stage Three</span>
+          <div>
+            <h3>Survey Planning</h3>
+            <p>
+              Planned separate research approaches for children and parents to capture trust, comfort, expectations, and emotional response.
+            </p>
+          </div>
+          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
+        </div>
+
+        <div class="timeline-row">
+          <span>Stage Four</span>
+          <div>
+            <h3>Prototype Testing Plan</h3>
+            <p>
+              Outlined future usability testing to explore how participants respond to Macy’s form, movement, interaction behaviours, and emotional cues.
+            </p>
+          </div>
+          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>06 / Placeholders</span>
+      <h2>To Be Added Later</h2>
+    </div>
+
+    <div class="section-content">
+      <div class="placeholder-gallery">
+
+        <article class="gallery-card">
+          <div class="image-placeholder">
+            IMAGE PLACEHOLDER<br>
+            Survey screenshots
+          </div>
+          <h3>Survey Materials</h3>
+          <p></p>
+        </article>
+
+        <article class="gallery-card">
+          <div class="image-placeholder">
+            IMAGE PLACEHOLDER<br>
+            Prototype visuals
+          </div>
+          <h3>Prototype</h3>
+          <p></p>
+        </article>
+
+        <article class="gallery-card">
+          <div class="image-placeholder">
+            IMAGE PLACEHOLDER<br>
+            Testing notes or findings
+          </div>
+          <h3>Usability Testing</h3>
+          <p></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="next-section js-reveal">
     <h2 class="underline-wrap">
-      <span class="underline-reveal">A confidence engine for roast dinners.</span>
+      <span class="underline-reveal">
+        Next Steps
+      </span>
     </h2>
     <p>
-      Roost is strongest when it stays focused: not another content-heavy recipe app, but a practical planning tool that makes a stressful meal feel more manageable.
+      The next phase will focus on finalising research materials, developing an initial prototype, and preparing for usability testing with children and parents.
     </p>
   </section>
 
@@ -893,7 +405,7 @@
   const revealElements = document.querySelectorAll(".js-reveal");
   const progressBar = document.getElementById("scrollProgress");
   const backToTop = document.getElementById("backToTop");
-  const underline = document.querySelector(".underline-reveal");
+  const heroVisual = document.getElementById("heroVisual");
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -902,7 +414,7 @@
       }
     });
   }, {
-    threshold: 0.12
+    threshold: 0.15
   });
 
   revealElements.forEach((element) => {
@@ -912,7 +424,7 @@
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY;
     const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = pageHeight > 0 ? (scrollTop / pageHeight) * 100 : 0;
+    const scrollPercent = (scrollTop / pageHeight) * 100;
 
     progressBar.style.width = `${scrollPercent}%`;
 
@@ -920,6 +432,10 @@
       backToTop.classList.add("visible");
     } else {
       backToTop.classList.remove("visible");
+    }
+
+    if (heroVisual && scrollTop < 900) {
+      heroVisual.style.transform = `translateY(${scrollTop * 0.035}px)`;
     }
   });
 
@@ -930,19 +446,120 @@
     });
   });
 
-  if (underline) {
-    const underlineObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          underline.classList.add("active");
+  const underline = document.querySelector(".underline-reveal");
+
+  const underlineObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        underline.classList.add("active");
+      }
+    });
+  }, {
+    threshold: 0.6
+  });
+
+  underlineObserver.observe(underline);
+
+  const floatingArea = document.getElementById("floatingFeatures");
+
+if (floatingArea && window.innerWidth > 800) {
+  const pills = [...floatingArea.querySelectorAll(".feature-pill")];
+
+  const areaWidth = floatingArea.clientWidth;
+  const areaHeight = floatingArea.clientHeight;
+
+  const items = [];
+
+  function overlaps(a, b) {
+    return (
+      a.x < b.x + b.width &&
+      a.x + a.width > b.x &&
+      a.y < b.y + b.height &&
+      a.y + a.height > b.y
+    );
+  }
+
+  pills.forEach((pill) => {
+    const width = 190;
+    const height = 130;
+
+    let item;
+    let attempts = 0;
+
+    do {
+      item = {
+        el: pill,
+        x: Math.random() * (areaWidth - width),
+        y: Math.random() * (areaHeight - height),
+        vx: (Math.random() > 0.5 ? 1 : -1) * (0.65 + Math.random() * 0.35),
+        vy: (Math.random() > 0.5 ? 1 : -1) * (0.65 + Math.random() * 0.35),
+        width,
+        height
+      };
+
+      attempts++;
+    } while (items.some((other) => overlaps(item, other)) && attempts < 500);
+
+    pill.style.width = `${width}px`;
+    pill.style.minHeight = `${height}px`;
+
+    items.push(item);
+  });
+
+  function animateFeatures() {
+    items.forEach((item, index) => {
+      item.x += item.vx;
+      item.y += item.vy;
+
+      if (item.x <= 0) {
+        item.x = 0;
+        item.vx *= -1;
+      }
+
+      if (item.x + item.width >= areaWidth) {
+        item.x = areaWidth - item.width;
+        item.vx *= -1;
+      }
+
+      if (item.y <= 0) {
+        item.y = 0;
+        item.vy *= -1;
+      }
+
+      if (item.y + item.height >= areaHeight) {
+        item.y = areaHeight - item.height;
+        item.vy *= -1;
+      }
+
+      for (let i = index + 1; i < items.length; i++) {
+        const other = items[i];
+
+        if (overlaps(item, other)) {
+          const tempVx = item.vx;
+          const tempVy = item.vy;
+
+          item.vx = other.vx;
+          item.vy = other.vy;
+
+          other.vx = tempVx;
+          other.vy = tempVy;
+
+          item.x += item.vx * 4;
+          item.y += item.vy * 4;
+          other.x += other.vx * 4;
+          other.y += other.vy * 4;
         }
-      });
-    }, {
-      threshold: 0.6
+      }
+
+      item.el.style.left = `${item.x}px`;
+      item.el.style.top = `${item.y}px`;
     });
 
-    underlineObserver.observe(underline);
+    requestAnimationFrame(animateFeatures);
   }
+
+  animateFeatures();
+}
 </script>
 
 </body>
