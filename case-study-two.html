@@ -6,32 +6,19 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="images/tablogo.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
-  <title>Roost</title>
+  <title>Roost — Hugh Kelly</title>
 
   <style>
     :root {
-      --bg: #efe0cd;
-      --bg-soft: #f5eadc;
-      --text: #171515;
-      --muted: #6c655e;
-      --line: rgba(23, 21, 21, 0.14);
-      --line-strong: rgba(23, 21, 21, 0.24);
-      --accent: #f5c400;
-      --card: rgba(255, 255, 255, 0.34);
-      --shadow: 0 20px 60px rgba(17, 17, 17, 0.07);
-      --radius: 26px;
-      --radius-sm: 18px;
-      --max-text: 760px;
-      --max-wide: 1120px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
+      --paper: #efe0cd;
+      --ink: #111;
+      --muted: rgba(17, 17, 17, 0.58);
+      --faint: rgba(17, 17, 17, 0.1);
+      --mid: rgba(17, 17, 17, 0.18);
+      --yellow: #f5c400;
+      --soft: rgba(255, 255, 255, 0.24);
+      --max: 1160px;
+      --measure: 760px;
     }
 
     .scroll-progress {
@@ -40,15 +27,15 @@
       left: 0;
       height: 3px;
       width: 0%;
-      background: var(--accent);
+      background: var(--yellow);
       z-index: 2000;
       transition: width 0.1s linear;
     }
 
     .js-reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
 
     .js-reveal.visible {
@@ -60,11 +47,11 @@
       position: fixed;
       right: 1rem;
       bottom: 3.6rem;
-      border: 1px solid var(--line);
-      background: var(--bg);
-      color: var(--text);
+      border: 1px solid var(--mid);
+      background: var(--paper);
+      color: var(--ink);
       border-radius: 999px;
-      padding: 0.72rem 0.95rem;
+      padding: 0.7rem 0.9rem;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -85,443 +72,448 @@
       transform: translateY(-3px);
     }
 
-    .roost-case-v2 {
-      padding: 7.75rem 1.5rem 7rem;
-    }
-
-    .roost-case-v2 img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .roost-case-v2 .case-hero,
-    .roost-case-v2 .case-block,
-    .roost-case-v2 .case-end {
-      width: min(100%, var(--max-text));
+    .roost-page {
+      max-width: var(--max);
       margin: 0 auto;
+      padding: 118px 24px 96px;
     }
 
-    .roost-case-v2 .case-hero {
-      margin-bottom: 2.8rem;
+    .roost-page img {
+      display: block;
+      max-width: 100%;
     }
 
-    .roost-case-v2 .case-kicker,
-    .roost-case-v2 .section-number {
-      margin: 0 0 1rem;
-      font-size: 0.82rem;
+    .case-hero {
+      padding: 64px 0 72px;
+      border-bottom: 1px solid var(--faint);
+    }
+
+    .case-kicker,
+    .section-kicker,
+    .caption,
+    .table-label {
+      margin: 0;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
-    .roost-case-v2 h1 {
+    .case-hero h1 {
+      margin: 22px 0 28px;
+      max-width: 900px;
+      font-size: clamp(72px, 15vw, 170px);
+      line-height: 0.82;
+      letter-spacing: -0.095em;
+    }
+
+    .hero-statement {
+      max-width: 940px;
       margin: 0;
-      font-size: clamp(3.6rem, 11vw, 6.6rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
+      font-size: clamp(28px, 4.6vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.065em;
+      font-weight: 600;
     }
 
-    .roost-case-v2 .case-deck {
-      margin: 1.35rem 0 1.1rem;
-      font-size: clamp(1.32rem, 2.2vw, 1.82rem);
-      line-height: 1.35;
-      max-width: 42rem;
-      color: var(--text);
+    .hero-summary {
+      max-width: var(--measure);
+      margin: 34px 0 0 auto;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.55;
+      letter-spacing: -0.025em;
     }
 
-    .roost-case-v2 .case-intro {
-      margin: 0 0 1rem;
-      font-size: 1.08rem;
-      line-height: 1.8;
-      color: var(--text);
-    }
-
-    .roost-case-v2 .case-intro:last-of-type {
-      margin-bottom: 2rem;
-    }
-
-    .roost-case-v2 .project-facts {
+    .project-meta {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem 1.3rem;
-      margin: 2.4rem 0 0;
-      padding: 0;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 64px;
     }
 
-    .roost-case-v2 .project-facts div {
-      padding-top: 1rem;
-      border-top: 1px solid var(--line-strong);
+    .project-meta div {
+      border-top: 1px solid var(--mid);
+      padding-top: 16px;
     }
 
-    .roost-case-v2 .project-facts dt {
-      margin: 0 0 0.45rem;
-      font-size: 0.74rem;
+    .project-meta dt {
+      margin: 0 0 8px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
-    .roost-case-v2 .project-facts dd {
+    .project-meta dd {
       margin: 0;
-      font-size: 1rem;
-      line-height: 1.55;
-      color: var(--text);
+      font-size: 16px;
+      line-height: 1.45;
     }
 
-    .roost-case-v2 .case-figure {
-      width: min(100%, var(--max-wide));
-      margin: 0 auto 5.4rem;
-      background: rgba(255, 255, 255, 0.24);
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 4px);
-      padding: 1rem;
-      box-shadow: var(--shadow);
+    .hero-image {
+      margin: 44px 0 0;
+      border-radius: 34px;
+      padding: 18px;
+      border: 1px solid var(--faint);
+      background: var(--soft);
     }
 
-    .roost-case-v2 .case-figure img {
+    .hero-image img {
       width: 100%;
-      height: auto;
-      border-radius: var(--radius);
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 24px;
     }
 
-    .roost-case-v2 .case-figure figcaption {
-      margin: 0.9rem 0 0.1rem;
-      padding: 0 0.3rem;
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: var(--muted);
+    .section {
+      padding: 92px 0;
+      border-bottom: 1px solid var(--faint);
     }
 
-    .roost-case-v2 .hero-preview {
-      margin-top: 0;
+    .section-narrow {
+      max-width: var(--measure);
+      margin: 0 auto;
     }
 
-    .roost-case-v2 .case-block {
-      margin-bottom: 5.2rem;
+    .section-wide {
+      max-width: var(--max);
+      margin: 0 auto;
     }
 
-    .roost-case-v2 h2 {
-      margin: 0 0 1.1rem;
-      font-size: clamp(2rem, 4.6vw, 3.1rem);
-      line-height: 1.06;
+    .section h2 {
+      margin: 18px 0 28px;
+      max-width: 940px;
+      font-size: clamp(38px, 6vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .section h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.1;
       letter-spacing: -0.04em;
     }
 
-    .roost-case-v2 h3 {
-      margin: 0 0 0.8rem;
-      font-size: 1.12rem;
-      line-height: 1.25;
-      letter-spacing: -0.02em;
-    }
-
-    .roost-case-v2 p {
-      margin: 0 0 1rem;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--text);
-    }
-
-    .roost-case-v2 .callout {
-      margin-top: 1.8rem;
-      padding: 1.4rem 1.4rem 1.3rem;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-    }
-
-    .roost-case-v2 .callout p {
-      margin: 0;
-    }
-
-    .roost-case-v2 .callout p + p {
-      margin-top: 0.45rem;
-    }
-
-    .roost-case-v2 .table-wrap {
-      margin-top: 2rem;
-      overflow-x: auto;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.24);
-      box-shadow: var(--shadow);
-    }
-
-    .roost-case-v2 .case-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 560px;
-    }
-
-    .roost-case-v2 .case-table th,
-    .roost-case-v2 .case-table td {
-      text-align: left;
-      padding: 1rem 1.1rem;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-      font-size: 0.98rem;
-      line-height: 1.6;
-    }
-
-    .roost-case-v2 .case-table thead th {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.22);
-    }
-
-    .roost-case-v2 .case-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .roost-case-v2 .insight-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.8rem;
-    }
-
-    .roost-case-v2 .insight-card {
-      padding: 1.35rem 1.25rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.24);
-      box-shadow: var(--shadow);
-    }
-
-    .roost-case-v2 .insight-card p {
-      margin: 0;
-      font-size: 0.98rem;
+    .section p {
+      margin: 0 0 22px;
+      font-size: 19px;
       line-height: 1.7;
+      letter-spacing: -0.015em;
     }
 
-    .roost-case-v2 .quote-placeholder {
-      margin-top: 1rem;
-      padding: 1.1rem 1.2rem;
-      border: 1px dashed var(--line-strong);
-      border-radius: var(--radius-sm);
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.16);
+    .section p:last-child {
+      margin-bottom: 0;
     }
 
-    .roost-case-v2 .quote-placeholder p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .roost-case-v2 .persona-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .roost-case-v2 .persona-card {
-      padding: 1rem;
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) - 2px);
-      background: rgba(255, 255, 255, 0.24);
-      box-shadow: var(--shadow);
-    }
-
-    .roost-case-v2 .persona-image {
-      overflow: hidden;
-      border-radius: calc(var(--radius) - 6px);
-      margin-bottom: 1rem;
-      aspect-ratio: 16 / 11;
-      background: rgba(255, 255, 255, 0.4);
-    }
-
-    .roost-case-v2 .persona-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .roost-case-v2 .persona-role {
-      margin: -0.2rem 0 0.8rem;
-      font-size: 0.86rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .roost-case-v2 .persona-card p:last-child {
-      margin-bottom: 0.2rem;
-    }
-
-    .roost-case-v2 .flow-strip {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 0.8rem;
-      margin-top: 1.8rem;
-    }
-
-    .roost-case-v2 .flow-step {
-      min-height: 110px;
-      padding: 1rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.24);
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 0.8rem;
-    }
-
-    .roost-case-v2 .flow-step span {
-      display: inline-flex;
-      width: 2rem;
-      height: 2rem;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid var(--line-strong);
-      color: var(--muted);
-    }
-
-    .roost-case-v2 .flow-step strong {
-      font-size: 0.98rem;
-      line-height: 1.4;
+    .pullout {
+      margin: 46px 0 0;
+      padding: 28px 0 0;
+      border-top: 1px solid var(--mid);
+      font-size: clamp(24px, 3.2vw, 38px) !important;
+      line-height: 1.18 !important;
+      letter-spacing: -0.055em !important;
       font-weight: 600;
     }
 
-    .roost-case-v2 .placeholder-panel,
-    .roost-case-v2 .brand-card,
-    .roost-case-v2 .screen-card {
-      border: 1px dashed var(--line-strong);
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.16);
+    .artifact {
+      margin: 48px 0 0;
+    }
+
+    .artifact img {
+      width: 100%;
+      border-radius: 28px;
+      border: 1px solid var(--faint);
+      background: var(--soft);
+    }
+
+    .caption {
+      margin-top: 14px;
+      line-height: 1.55;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .research-table,
+    .validation-table {
+      width: 100%;
+      margin-top: 36px;
+      border-collapse: collapse;
+      border-top: 1px solid var(--mid);
+    }
+
+    .research-table th,
+    .research-table td,
+    .validation-table th,
+    .validation-table td {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--faint);
+      vertical-align: top;
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .research-table th,
+    .validation-table th {
+      width: 34%;
+      padding-right: 32px;
+      font-size: 12px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
       color: var(--muted);
     }
 
-    .roost-case-v2 .placeholder-panel {
-      margin-top: 1.8rem;
-      padding: 1.3rem 1.25rem;
-    }
-
-    .roost-case-v2 .placeholder-panel strong,
-    .roost-case-v2 .brand-card strong,
-    .roost-case-v2 .screen-card strong {
-      display: block;
-      margin-bottom: 0.35rem;
-      font-size: 0.92rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text);
-    }
-
-    .roost-case-v2 .placeholder-panel span,
-    .roost-case-v2 .brand-card span,
-    .roost-case-v2 .screen-card span {
-      display: block;
-      font-size: 0.95rem;
-      line-height: 1.65;
-    }
-
-    .roost-case-v2 .screen-grid,
-    .roost-case-v2 .brand-grid {
+    .insight-stack {
       display: grid;
-      gap: 1rem;
-      margin-top: 1.8rem;
+      gap: 34px;
+      margin-top: 42px;
     }
 
-    .roost-case-v2 .screen-grid {
+    .insight {
+      display: grid;
+      grid-template-columns: 0.55fr 1fr;
+      gap: 48px;
+      padding-top: 30px;
+      border-top: 1px solid var(--faint);
+    }
+
+    .insight span {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .insight p {
+      margin: 0;
+    }
+
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 44px;
+
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .persona-card {
+      border: 1px solid var(--faint);
+      border-radius: 32px;
+      background: var(--soft);
+      overflow: hidden;
+    }
+
+    .persona-card img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .persona-copy {
+      padding: 28px;
+    }
+
+    .persona-role {
+      margin: -4px 0 18px !important;
+      font-size: 13px !important;
+      line-height: 1.3 !important;
+      text-transform: uppercase;
+      letter-spacing: 0.12em !important;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .flow-line {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 48px;
+      border-top: 1px solid var(--mid);
+      border-bottom: 1px solid var(--mid);
+    }
+
+    .flow-step {
+      min-height: 190px;
+      padding: 24px 20px;
+      border-right: 1px solid var(--faint);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .flow-step:last-child {
+      border-right: none;
+    }
+
+    .flow-step span {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .flow-step strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .placeholder-row {
+      display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 42px;
     }
 
-    .roost-case-v2 .brand-grid {
+    .placeholder-row.four {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .roost-case-v2 .screen-card,
-    .roost-case-v2 .brand-card {
-      min-height: 190px;
-      padding: 1.1rem;
+    .placeholder {
+      min-height: 220px;
+      border: 1px dashed var(--mid);
+      border-radius: 26px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.14);
     }
 
-    .roost-case-v2 .case-end {
-      width: min(100%, 980px);
-      margin-top: 1rem;
-      text-align: left;
+    .placeholder strong {
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
     }
 
-    .roost-case-v2 .case-end h2 {
-      margin-bottom: 1.2rem;
-      font-size: clamp(2.7rem, 7vw, 5.5rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
+    .placeholder span {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .closing {
+      padding: 120px 0 48px;
+      text-align: center;
+      border-bottom: none;
+    }
+
+    .closing h2 {
+      max-width: 980px;
+      margin: 18px auto 32px;
+      font-size: clamp(48px, 8vw, 112px);
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+    }
+
+    .closing p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 20px;
+      line-height: 1.65;
+      color: rgba(17, 17, 17, 0.72);
     }
 
     .underline-wrap {
-      margin: 0;
+      position: relative;
+      display: inline-block;
     }
 
     .underline-reveal {
       position: relative;
-      display: inline-block;
-      padding-bottom: 0.1em;
+      display: inline;
+      background-image: linear-gradient(var(--yellow), var(--yellow));
+      background-repeat: no-repeat;
+      background-size: 0% 0.22em;
+      background-position: 0 94.5%;
+      transition: background-size 1.4s ease;
     }
 
-    .underline-reveal::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.13em;
-      width: 100%;
-      height: 0.08em;
-      background: var(--text);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 1.4s ease;
+    .underline-reveal.active {
+      background-size: 100% 0.22em;
     }
 
-    .underline-reveal.active::after {
-      transform: scaleX(1);
-    }
-
-    @media (max-width: 980px) {
-      .roost-case-v2 .flow-strip,
-      .roost-case-v2 .screen-grid,
-      .roost-case-v2 .brand-grid,
-      .roost-case-v2 .insight-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 740px) {
-      .roost-case-v2 {
-        padding: 7rem 1rem 6rem;
+    @media (max-width: 900px) {
+      .project-meta,
+      .persona-grid,
+      .placeholder-row,
+      .placeholder-row.four {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .roost-case-v2 .project-facts,
-      .roost-case-v2 .persona-grid,
-      .roost-case-v2 .flow-strip,
-      .roost-case-v2 .screen-grid,
-      .roost-case-v2 .brand-grid,
-      .roost-case-v2 .insight-grid {
+      .insight {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .flow-line {
         grid-template-columns: 1fr;
       }
 
-      .roost-case-v2 .case-figure {
-        padding: 0.75rem;
-        margin-bottom: 4rem;
+      .flow-step {
+        min-height: 130px;
+        border-right: none;
+        border-bottom: 1px solid var(--faint);
       }
 
-      .roost-case-v2 .case-table {
-        min-width: 100%;
+      .flow-step:last-child {
+        border-bottom: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .roost-page {
+        padding: 92px 16px 72px;
       }
 
-      .roost-case-v2 .table-wrap {
-        overflow-x: auto;
+      .case-hero {
+        padding-top: 40px;
+      }
+
+      .project-meta,
+      .persona-grid,
+      .placeholder-row,
+      .placeholder-row.four {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-summary {
+        margin-left: 0;
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .research-table th,
+      .research-table td,
+      .validation-table th,
+      .validation-table td {
+        display: block;
+        width: 100%;
+        padding: 14px 0;
+      }
+
+      .research-table th,
+      .validation-table th {
+        padding-bottom: 0;
+      }
+
+      .persona-card img {
+        height: 260px;
       }
     }
   </style>
@@ -546,367 +538,336 @@
   </nav>
 </header>
 
-<main class="roost-case-v2">
+<main class="roost-page">
 
   <section class="case-hero js-reveal">
-    <p class="case-kicker">UX / Product Design</p>
-    <h1>Roost</h1>
+    <p class="case-kicker">UX Research / Branding / UX/UI Design</p>
+    <h1>Roost.</h1>
 
-    <p class="case-deck">
-      A mobile app concept for people who want a roast on the table without spending the whole afternoon second-guessing the timings.
+    <p class="hero-statement">
+      A roast dinner planning app inspired by my Dad’s strangely useful Christmas spreadsheet.
     </p>
 
-    <p class="case-intro">
-      This project started with something my family used to laugh at: every Christmas my Dad opened an Excel sheet to time the turkey. The spreadsheet looked a bit odd, but it worked. All he needed was a serving time, and it would map the cook backwards so every step had a place.
+    <p class="hero-summary">
+      Roost helps users work backwards from a serving time, build a realistic cooking timeline, and feel less panicked when every dish suddenly seems to need attention at once.
     </p>
 
-    <p class="case-intro">
-      When friends started asking for copies, it stopped feeling like a family quirk and started feeling like a design opportunity. Roost came from that moment. I wanted to see whether the logic of that spreadsheet could become a calmer, more usable experience for people trying to cook a full roast without the usual stress.
-    </p>
-
-    <dl class="project-facts">
+    <dl class="project-meta">
       <div>
         <dt>Project type</dt>
         <dd>Mobile app concept</dd>
       </div>
-
+      <div>
+        <dt>Audience</dt>
+        <dd>Beginner to intermediate UK home cooks, aged 25–70</dd>
+      </div>
       <div>
         <dt>Role</dt>
         <dd>UX Research, Branding, UX/UI Design</dd>
       </div>
-
       <div>
-        <dt>Timeline</dt>
-        <dd>[Add project timeline]</dd>
-      </div>
-
-      <div>
-        <dt>Tools</dt>
-        <dd>Figma, Miro, [Add anything else used]</dd>
+        <dt>Status</dt>
+        <dd>Case study in progress, visual system still being refined</dd>
       </div>
     </dl>
+
+    <figure class="hero-image">
+      <img src="images/RoostLogo.png" alt="Roost logo and concept preview">
+      <figcaption class="caption">Current project visual. This should eventually become a stronger hero mockup with the logo supporting the app screens rather than carrying the whole section.</figcaption>
+    </figure>
   </section>
 
-  <figure class="case-figure hero-preview js-reveal">
-    <!-- Replace this with a polished hero mockup strip if you create one -->
-    <img src="images/RoostLogo.png" alt="Roost concept preview">
-    <figcaption>Current concept visual. Replace with a polished hero mockup when ready.</figcaption>
-  </figure>
-
-  <section class="case-block js-reveal">
-    <p class="section-number">Overview</p>
-    <h2>From a Christmas spreadsheet to a product idea</h2>
+  <section class="section section-narrow js-reveal">
+    <p class="section-kicker">Overview</p>
+    <h2>The idea started at Christmas</h2>
 
     <p>
-      Roost is not really about teaching people how to cook. It is about helping them hold everything together once the kitchen gets busy. The more I looked at roast cooking, the clearer that became. The recipes were only one part of it. The real stress came from juggling timings, appliances, ingredients, and serving expectations all at once.
+      For years, my Dad used an Excel spreadsheet to cook the turkey on Christmas Day. Weird, right? We thought so too. The spreadsheet only needed one thing from him: the time we wanted to eat. From there, it worked backwards through the cooking process and gave him exact times for each step.
     </p>
 
     <p>
-      That was the opportunity behind the project: take something surprisingly effective but clunky, and turn it into a calmer planning tool for people who want reassurance as much as instruction.
-    </p>
-  </section>
-
-  <section class="case-block js-reveal">
-    <p class="section-number">Problem</p>
-    <h2>The stressful part is coordination, not inspiration</h2>
-
-    <p>
-      Most cooking products are good at helping people choose what to make. Far fewer help them coordinate a whole meal that needs to land together. When someone is making a roast, the pressure usually comes from overlap. Potatoes need attention while vegetables are boiling, the meat still needs timing, the oven is full, and guests are waiting.
+      After years of giving him a hard time for it, we realised he may have actually been onto something. Friends started asking for the spreadsheet, and what looked like a family joke suddenly felt like a real design problem.
     </p>
 
     <p>
-      For less experienced cooks especially, that mental load can turn a social meal into a fairly tense one. Roost was designed around that pressure point rather than around recipe discovery.
-    </p>
-
-    <aside class="callout">
-      <p><strong>Design question</strong></p>
-      <p>How might I help people feel more in control of a roast dinner without making the experience feel even more technical?</p>
-    </aside>
-  </section>
-
-  <section class="case-block js-reveal">
-    <p class="section-number">Research</p>
-    <h2>Talking to home cooks made the gap very clear</h2>
-
-    <p>
-      I conducted user interviews with people aged 25 to 70 and reviewed existing recipe apps and roast-timing tools. Everyone I spoke to had experienced some level of stress around making a roast, but the pressure was most visible in the 25 to 40 age group. Older participants still recognised the problem, though many had built their own routines over time.
-    </p>
-
-    <p>
-      One especially interesting tension came up again and again: people already used phones and apps while cooking, but they did not always feel helped by them. Technology was often part of the process and part of the problem at the same time.
-    </p>
-
-    <div class="table-wrap">
-      <table class="case-table" aria-label="Research findings">
-        <thead>
-          <tr>
-            <th>Research finding</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Users who experienced stress while making a roast</td>
-            <td>5 out of 5</td>
-          </tr>
-          <tr>
-            <td>Users who regularly used technology or apps while cooking</td>
-            <td>4 out of 5</td>
-          </tr>
-          <tr>
-            <td>Users who said technology had increased their stress while cooking</td>
-            <td>5 out of 5</td>
-          </tr>
-          <tr>
-            <td>Users who had ruined or wasted food because timings slipped</td>
-            <td>3 out of 5</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <figure class="case-figure js-reveal">
-    <img src="images/custjourney.png" alt="Customer journey map for Roost">
-    <figcaption>Original customer journey artefact.</figcaption>
-  </figure>
-
-  <section class="case-block js-reveal">
-    <p class="section-number">Competitor analysis</p>
-    <h2>Recipe apps covered content. Timers covered utility. Neither really covered the whole experience.</h2>
-
-    <p>
-      Competitor analysis helped position Roost between two familiar categories. On one side were broad recipe platforms with plenty of inspiration but little help once cooking actually began. On the other were simple roast calculators and timers that solved one narrow problem but lacked the clarity and reassurance people seemed to want.
-    </p>
-
-    <p>
-      The opportunity was to create something more focused: a planning companion for a specific, high-stress meal, with just enough structure to reduce the feeling of chaos.
+      It made me think about how stressful roast dinners can be. Different recipes, multiple appliances, several ingredients, and a fairly unforgiving serving time. Through user research and competitor analysis, it became clear that the stress was less about cooking ability and more about keeping everything coordinated.
     </p>
   </section>
 
-  <figure class="case-figure js-reveal">
-    <img src="images/companalysis.png" alt="Competitor analysis for Roost">
-    <figcaption>Original competitor analysis table.</figcaption>
-  </figure>
+  <section class="section section-narrow js-reveal">
+    <p class="section-kicker">Problem</p>
+    <h2>Most cooking apps help you choose what to make. They do not always help you get it all ready together.</h2>
 
-  <section class="case-block js-reveal">
-    <p class="section-number">Insights</p>
-    <h2>What mattered most was trust</h2>
+    <p>
+      Roast dinners are awkward because they involve lots of small decisions happening at the same time. The oven is full. The potatoes need checking. Something has to rest. Something else is boiling over. Even confident cooks can feel the pressure when the meal depends on several things landing at once.
+    </p>
 
-    <div class="insight-grid">
-      <article class="insight-card">
-        <h3>Users did not need more recipes</h3>
-        <p>
-          What they were missing was a sense of control. The hardest part was not deciding what to cook, but knowing what needed to happen next.
-        </p>
+    <p>
+      Existing tools tend to sit at either end of the problem. Recipe apps offer inspiration and instructions, while simple calculators give timings without much reassurance. Roost sits between the two: less of a recipe library, more of a calm planning companion.
+    </p>
+
+    <p class="pullout">
+      The design challenge was to turn a useful spreadsheet logic into something that felt calm, readable, and human in the middle of a busy kitchen.
+    </p>
+  </section>
+
+  <section class="section section-narrow js-reveal">
+    <p class="section-kicker">Research</p>
+    <h2>Everyone recognised the stress, but younger users felt it most sharply.</h2>
+
+    <p>
+      I conducted interviews with users aged 25–70. Every participant had experienced stress while making a roast dinner, but the most obvious pressure appeared in the 25–40 group. Older users still described stressful moments, though many had built habits over time and were more set in their routines.
+    </p>
+
+    <p>
+      A useful contradiction also appeared. Most users already used technology while cooking, but every participant had also felt more stressed because of apps or devices in the kitchen. That shaped the direction of the product. Roost could not just add more information. It had to reduce the noise.
+    </p>
+
+    <table class="research-table" aria-label="User research findings">
+      <tbody>
+        <tr>
+          <th scope="row">5 out of 5</th>
+          <td>users had experienced stress while making a roast dinner.</td>
+        </tr>
+        <tr>
+          <th scope="row">4 out of 5</th>
+          <td>regularly used technology or apps while cooking.</td>
+        </tr>
+        <tr>
+          <th scope="row">5 out of 5</th>
+          <td>had experienced increased stress because of apps or technology while cooking.</td>
+        </tr>
+        <tr>
+          <th scope="row">3 out of 5</th>
+          <td>had thrown away food while making a roast because something had spoiled, burned, or gone wrong.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section section-wide js-reveal">
+    <p class="section-kicker">Customer Journey</p>
+    <h2>Mapping the roast around the moments where confidence drops</h2>
+
+    <p class="section-narrow">
+      The journey map helped me think beyond the cooking instructions themselves. I wanted to understand where a user might discover the product, what would make them trust it, and where stress would be most likely to creep back in during the cooking process.
+    </p>
+
+    <figure class="artifact">
+      <img src="images/custjourney.png" alt="Roost customer journey map">
+      <figcaption class="caption">Customer journey map exploring discovery, planning, cooking, and repeat use.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section section-wide js-reveal">
+    <p class="section-kicker">Competitor Analysis</p>
+    <h2>The gap sat between inspiration and orchestration</h2>
+
+    <p class="section-narrow">
+      Looking at recipe apps and roast timing tools helped clarify where Roost could sit. Recipe apps were often polished, but not focused on coordinating a whole meal. Timing tools were useful, but often felt narrow or functional. The opportunity was to combine enough guidance with enough calm.
+    </p>
+
+    <figure class="artifact">
+      <img src="images/companalysis.png" alt="Roost competitor analysis grid">
+      <figcaption class="caption">Competitor analysis looking at recipe discovery, roast calculators, timing tools, and cooking support.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section section-narrow js-reveal">
+    <p class="section-kicker">Insights</p>
+    <h2>The app had to feel trustworthy before it felt clever.</h2>
+
+    <div class="insight-stack">
+      <article class="insight">
+        <span>Insight 01</span>
+        <p>Users did not want another screen full of cooking content. They wanted help knowing what to do next and when to do it.</p>
       </article>
 
-      <article class="insight-card">
-        <h3>Younger cooks felt the overlap more sharply</h3>
-        <p>
-          Participants in the 25 to 40 range were more likely to rely on their phones and more likely to feel overloaded when timings started colliding.
-        </p>
+      <article class="insight">
+        <span>Insight 02</span>
+        <p>The most stressed users were often comfortable with technology, but less confident with the cooking routine itself.</p>
       </article>
 
-      <article class="insight-card">
-        <h3>Calm mattered as much as utility</h3>
-        <p>
-          If the interface felt busy, it risked adding to the stress. That pushed the concept towards quieter screens, fewer decisions at once, and clearer sequencing.
-        </p>
+      <article class="insight">
+        <span>Insight 03</span>
+        <p>If the interface became too busy, it risked becoming part of the problem. Calmness had to be treated as a product feature.</p>
       </article>
-    </div>
-
-    <div class="quote-placeholder">
-      <p>[Add a direct interview quote here if you have one. A real line from a participant would make this section feel even more personal.]</p>
     </div>
   </section>
 
-  <section class="case-block js-reveal">
-    <p class="section-number">Personas</p>
-    <h2>Designing for different levels of cooking confidence</h2>
+  <section class="section section-wide js-reveal">
+    <p class="section-kicker">Users</p>
+    <h2>Two levels of confidence shaped the design direction</h2>
 
-    <p>
-      To keep the concept grounded, I used two personas who approached roast cooking from very different places. One needed reassurance and structure. The other needed support without feeling managed.
+    <p class="section-narrow">
+      I used two working personas to keep the product grounded. One represented a younger, digitally confident user who needed reassurance with the cooking process. The other represented someone with more cooking experience who still wanted clarity when the kitchen became busy.
     </p>
 
     <div class="persona-grid">
       <article class="persona-card">
-        <div class="persona-image">
-          <img src="images/JamieCarter.png" alt="Jamie Carter persona">
+        <img src="images/JamieCarter.png" alt="Jamie Carter persona">
+        <div class="persona-copy">
+          <h3>Jamie Carter</h3>
+          <p class="persona-role">Beginner student cook</p>
+          <p>Jamie is comfortable with apps, but not especially confident cooking a full roast. He needs the process broken down clearly without feeling patronised or overloaded.</p>
         </div>
-
-        <h3>Jamie Carter</h3>
-        <p class="persona-role">Beginner cook / digitally confident</p>
-
-        <p>
-          Jamie is completely comfortable with apps, but not with cooking a full roast. Once several dishes overlap, he starts second-guessing himself. He needs a plan he can trust and an interface that does not throw too much at him at once.
-        </p>
       </article>
 
       <article class="persona-card">
-        <div class="persona-image">
-          <img src="images/LizFoster.png" alt="Liz Foster persona">
+        <img src="images/LizFoster.png" alt="Liz Foster persona">
+        <div class="persona-copy">
+          <h3>Liz Foster</h3>
+          <p class="persona-role">Intermediate home cook</p>
+          <p>Liz cooks more regularly and has her own habits, but she still values readable instructions, simple layouts, and a clear plan when several things are happening at once.</p>
         </div>
-
-        <h3>Liz Foster</h3>
-        <p class="persona-role">Regular home cook / values clarity</p>
-
-        <p>
-          Liz cooks more often and does not need hand-holding, but she still appreciates a clean timeline when the kitchen gets busy. She wants something supportive and well structured, not something that feels fussy or over-designed.
-        </p>
       </article>
     </div>
   </section>
 
-  <section class="case-block js-reveal">
-    <p class="section-number">Ideation</p>
-    <h2>Work backwards from serving time</h2>
+  <section class="section section-narrow js-reveal">
+    <p class="section-kicker">Ideation</p>
+    <h2>Once the app worked backwards, the product started to make sense.</h2>
 
     <p>
-      The concept really clicked once I stopped treating it like a recipe app and started treating it like a scheduling problem. From there, the core flow became straightforward: the user chooses a serving time, adds the main elements of the meal, notes the appliances they have available, and receives a timeline that spaces the work out in a way that feels manageable.
+      The spreadsheet logic became the heart of the product. Instead of asking users to calculate when everything should start, Roost begins with the time they want to serve and builds the cooking plan backwards.
     </p>
 
     <p>
-      I wanted the setup to feel deliberate but not heavy. The app should do the organising quietly in the background, then surface the next useful piece of information at the right moment.
+      That changed the role of the app. It was not there to impress the user with features. It was there to quietly remove uncertainty.
     </p>
+  </section>
 
-    <div class="flow-strip">
+  <section class="section section-wide js-reveal">
+    <p class="section-kicker">Core Flow</p>
+    <h2>A simple setup leading into a timed cooking plan</h2>
+
+    <div class="flow-line">
       <div class="flow-step">
         <span>01</span>
-        <strong>Enter a serving time</strong>
+        <strong>Set serving time</strong>
       </div>
-
       <div class="flow-step">
         <span>02</span>
-        <strong>Add the roast and sides</strong>
+        <strong>Add roast and sides</strong>
       </div>
-
       <div class="flow-step">
         <span>03</span>
-        <strong>Select available appliances</strong>
+        <strong>Select appliances</strong>
       </div>
-
       <div class="flow-step">
         <span>04</span>
-        <strong>Generate the cooking timeline</strong>
+        <strong>Generate timeline</strong>
       </div>
-
       <div class="flow-step">
         <span>05</span>
-        <strong>Follow a simplified cook mode</strong>
+        <strong>Start cook mode</strong>
       </div>
     </div>
 
-    <div class="placeholder-panel">
-      <strong>Wireframes placeholder</strong>
-      <span>Add sketches, early wireframes, or a user flow here. If you do have a wireframe image ready, this is the section I would swap first.</span>
-    </div>
+    <figure class="artifact">
+      <img src="images/roostwireframe.png" alt="Roost wireframe or user flow">
+      <figcaption class="caption">Current wireframe/user flow placeholder. Replace or refine this once the full screen sequence is ready.</figcaption>
+    </figure>
   </section>
 
-  <section class="case-block js-reveal">
-    <p class="section-number">Solution</p>
-    <h2>A calm cooking companion rather than another content-heavy app</h2>
+  <section class="section section-narrow js-reveal">
+    <p class="section-kicker">Solution</p>
+    <h2>A calm cooking companion, not another recipe app</h2>
 
     <p>
-      The final concept is intentionally simple. Users enter when they want to eat, add produce and appliances, and receive a cooking timeline that helps them pace the roast from start to finish. A future cooking mode would keep the interface even lighter by showing only the most relevant information for the current moment, followed by the next step when needed.
+      Roost allows the user to enter a serving time, add produce, select appliances, and receive a plotted cooking timeline. The main value is not novelty. It is the reassurance of knowing when each step needs to happen.
     </p>
 
     <p>
-      That direction came straight from the research. People did not ask for more content. They wanted less scrambling and more reassurance.
+      A future cook mode would make the experience even simpler during live cooking. The user would see the current task, the next two steps, and essential timings, with a simple tap to move through the instructions as they go.
     </p>
-
-    <div class="screen-grid">
-      <div class="screen-card">
-        <strong>Setup flow placeholder</strong>
-        <span>Add your onboarding or serving-time setup screens here.</span>
-      </div>
-
-      <div class="screen-card">
-        <strong>Timeline screen placeholder</strong>
-        <span>Add the planning view that maps the roast backwards from serving time.</span>
-      </div>
-
-      <div class="screen-card">
-        <strong>Cook mode placeholder</strong>
-        <span>Add the simplified step-by-step cooking view here.</span>
-      </div>
-    </div>
   </section>
 
-  <section class="case-block js-reveal">
-    <p class="section-number">Branding</p>
-    <h2>Warm, steady, and home-oriented</h2>
+  <section class="section section-wide js-reveal">
+    <p class="section-kicker">Interface Design</p>
+    <h2>Screens still to be finalised</h2>
 
-    <p>
-      I want the branding to support the same feeling as the product itself: calm, capable, and homey without becoming overly rustic or overly polished. The direction is intentionally warm and minimal, but this part of the project still needs a more resolved system before it feels finished.
+    <p class="section-narrow">
+      This section is intentionally left open while the UI is being developed. The final screens should show how Roost handles setup, timeline generation, and cook mode without crowding the user.
     </p>
 
-    <div class="brand-grid">
-      <div class="brand-card">
-        <strong>Colour system placeholder</strong>
-        <span>Add your core palette, supporting tones, and any accessibility notes.</span>
+    <div class="placeholder-row">
+      <div class="placeholder">
+        <strong>Setup screens</strong>
+        <span>Add serving time, roast selection, sides, and appliance screens.</span>
       </div>
-
-      <div class="brand-card">
-        <strong>Logo development placeholder</strong>
-        <span>Add the existing mark, alternate lockups, and any refinement work.</span>
+      <div class="placeholder">
+        <strong>Generated timeline</strong>
+        <span>Add the main backwards-planned cooking schedule.</span>
       </div>
-
-      <div class="brand-card">
-        <strong>Typography placeholder</strong>
-        <span>Add primary type choices, hierarchy rules, and sample usage.</span>
-      </div>
-
-      <div class="brand-card">
-        <strong>Components placeholder</strong>
-        <span>Add buttons, cards, timers, and the visual language for the timeline.</span>
+      <div class="placeholder">
+        <strong>Cook mode</strong>
+        <span>Add the simplified live cooking interface and timer behaviour.</span>
       </div>
     </div>
   </section>
 
-  <section class="case-block js-reveal">
-    <p class="section-number">Reflection</p>
-    <h2>The concept resonated quickly</h2>
+  <section class="section section-wide js-reveal">
+    <p class="section-kicker">Branding</p>
+    <h2>Warm, clear, and still being refined</h2>
 
-    <p>
-      Testing the idea was encouraging. All five users said an app like this would help reduce some of the stress around making a roast. Three also asked about in-app timers, which was useful because it showed exactly where people expected the concept to go next.
+    <p class="section-narrow">
+      The brand direction is built around warmth and steadiness rather than a loud food-app personality. It should feel like something you would trust in the kitchen: calm enough to follow, but still memorable.
     </p>
 
-    <p>
-      If I carried the project further, I would focus on timer behaviour, late-stage adjustments, and what happens when the user falls behind. That is where a product like this either earns trust or loses it.
-    </p>
-
-    <div class="table-wrap">
-      <table class="case-table" aria-label="Validation summary">
-        <thead>
-          <tr>
-            <th>Validation</th>
-            <th>What it suggested</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>5 out of 5 users said the app would help reduce roast-related stress</td>
-            <td>The core idea feels useful rather than gimmicky.</td>
-          </tr>
-          <tr>
-            <td>3 out of 5 users specifically asked about in-app timers</td>
-            <td>Users already imagine the product supporting them during the live cook, not just during setup.</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="placeholder-row four">
+      <div class="placeholder">
+        <strong>Colour system</strong>
+        <span>Add palette, contrast checks, and usage examples.</span>
+      </div>
+      <div class="placeholder">
+        <strong>Logo development</strong>
+        <span>Add mark refinements, lockups, and rejected routes.</span>
+      </div>
+      <div class="placeholder">
+        <strong>Typography</strong>
+        <span>Add type scale, hierarchy, and interface examples.</span>
+      </div>
+      <div class="placeholder">
+        <strong>Components</strong>
+        <span>Add buttons, cards, timeline blocks, timers, and states.</span>
+      </div>
     </div>
   </section>
 
-  <section class="case-end js-reveal">
-    <p class="case-kicker">Closing thought</p>
+  <section class="section section-narrow js-reveal">
+    <p class="section-kicker">Reflection</p>
+    <h2>The idea resonated because the problem was familiar.</h2>
+
+    <p>
+      The response to the concept was encouraging. All five users said Roost would help with stress around making a roast. Three users also asked about in-app timers, which suggested that the live cooking experience should become a bigger part of the next design iteration.
+    </p>
+
+    <table class="validation-table" aria-label="Validation findings">
+      <tbody>
+        <tr>
+          <th scope="row">5 out of 5</th>
+          <td>said the app would help reduce their stress around cooking a roast.</td>
+        </tr>
+        <tr>
+          <th scope="row">3 out of 5</th>
+          <td>asked about in-app timers, suggesting that live cooking support should be prioritised next.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="pullout">
+      If I took this further, I would focus on what happens when the plan slips. A good roast app should not only create the ideal timeline. It should help users recover when real life gets in the way.
+    </p>
+  </section>
+
+  <section class="section closing js-reveal">
+    <p class="case-kicker">Design Direction</p>
     <h2 class="underline-wrap">
-      <span class="underline-reveal">
-        A calmer way to get everything on the table.
-      </span>
+      <span class="underline-reveal">A confidence engine for roast dinners.</span>
     </h2>
     <p>
-      Roost is strongest when it stays focused. It does not need to become the biggest cooking app in the kitchen. It just needs to be the one that makes a roast feel manageable.
+      Roost is strongest when it stays focused: not another content-heavy recipe app, but a practical planning tool that makes a stressful meal feel more manageable.
     </p>
   </section>
 
