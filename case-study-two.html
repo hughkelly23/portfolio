@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="images/tablogo.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
   <title>Macy the Robot</title>
 
   <style>
@@ -60,26 +60,140 @@
       transform: translateY(-3px);
     }
 
-    .floating-features {
-  position: relative;
-  min-height: 620px;
-  display: block;
-  overflow: hidden;
-}
+    /* Page-specific styles */
+    .macy-case img {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+    }
 
-.floating-features .feature-pill {
-  position: absolute;
-  width: 190px;
-  min-height: 130px;
-  margin: 0;
-  transform: none;
-  transition: box-shadow 0.3s ease;
-  cursor: default;
-}
+    .macy-hero {
+      align-items: center;
+      gap: clamp(2rem, 5vw, 5rem);
+    }
 
-.floating-features .feature-pill:nth-child(odd) {
-  transform: none;
-}
+    .macy-hero-image {
+      margin: 0;
+    }
+
+    .macy-hero-image img {
+      max-height: 680px;
+      object-fit: cover;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.12);
+    }
+
+    .macy-hero-image figcaption,
+    .macy-image-grid figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: rgba(17, 17, 17, 0.58);
+    }
+
+    .macy-image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .macy-image-grid figure {
+      margin: 0;
+    }
+
+    .macy-image-grid img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .insight-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .insight-strip article,
+    .feature-list-clean > div,
+    .pull-quote {
+      border: 1px solid rgba(17, 17, 17, 0.12);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.36);
+    }
+
+    .insight-strip article {
+      padding: 1.4rem;
+    }
+
+    .insight-strip h3,
+    .feature-list-clean h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .research-board.compact {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .feature-list-clean {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .feature-list-clean > div {
+      padding: 1.5rem;
+    }
+
+    .feature-list-clean span {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: rgba(17, 17, 17, 0.45);
+    }
+
+    .pull-quote {
+      margin-top: 2rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      font-size: clamp(1.5rem, 3vw, 2.6rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    ```css
+.proposal-callout {
+    margin-top: 2rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.36);
+  }
+
+  .proposal-callout p {
+    margin: 0;
+    font-size: clamp(1.25rem, 2.4vw, 2rem);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+  }
+
+
+    @media (max-width: 900px) {
+      .macy-image-grid,
+      .insight-strip,
+      .research-board.compact {
+        grid-template-columns: 1fr;
+      }
+
+      .macy-image-grid img {
+        aspect-ratio: 16 / 11;
+      }
+    }
   </style>
 </head>
 
@@ -92,7 +206,6 @@
     <div class="logo" data-trigger="home">
       <img src="images/logo.png" alt="HK logo">
     </div>
-
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="index.html?page=work">Work</a>
@@ -102,55 +215,40 @@
   </nav>
 </header>
 
-<main class="case-study">
+<main class="case-study macy-case">
 
-  <section class="case-hero js-reveal">
+  <section class="case-hero macy-hero js-reveal">
     <div>
-      <p class="case-kicker">Research in Progress</p>
+      <p class="case-kicker">Human–Robot Interaction</p>
       <h1>Macy the Robot</h1>
-      <p class="case-meta">UX Research / Human-Robot Interaction · 2026</p>
+      <p class="case-meta">UX Research / Product Design / RSE Research Project · 2026</p>
       <p class="case-intro">
-        Exploring how children and parents might emotionally engage with a soft social robot through touch, movement, play, and non-verbal interaction.
+        Exploring how a companion robot could support young people aged 9–17 through touch, movement, play and non-verbal emotional interaction.
       </p>
     </div>
-
-    <div class="hero-image-stack" id="heroVisual">
-      <div class="image-placeholder hero-main-image">
-        HERO IMAGE PLACEHOLDER<br>
-        Add robot render, sketch, or prototype photo
-      </div>
-
-      <div class="image-placeholder hero-small-image">
-        SECONDARY IMAGE PLACEHOLDER<br>
-        Add research notes or process image
-      </div>
-
-      <div class="floating-note">
-        Current stage: literature review, survey planning, and early prototype research.
-      </div>
-    </div>
+    <figure class="macy-hero-image" id="heroVisual">
+      <img src="images/macytherobot.jpeg" alt="Macy the Robot prototype displayed at Edinburgh Napier University">
+      <figcaption>Macy prototype display during early research exploration.</figcaption>
+    </figure>
   </section>
 
   <section class="case-section js-reveal">
     <div class="project-facts">
       <div class="fact-card">
         <span>Project Type</span>
-        <p>Research-led UX case study</p>
+        <p>Research-led UX concept</p>
       </div>
-
       <div class="fact-card">
-        <span>Current Stage</span>
-        <p>Research and planning</p>
+        <span>Users</span>
+        <p>Young people aged 9–17</p>
       </div>
-
       <div class="fact-card">
-        <span>Methods</span>
-        <p>Literature review, survey planning, prototype planning</p>
+        <span>Focus</span>
+        <p>Companionship, touch, play and emotional support</p>
       </div>
-
       <div class="fact-card">
-        <span>Role</span>
-        <p>UX Research, Product Design</p>
+        <span>My Role</span>
+        <p>UX research, feature ideation and product direction</p>
       </div>
     </div>
   </section>
@@ -158,21 +256,28 @@
   <section class="case-section section-split js-reveal">
     <div class="section-label">
       <span>01 / Context</span>
-      <h2>Project Overview</h2>
+      <h2>Why a companion robot?</h2>
     </div>
-
     <div class="section-content">
       <p>
-        Macy the Robot is an early-stage Human-Robot Interaction project exploring how emotionally responsive robots could support children through touch, movement, play, and companionship.
+        Macy began as a response to a simple problem: many young people are drawn towards screens for comfort and routine, while traditional toys often struggle to compete.
       </p>
-
       <p>
-        The project is currently focused on understanding existing research, identifying possible interaction features, and planning future user research with both children and parents.
+        This project explores whether a physical robot could offer a more embodied kind of companionship — closer to a pet than a domestic assistant.
       </p>
-
-      <div class="image-placeholder wide-placeholder">
-        IMAGE PLACEHOLDER<br>
-        Add concept sketch, moodboard, or early robot form exploration
+      <div class="macy-image-grid">
+        <figure>
+          <img src="images/macytherobot.jpeg" alt="Macy robot prototype">
+          <figcaption>Macy prototype</figcaption>
+        </figure>
+        <figure>
+          <img src="images/therapyrobot.jpeg" alt="Therapy robot prototype at university robotics display">
+          <figcaption>Therapy robot reference</figcaption>
+        </figure>
+        <figure>
+          <img src="images/euclidrobot.jpeg" alt="Euclid robot prototype at university robotics display">
+          <figcaption>Human–robot interaction reference</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -180,70 +285,85 @@
   <section class="case-section section-split js-reveal">
     <div class="section-label">
       <span>02 / Problem Space</span>
-      <h2>The Challenge</h2>
+      <h2>Designing beyond screens</h2>
     </div>
-
     <div class="section-content">
       <p>
-        Many emotional AI and robot interaction systems rely heavily on facial expressions, speech, and screen-based interaction. Macy explores a more embodied form of emotional communication through touch, movement, softness, and playful physical interaction.
+        Most digital companionship products rely heavily on speech, screens, facial expressions or app-based control. Macy explores a different interaction model: one based on touch, movement, softness and subtle feedback.
       </p>
-
-      <p>
-        Because the project involves children, the research must also consider safety, trust, privacy, parental confidence, and whether the robot supports real-world wellbeing rather than replacing human relationships.
-      </p>
-
-      <div class="image-break">
-        <div class="image-placeholder wide-placeholder">
-          IMAGE PLACEHOLDER<br>
-          Add diagram of problem space or emotional interaction map
-        </div>
-
-        <div class="image-placeholder tall-placeholder">
-          IMAGE PLACEHOLDER<br>
-          Add notes, sketches, or research wall photo
-        </div>
+      <div class="insight-strip">
+        <article>
+          <h3>Physical presence</h3>
+          <p>A robot can occupy space in a child’s environment in a way a tablet cannot.</p>
+        </article>
+        <article>
+          <h3>Non-verbal interaction</h3>
+          <p>Touch, gesture and movement can communicate comfort without constant speech.</p>
+        </article>
+        <article>
+          <h3>Parent trust</h3>
+          <p>Privacy, safety and control need to be visible from the start.</p>
+        </article>
       </div>
     </div>
   </section>
 
+<section class="case-section section-split js-reveal">
+  <div class="section-label">
+    <span>03 / Research Aim</span>
+    <h2>Using touch as emotional data</h2>
+  </div>
+
+  <div class="section-content">
+    <p>
+      The wider research proposal positions Macy as a soft robotic platform for studying how emotion can be expressed through physical interaction. Instead of treating emotion recognition as something driven mainly by speech, facial expression or screen behaviour, the project focuses on tactile cues such as touch, pressure and movement.
+    </p>
+
+    <p>
+      This shifted the UX challenge from designing a robot that simply reacts to children, to designing a system that can make physical interaction legible. A hug, tap, push or moment of hesitation could become part of a richer interaction pattern, helping the robot respond in ways that feel more sensitive and less generic.
+    </p>
+
+    <div class="proposal-callout">
+      <p>
+        The design opportunity is not just companionship. It is building a robot that can help researchers understand how emotional communication changes across people, contexts and cultures.
+      </p>
+    </div>
+  </div>
+</section>
+
   <section class="case-section section-split js-reveal">
     <div class="section-label">
       <span>03 / Research</span>
-      <h2>Literature Review Themes</h2>
+      <h2>What the literature suggested</h2>
     </div>
-
     <div class="section-content">
       <p>
-        The literature review surfaced early design opportunities. These are not final features, but research-informed directions to test through surveys, prototyping, and usability sessions.
+        The literature review pointed towards a set of early design opportunities. These are not final features, but research-informed directions for future testing.
       </p>
-
-      <div class="research-board">
+      <div class="research-board compact">
         <article class="research-card">
-          <h3>Emotional Support & Play</h3>
-          <p>
-            Emotionally responsive robots may increase engagement through comfort, encouragement, humour, storytelling, games, and playful interaction.
-          </p>
+          <h3>Emotion recognition</h3>
+          <p>Macy could respond to emotional cues with comfort, encouragement or humour.</p>
         </article>
-
         <article class="research-card">
-          <h3>Memory-Based Personalisation</h3>
-          <p>
-            Long-term interaction studies suggest children may form stronger attachments when robots remember preferences, routines, and previous interactions.
-          </p>
+          <h3>Memory and routine</h3>
+          <p>Remembering preferences and repeated interactions may help create attachment over time.</p>
         </article>
-
         <article class="research-card">
-          <h3>Trust, Privacy & Parent Control</h3>
-          <p>
-            Visible privacy controls could help parents and children understand when sensing, memory, cameras, or microphones are active.
-          </p>
+          <h3>Collaborative play</h3>
+          <p>Games, storytelling and creative activities could make interaction feel active rather than passive.</p>
         </article>
-
         <article class="research-card">
-          <h3>Soft, Expressive, Personal Form</h3>
-          <p>
-            A soft exterior, expressive LED eyes, responsive gestures, portable body, and customisable appearance could make Macy feel safer and more engaging.
-          </p>
+          <h3>Privacy controls</h3>
+          <p>Parents and children need simple ways to understand and control sensing, memory and camera use.</p>
+        </article>
+        <article class="research-card">
+          <h3>Soft physical form</h3>
+          <p>A hug-friendly exterior could make Macy feel safer and more emotionally approachable.</p>
+        </article>
+        <article class="research-card">
+          <h3>Offline social prompts</h3>
+          <p>The robot should encourage human connection, not replace it.</p>
         </article>
       </div>
     </div>
@@ -252,136 +372,68 @@
   <section class="case-section section-split js-reveal">
     <div class="section-label">
       <span>04 / Direction</span>
-      <h2>Feature Opportunities</h2>
+      <h2>Feature direction</h2>
     </div>
-
     <div class="section-content">
       <p>
-        These feature areas are being treated as starting points for research, not final design decisions.
+        The strongest direction was to position Macy less like a household assistant and more like a responsive companion: quiet, tactile, expressive and child-led.
       </p>
-
-      <div class="feature-cloud floating-features" id="floatingFeatures">
-        <div class="feature-pill">Emotion recognition and support responses</div>
-        <div class="feature-pill">Memory-based personalisation</div>
-        <div class="feature-pill">Collaborative play and games</div>
-        <div class="feature-pill">Privacy control dashboard</div>
-        <div class="feature-pill">Offline social activity prompts</div>
-        <div class="feature-pill">Soft hug-friendly exterior</div>
-        <div class="feature-pill">Expressive LED eyes</div>
-        <div class="feature-pill">Compact portable body</div>
-        <div class="feature-pill">Responsive gestures</div>
-        <div class="feature-pill">Customisable appearance</div>
+      <div class="feature-list-clean">
+        <div>
+          <span>01</span>
+          <h3>Touch-responsive behaviour</h3>
+          <p>Responds to hugs, pats and physical interaction through movement, light or vibration.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <h3>Expressive but non-verbal</h3>
+          <p>Uses LED eyes, gestures and body movement rather than relying on speech.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <h3>Personalised companionship</h3>
+          <p>Remembers routines, preferences and repeated play patterns over time.</p>
+        </div>
+        <div>
+          <span>04</span>
+          <h3>Parent-visible privacy</h3>
+          <p>Clear controls for microphones, cameras, memory and sensing states.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="case-section section-split js-reveal">
     <div class="section-label">
-      <span>05 / Process</span>
-      <h2>Work Completed So Far</h2>
+      <span>05 / Solution</span>
+      <h2>A robot closer to a pet than an assistant</h2>
     </div>
-
     <div class="section-content">
-      <div class="timeline">
-
-        <div class="timeline-row">
-          <span>Stage One</span>
-          <div>
-            <h3>Literature Review</h3>
-            <p>
-              Reviewed research around social robots, emotional support, tactile interaction, child engagement, trust, privacy, and play.
-            </p>
-          </div>
-          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
-        </div>
-
-        <div class="timeline-row">
-          <span>Stage Two</span>
-          <div>
-            <h3>Feature Mapping</h3>
-            <p>
-              Translated research findings into possible design directions, including emotional responses, soft form, privacy controls, and expressive behaviours.
-            </p>
-          </div>
-          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
-        </div>
-
-        <div class="timeline-row">
-          <span>Stage Three</span>
-          <div>
-            <h3>Survey Planning</h3>
-            <p>
-              Planned separate research approaches for children and parents to capture trust, comfort, expectations, and emotional response.
-            </p>
-          </div>
-          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
-        </div>
-
-        <div class="timeline-row">
-          <span>Stage Four</span>
-          <div>
-            <h3>Prototype Testing Plan</h3>
-            <p>
-              Outlined future usability testing to explore how participants respond to Macy’s form, movement, interaction behaviours, and emotional cues.
-            </p>
-          </div>
-          <div class="image-placeholder mini-placeholder">IMAGE PLACEHOLDER</div>
-        </div>
-
+      <p>
+        Macy is not intended to tidy rooms, answer homework questions or act like a general-purpose assistant. The concept is closer to a companion animal: something that reacts, learns, comforts and plays.
+      </p>
+      <p>
+        This makes the core design challenge less about productivity and more about emotional interaction: how can a robot feel present, trustworthy and supportive without becoming intrusive?
+      </p>
+      <div class="pull-quote">
+        “The goal is not to replace people. It is to design a companion that encourages comfort, play and real-world connection.”
       </div>
     </div>
   </section>
 
-  <section class="case-section section-split js-reveal">
-    <div class="section-label">
-      <span>06 / Placeholders</span>
-      <h2>To Be Added Later</h2>
-    </div>
+<section class="next-section js-reveal">
+  <h2 class="underline-wrap">
+    <span class="underline-reveal">Next Steps</span>
+  </h2>
 
-    <div class="section-content">
-      <div class="placeholder-gallery">
+  <p>
+    The next phase will move Macy from concept direction into prototype development, sensor-led interaction testing and pilot research. The focus will be on how physical gestures such as hugging, tapping or pushing can be captured, interpreted and refined through user feedback.
+  </p>
 
-        <article class="gallery-card">
-          <div class="image-placeholder">
-            IMAGE PLACEHOLDER<br>
-            Survey screenshots
-          </div>
-          <h3>Survey Materials</h3>
-          <p></p>
-        </article>
-
-        <article class="gallery-card">
-          <div class="image-placeholder">
-            IMAGE PLACEHOLDER<br>
-            Prototype visuals
-          </div>
-          <h3>Prototype</h3>
-          <p></p>
-        </article>
-
-        <article class="gallery-card">
-          <div class="image-placeholder">
-            IMAGE PLACEHOLDER<br>
-            Testing notes or findings
-          </div>
-          <h3>Usability Testing</h3>
-          <p></p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="next-section js-reveal">
-    <h2 class="underline-wrap">
-      <span class="underline-reveal">
-        Next Steps
-      </span>
-    </h2>
-    <p>
-      The next phase will focus on finalising research materials, developing an initial prototype, and preparing for usability testing with children and parents.
-    </p>
-  </section>
+  <p>
+    Longer term, the project will support a cross-cultural dataset of emotional cues from physical interaction, helping future robots respond to people in ways that are more inclusive, adaptive and context-aware.
+  </p>
+</section>
 
 </main>
 
@@ -392,10 +444,7 @@
   <p style="font-size: 10px;">© 2026 Hugh Kelly</p>
 </footer>
 
-<a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="linkedin-fixed">
+<a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/" target="_blank" rel="noopener noreferrer" class="linkedin-fixed">
   <svg viewBox="0 0 24 24" width="18" height="18">
     <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6 1.11 6 0 4.88 0 3.5 0 2.12 1.11 1 2.49 1 3.87 1 4.98 2.12 4.98 3.5zM.22 8.22h4.54V24H.22zM7.98 8.22h4.35v2.16h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.49 3.05 5.49 7.01V24h-4.54v-7.74c0-1.85-.03-4.23-2.58-4.23-2.58 0-2.97 2.01-2.97 4.1V24H7.98z"/>
   </svg>
@@ -406,6 +455,7 @@
   const progressBar = document.getElementById("scrollProgress");
   const backToTop = document.getElementById("backToTop");
   const heroVisual = document.getElementById("heroVisual");
+  const underline = document.querySelector(".underline-reveal");
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -413,19 +463,26 @@
         entry.target.classList.add("visible");
       }
     });
-  }, {
-    threshold: 0.15
-  });
+  }, { threshold: 0.15 });
 
   revealElements.forEach((element) => {
     revealObserver.observe(element);
   });
 
+  const underlineObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        underline.classList.add("active");
+      }
+    });
+  }, { threshold: 0.6 });
+
+  underlineObserver.observe(underline);
+
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY;
     const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / pageHeight) * 100;
-
     progressBar.style.width = `${scrollPercent}%`;
 
     if (scrollTop > 700) {
@@ -440,126 +497,8 @@
   });
 
   backToTop.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
-
-  const underline = document.querySelector(".underline-reveal");
-
-  const underlineObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        underline.classList.add("active");
-      }
-    });
-  }, {
-    threshold: 0.6
-  });
-
-  underlineObserver.observe(underline);
-
-  const floatingArea = document.getElementById("floatingFeatures");
-
-if (floatingArea && window.innerWidth > 800) {
-  const pills = [...floatingArea.querySelectorAll(".feature-pill")];
-
-  const areaWidth = floatingArea.clientWidth;
-  const areaHeight = floatingArea.clientHeight;
-
-  const items = [];
-
-  function overlaps(a, b) {
-    return (
-      a.x < b.x + b.width &&
-      a.x + a.width > b.x &&
-      a.y < b.y + b.height &&
-      a.y + a.height > b.y
-    );
-  }
-
-  pills.forEach((pill) => {
-    const width = 190;
-    const height = 130;
-
-    let item;
-    let attempts = 0;
-
-    do {
-      item = {
-        el: pill,
-        x: Math.random() * (areaWidth - width),
-        y: Math.random() * (areaHeight - height),
-        vx: (Math.random() > 0.5 ? 1 : -1) * (0.65 + Math.random() * 0.35),
-        vy: (Math.random() > 0.5 ? 1 : -1) * (0.65 + Math.random() * 0.35),
-        width,
-        height
-      };
-
-      attempts++;
-    } while (items.some((other) => overlaps(item, other)) && attempts < 500);
-
-    pill.style.width = `${width}px`;
-    pill.style.minHeight = `${height}px`;
-
-    items.push(item);
-  });
-
-  function animateFeatures() {
-    items.forEach((item, index) => {
-      item.x += item.vx;
-      item.y += item.vy;
-
-      if (item.x <= 0) {
-        item.x = 0;
-        item.vx *= -1;
-      }
-
-      if (item.x + item.width >= areaWidth) {
-        item.x = areaWidth - item.width;
-        item.vx *= -1;
-      }
-
-      if (item.y <= 0) {
-        item.y = 0;
-        item.vy *= -1;
-      }
-
-      if (item.y + item.height >= areaHeight) {
-        item.y = areaHeight - item.height;
-        item.vy *= -1;
-      }
-
-      for (let i = index + 1; i < items.length; i++) {
-        const other = items[i];
-
-        if (overlaps(item, other)) {
-          const tempVx = item.vx;
-          const tempVy = item.vy;
-
-          item.vx = other.vx;
-          item.vy = other.vy;
-
-          other.vx = tempVx;
-          other.vy = tempVy;
-
-          item.x += item.vx * 4;
-          item.y += item.vy * 4;
-          other.x += other.vx * 4;
-          other.y += other.vy * 4;
-        }
-      }
-
-      item.el.style.left = `${item.x}px`;
-      item.el.style.top = `${item.y}px`;
-    });
-
-    requestAnimationFrame(animateFeatures);
-  }
-
-  animateFeatures();
-}
 </script>
 
 </body>
