@@ -1129,6 +1129,43 @@ u {
   color: var(--secondary-text, #6B625B);
 }
 
+.image-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.image-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 1120px;
+  max-height: 90vh;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.zoomable {
+  cursor: zoom-in;
+}
+
+.zoomable:hover {
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
+}
+
 .journey-map {
   display: block;
   width: 90%;

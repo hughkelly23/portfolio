@@ -709,11 +709,13 @@
     <p class="section-narrow">
       The journey map helped me think beyond the cooking instructions themselves. I wanted to understand where a user might discover the product, what would make them trust it, and where stress would be most likely to creep back in during the cooking process.
     </p>
+    <br>
+    <p><b>Click on the image to zoom in.</b></p>
 
     <img
       src="images/custjourney.png"
       alt="Roost customer journey map"
-      class="journey-map">
+      class="journey-map zoomable">
 
     <p class="caption">
       Customer journey map exploring discovery, planning, cooking, and repeat use.
@@ -727,11 +729,13 @@
     <p class="section-narrow">
       Looking at recipe apps and roast timing tools helped clarify where Roost could sit. Recipe apps were often polished, but not focused on coordinating a whole meal. Timing tools were useful, but often felt narrow or functional. The opportunity was to combine enough guidance with enough calm.
     </p>
+    <br>
+    <p><b>Click on the image to zoom in.</b></p>
 
     <img
       src="images/companalysis.png"
       alt="Roost competitor analysis grid"
-      class="comp-analysis">
+      class="comp-analysis zoomable">
 
     <p class="caption">
       Competitor analysis looking at recipe discovery, roast calculators, timing tools, and cooking support.
@@ -962,6 +966,7 @@
 </a>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
   const revealElements = document.querySelectorAll(".js-reveal");
   const progressBar = document.getElementById("scrollProgress");
   const backToTop = document.getElementById("backToTop");
@@ -973,9 +978,7 @@
         entry.target.classList.add("visible");
       }
     });
-  }, {
-    threshold: 0.12
-  });
+  }, { threshold: 0.12 });
 
   revealElements.forEach((element) => {
     revealObserver.observe(element);
@@ -986,21 +989,27 @@
     const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = pageHeight > 0 ? (scrollTop / pageHeight) * 100 : 0;
 
-    progressBar.style.width = `${scrollPercent}%`;
+    if (progressBar) {
+      progressBar.style.width = `${scrollPercent}%`;
+    }
 
-    if (scrollTop > 700) {
-      backToTop.classList.add("visible");
-    } else {
-      backToTop.classList.remove("visible");
+    if (backToTop) {
+      if (scrollTop > 700) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
     }
   });
 
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     });
-  });
+  }
 
   if (underline) {
     const underlineObserver = new IntersectionObserver((entries) => {
@@ -1009,13 +1018,54 @@
           underline.classList.add("active");
         }
       });
-    }, {
-      threshold: 0.6
-    });
+    }, { threshold: 0.6 });
 
     underlineObserver.observe(underline);
   }
+
+  /* IMAGE ZOOM */
+  const modal = document.createElement("div");
+  modal.className = "image-modal";
+  modal.innerHTML = `
+    <button class="close-modal" type="button" aria-label="Close image">&times;</button>
+    <img class="modal-content" alt="">
+  `;
+  document.body.appendChild(modal);
+
+  const modalImage = modal.querySelector(".modal-content");
+  const closeModal = modal.querySelector(".close-modal");
+  const zoomImages = document.querySelectorAll(".zoomable");
+
+  zoomImages.forEach((img) => {
+    img.addEventListener("click", () => {
+      modal.classList.add("active");
+      modalImage.src = img.src;
+      modalImage.alt = img.alt || "";
+    });
+  });
+
+  closeModal.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.classList.remove("active");
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      modal.classList.remove("active");
+    }
+  });
+});
 </script>
+
+<div id="imageModal" class="image-modal">
+  <span class="close-modal">&times;</span>
+  <img id="modalImage" class="modal-content">
+</div>
 
 </body>
 </html>
