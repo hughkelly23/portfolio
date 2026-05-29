@@ -355,7 +355,7 @@ u {
 }
 
 .featured-image {
-  max-width: 920px;
+  max-width: 1124px;
   margin: 0 auto;
   padding: 0 2rem 6rem;
 }
@@ -1130,6 +1130,12 @@ u {
 }
 
 .journey-map {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.design-process {
   width: 100%;
   display: block;
   border-radius: 12px;

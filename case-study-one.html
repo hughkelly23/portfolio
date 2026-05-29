@@ -11,12 +11,20 @@
   <style>
     :root {
       --paper: #efe0cd;
+      --cream: #f7ead8;
+      --warm-cream: #f4e7d4;
+      --sage: #dfe5d6;
+      --soft-sage: #edf0e7;
+      --terracotta: #d18156;
+      --terracotta-wash: rgba(209, 129, 86, 0.13);
+      --sun-wash: rgba(245, 196, 0, 0.12);
       --ink: #111;
       --muted: rgba(17, 17, 17, 0.58);
       --faint: rgba(17, 17, 17, 0.1);
       --mid: rgba(17, 17, 17, 0.18);
       --yellow: #f5c400;
       --soft: rgba(255, 255, 255, 0.24);
+      --panel: rgba(255, 255, 255, 0.32);
       --max: 1160px;
       --measure: 760px;
     }
@@ -157,7 +165,7 @@
       border-radius: 34px;
       padding: 18px;
       border: 1px solid var(--faint);
-      background: var(--soft);
+      background: var(--panel);
     }
 
     .hero-image img {
@@ -170,6 +178,39 @@
     .section {
       padding: 92px 0;
       border-bottom: 1px solid var(--faint);
+    }
+
+    .section-toned {
+      margin-top: 28px;
+      margin-bottom: 28px;
+      padding: 92px 48px;
+      border: 1px solid rgba(17, 17, 17, 0.06);
+      border-radius: 38px;
+      box-shadow: 0 18px 50px rgba(17, 17, 17, 0.035);
+    }
+
+    .tone-sage {
+      background: var(--sage);
+    }
+
+    .tone-soft-sage {
+      background: var(--soft-sage);
+    }
+
+    .tone-cream {
+      background: var(--cream);
+    }
+
+    .tone-warm {
+      background: var(--warm-cream);
+    }
+
+    .tone-terracotta {
+      background: var(--terracotta-wash);
+    }
+
+    .tone-sun {
+      background: var(--sun-wash);
     }
 
     .section-narrow {
@@ -211,7 +252,7 @@
     .pullout {
       margin: 46px 0 0;
       padding: 28px 0 0;
-      border-top: 1px solid var(--mid);
+      border-top: 3px solid var(--terracotta);
       font-size: clamp(24px, 3.2vw, 38px) !important;
       line-height: 1.18 !important;
       letter-spacing: -0.055em !important;
@@ -308,8 +349,9 @@
     .persona-card {
       border: 1px solid var(--faint);
       border-radius: 32px;
-      background: var(--soft);
+      background: rgba(255, 255, 255, 0.36);
       overflow: hidden;
+      box-shadow: 0 14px 34px rgba(17, 17, 17, 0.035);
     }
 
     .persona-card img {
@@ -390,7 +432,7 @@
       flex-direction: column;
       justify-content: space-between;
       color: var(--muted);
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.22);
     }
 
     .placeholder strong {
@@ -406,9 +448,12 @@
     }
 
     .closing {
-      padding: 120px 0 48px;
+      padding: 120px 40px 80px;
       text-align: center;
       border-bottom: none;
+      background: linear-gradient(180deg, rgba(223, 229, 214, 0.25), rgba(209, 129, 86, 0.12));
+      border-radius: 44px;
+      margin-top: 36px;
     }
 
     .closing h2 {
@@ -496,6 +541,11 @@
 
       .section {
         padding: 68px 0;
+      }
+
+      .section-toned {
+        padding: 68px 20px;
+        border-radius: 28px;
       }
 
       .research-table th,
@@ -610,7 +660,12 @@
     </p>
   </section>
 
-  <section class="section section-narrow js-reveal">
+  <section class="section section-wide js-reveal">
+    <h2>My Design Process</h2>
+    <img src="images/mydesignprocess.png" alt="Diagram showing the design process for Roost" class="design-process">
+  </section>
+
+  <section class="section section-narrow section-toned tone-sage js-reveal">
     <p class="section-kicker">Research</p>
     <h2>Everyone recognised the stress, but younger users felt it most sharply.</h2>
 
@@ -680,7 +735,7 @@
     </p>
   </section>
 
-  <section class="section section-narrow js-reveal">
+  <section class="section section-narrow section-toned tone-sage js-reveal">
     <p class="section-kicker">Insights</p>
     <h2>The app had to feel trustworthy before it felt clever.</h2>
 
@@ -789,6 +844,9 @@
     sequence of steps, navigation patterns, and the level of guidance users would
     need throughout the cooking process.
   </p>
+  <br>
+  <br>
+  <p> <b>Click on the interactive prototype below to explore the cooking flow!</b></p>
 
   <div class="prototype-frame">
   <iframe
@@ -803,7 +861,7 @@
 
 </section>
 
-  <section class="section section-narrow js-reveal">
+  <section class="section section-narrow section-toned tone-terracotta js-reveal">
     <p class="section-kicker">Solution</p>
     <h2>A calm cooking companion, not another recipe app</h2>
 
@@ -821,7 +879,7 @@
   <h2>Warm, clear and not too 'in your face'</h2>
 
   <p class="section-narrow">
-    The brand direction is built around warmth and steadiness rather than a loud food-app personality. I wanted to have a green sage-y colour to emulate the greens and herbs of the roast, and the terracotta orange was initially used as inspiration for the ideal colour of a roast chicken.
+    The brand direction is built around warmth and steadiness rather than a loud food-app personality. I wanted to have a green sage-y colour to emulate the greens and herbs of the roast, and the terracotta orange was initially inspired by the ideal colour of a roast chicken.
   </p>
 
   <div class="brand-image-grid">
@@ -842,7 +900,7 @@
   </div>
 </section>
 
-  <section class="section section-narrow js-reveal">
+  <section class="section section-narrow section-toned tone-sage js-reveal">
     <p class="section-kicker">Reflection</p>
     <h2>The idea resonated because the problem was familiar.</h2>
 
