@@ -1130,9 +1130,17 @@ u {
 }
 
 .journey-map {
-  width: 100%;
   display: block;
-  border-radius: 12px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.comp-analysis {
+  display: block;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .design-process {
