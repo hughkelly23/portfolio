@@ -461,6 +461,45 @@ u {
   letter-spacing: -0.035em;
 }
 
+.hero-image {
+  position: relative;
+}
+
+.hero-prototype-btn {
+  position: absolute;
+  bottom: 70px;
+  left: 36px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 18px;
+
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  border-radius: 999px;
+
+  transition: transform 0.2s ease,
+              background 0.2s ease;
+}
+
+.hero-prototype-btn:hover {
+  transform: translateY(-2px);
+  background: #000;
+}
+
+.hero-prototype-btn:visited {
+  color: #fff;
+}
+
 .hero-image img {
   width: 100%;
   display: block;
