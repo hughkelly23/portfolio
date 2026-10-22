@@ -1215,7 +1215,8 @@ u {
   border: 1px solid var(--border, #ECE4D8);
 }
 
-.brand-image-card figcaption {
+.brand-image-card figcaption
+.survey-grid figcaption {
   margin-top: 1rem;
   font-size: 1rem;
   color: var(--secondary-text, #6B625B);

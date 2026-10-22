@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="images/tablogo.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
-  <title>Macy the Robot</title>
+  <title>Children's Robot | UX Research Case Study</title>
 
   <style>
     .scroll-progress {
@@ -29,6 +29,10 @@
     .js-reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js-reveal { opacity: 1; transform: none; transition: none; }
     }
 
     .back-to-top {
@@ -84,7 +88,8 @@
     }
 
     .macy-hero-image figcaption,
-    .macy-image-grid figcaption {
+    .macy-image-grid figcaption,
+    .survey-grid figcaption {
       margin-top: 0.75rem;
       font-size: 0.9rem;
       color: rgba(17, 17, 17, 0.58);
@@ -137,6 +142,16 @@
       margin-top: 2rem;
     }
 
+    .pullout {
+      margin: 46px 0 0;
+      padding: 28px 0 0;
+      border-top: 3px solid var(--terracotta);
+      font-size: clamp(24px, 3.2vw, 38px) !important;
+      line-height: 1.18 !important;
+      letter-spacing: -0.055em !important;
+      font-weight: 600;
+    }
+
     .feature-list-clean {
       display: grid;
       gap: 1rem;
@@ -165,7 +180,6 @@
       letter-spacing: -0.04em;
     }
 
-    ```css
 .proposal-callout {
     margin-top: 2rem;
     padding: clamp(1.5rem, 3vw, 2.5rem);
@@ -219,16 +233,16 @@
 
   <section class="case-hero macy-hero js-reveal">
     <div>
-      <p class="case-kicker">Human–Robot Interaction</p>
-      <h1>Companion Robot</h1>
-      <p class="case-meta">UX Research / Product Design / RSE Research Project · 2026</p>
+      <p class="case-kicker">Human–Robot Interaction / UX Research</p>
+      <h1>Children's Robot</h1>
+      <p class="case-meta">User Research / Survey Design / Research Analysis · 2026</p>
       <p class="case-intro">
-        Exploring how a companion robot could support young people aged 9–17 through touch, movement, play and non-verbal emotional interaction.
+        What should a robot for children actually be? I helped turn an open-ended concept into a research question, gathering and analysing children's and parents' perspectives to inform its future direction.
       </p>
     </div>
     <figure class="macy-hero-image" id="heroVisual">
-      <img src="images/macytherobot.jpeg" alt="Macy the Robot prototype displayed at Edinburgh Napier University">
-      <figcaption>Companion robot prototype display during early research exploration.</figcaption>
+      <img src="images/macytherobot.jpeg" alt="Children's robot concept on display at Edinburgh Napier University">
+      <figcaption>Early children's robot concept; this case study focuses on the user research, not a finished product.</figcaption>
     </figure>
   </section>
 
@@ -236,19 +250,19 @@
     <div class="project-facts">
       <div class="fact-card">
         <span>Project Type</span>
-        <p>Research-led UX concept</p>
+        <p>Exploratory human–robot interaction research</p>
       </div>
       <div class="fact-card">
-        <span>Users</span>
-        <p>Young people aged 9–17</p>
+        <span>Audience</span>
+        <p>Children aged 5–18 and their parents/caregivers</p>
       </div>
       <div class="fact-card">
-        <span>Focus</span>
-        <p>Companionship, touch, play and emotional support</p>
+        <span>Study</span>
+        <p>44 child responses · 29 parent/caregiver responses</p>
       </div>
       <div class="fact-card">
         <span>My Role</span>
-        <p>UX research, feature ideation and product direction</p>
+        <p>Research planning, questionnaire design, fieldwork and data synthesis</p>
       </div>
     </div>
   </section>
@@ -256,26 +270,29 @@
   <section class="case-section section-split js-reveal">
     <div class="section-label">
       <span>01 / Context</span>
-      <h2>Why a companion robot?</h2>
+      <h2>Why research a children's robot?</h2>
     </div>
     <div class="section-content">
       <p>
-        Companion robot began as a response to a simple problem: many young people are drawn towards screens for comfort and routine, while traditional toys often struggle to compete.
+        The starting point was a companion robot for everyday childhood: something that might encourage play, offer a physical form of interaction and fit into family life alongside — rather than in place of — other people and activities. We were interested in how children might relate to a robot that could move, respond and communicate.
       </p>
       <p>
-        This project explores whether a physical robot could offer a more embodied kind of companionship — closer to a pet than a domestic assistant.
+        But the role of that robot was not settled. Would children imagine a pet, friend or helper? Would parents value the same things? Before narrowing its design, we needed evidence from the people who might actually use it and decide whether it belonged at home.
+      </p>
+      <p>
+        The intended audience was <strong>children generally</strong>, not a therapeutic or specialist intervention for children with learning difficulties. We considered a broad 5–18 age range, while recognising that children's needs and expectations can differ substantially across those years.
       </p>
       <div class="macy-image-grid">
         <figure>
-          <img src="images/macytherobot.jpeg" alt="Macy robot prototype">
-          <figcaption>Robot prototype</figcaption>
+          <img src="images/macytherobot.jpeg" alt="Children's robot early concept">
+          <figcaption>Children's robot concept</figcaption>
         </figure>
         <figure>
-          <img src="images/therapyrobot.jpeg" alt="Therapy robot prototype at university robotics display">
-          <figcaption>Therapy robot reference</figcaption>
+          <img src="images/therapyrobot.jpeg" alt="Related robotics exhibit used as a research reference">
+          <figcaption>Related social robotics reference</figcaption>
         </figure>
         <figure>
-          <img src="images/euclidrobot.jpeg" alt="Euclid robot prototype at university robotics display">
+          <img src="images/euclidrobot.jpeg" alt="Robot shown at an exhibition as an interaction reference">
           <figcaption>Human–robot interaction reference</figcaption>
         </figure>
       </div>
@@ -285,85 +302,82 @@
   <section class="case-section section-split js-reveal">
     <div class="section-label">
       <span>02 / Problem Space</span>
-      <h2>Designing beyond screens</h2>
+      <h2>One product, two sets of expectations</h2>
     </div>
     <div class="section-content">
       <p>
-        Most digital companionship products rely heavily on speech, screens, facial expressions or app-based control. This robot explores a different interaction model: one based on touch, movement, softness and subtle feedback.
+        A children's robot would need to appeal to its primary users while also being acceptable to the adults responsible for it. Early discussions raised questions about physical form, companionship, communication and everyday practicality. The challenge for the research was to explore those questions without treating our initial ideas as settled requirements.
       </p>
       <div class="insight-strip">
         <article>
-          <h3>Physical presence</h3>
-          <p>A robot can occupy space in a child’s environment in a way a tablet cannot.</p>
+          <h3>What children imagine</h3>
+          <p>Would a robot feel more like a friend, a pet, a playful character or a useful helper — and would that change with age?</p>
         </article>
         <article>
-          <h3>Non-verbal interaction</h3>
-          <p>Touch, gesture and movement can communicate comfort without constant speech.</p>
+          <h3>What parents need</h3>
+          <p>How much should the robot help with learning or routines, and what would make it practical and manageable at home?</p>
         </article>
         <article>
-          <h3>Parent trust</h3>
-          <p>Privacy, safety and control need to be visible from the start.</p>
+          <h3>How it should respond</h3>
+          <p>Should interaction rely on touch and movement, speech and sound, or a combination chosen by children themselves?</p>
         </article>
       </div>
     </div>
   </section>
 
-<section class="case-section section-split js-reveal">
-  <div class="section-label">
-    <span>03 / Research Aim</span>
-    <h2>Using touch as emotional data</h2>
-  </div>
-
-  <div class="section-content">
-    <p>
-      The wider research proposal positions the robot as a soft robotic platform for studying how emotion can be expressed through physical interaction. Instead of treating emotion recognition as something driven mainly by speech, facial expression or screen behaviour, the project focuses on tactile cues such as touch, pressure and movement.
-    </p>
-
-    <p>
-      This shifted the UX challenge from designing a robot that simply reacts to children, to designing a system that can make physical interaction legible. A hug, tap, push or moment of hesitation could become part of a richer interaction pattern, helping the robot respond in ways that feel more sensitive and less generic.
-    </p>
-
-    <div class="proposal-callout">
-      <p>
-        The design opportunity is not just companionship. It is building a robot that can help researchers understand how emotional communication changes across people, contexts and cultures.
-      </p>
-    </div>
-  </div>
-</section>
-
   <section class="case-section section-split js-reveal">
     <div class="section-label">
-      <span>03 / Research</span>
-      <h2>What the literature suggested</h2>
+      <span>03 / Research Aim</span>
+      <h2>Asking before designing</h2>
     </div>
     <div class="section-content">
       <p>
-        The literature review pointed towards a set of early design opportunities. These are not final features, but research-informed directions for future testing.
+        The wider concept explored physical interaction and the possibility of understanding emotional cues through touch, pressure and movement. That was an interesting research direction, but it did not tell us which interactions people would want. My contribution centred on asking those questions first and translating participants' preferences into a clearer brief for further work.
+      </p>
+      <p>
+        We explored the role children wanted the robot to play; its appearance, materials and tactile qualities; how it should communicate and react; and the practical features and boundaries parents considered important. We also wanted to see where child and adult views aligned — and where broad averages concealed different expectations.
+      </p>
+      <div class="section-content">
+        <p class="pullout">
+          Our central question: what would make a children's robot appealing to children, useful to families and acceptable in the home?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>04 / Research Foundation</span>
+      <h2>What informed the questions</h2>
+    </div>
+    <div class="section-content">
+      <p>
+        Our early literature review and project discussions suggested several possible directions. Rather than presenting these as confirmed design features, we used them to shape what we needed to ask children and parents. This helped make the survey an exploration of expectations, not a vote on a predetermined robot.
       </p>
       <div class="research-board compact">
         <article class="research-card">
-          <h3>Emotion recognition</h3>
-          <p>Robot could respond to emotional cues with comfort, encouragement or humour.</p>
+          <h3>Role and companionship</h3>
+          <p>Explore whether children picture a friend, pet, baby, teacher or helper rather than assuming one social role.</p>
         </article>
         <article class="research-card">
-          <h3>Memory and routine</h3>
-          <p>Remembering preferences and repeated interactions may help create attachment over time.</p>
+          <h3>Age and development</h3>
+          <p>Look for variation across age bands instead of treating 5–18-year-olds as a single group.</p>
         </article>
         <article class="research-card">
-          <h3>Collaborative play</h3>
-          <p>Games, storytelling and creative activities could make interaction feel active rather than passive.</p>
+          <h3>Physical interaction</h3>
+          <p>Separate desired behaviours, such as hugging, from assumptions about soft or hard materials.</p>
         </article>
         <article class="research-card">
-          <h3>Privacy controls</h3>
-          <p>Parents and children need simple ways to understand and control sensing, memory and camera use.</p>
+          <h3>Communication choices</h3>
+          <p>Test interest in speech, sound, lights, expressions and movement rather than privileging non-verbal cues.</p>
         </article>
         <article class="research-card">
-          <h3>Soft physical form</h3>
-          <p>A hug-friendly exterior could make the robot feel safer and more emotionally approachable.</p>
+          <h3>Household practicality</h3>
+          <p>Ask parents about durability, cleaning, volume and predictable movement alongside children's preferences.</p>
         </article>
         <article class="research-card">
-          <h3>Offline social prompts</h3>
-          <p>The robot should encourage human connection, not replace it.</p>
+          <h3>Trust and boundaries</h3>
+          <p>Make space for parental views on involvement, unwanted features and broader concerns about connected technology.</p>
         </article>
       </div>
     </div>
@@ -371,33 +385,36 @@
 
   <section class="case-section section-split js-reveal">
     <div class="section-label">
-      <span>04 / Direction</span>
-      <h2>Feature direction</h2>
+      <span>05 / Methodology</span>
+      <h2>From early ideas to a field study</h2>
     </div>
     <div class="section-content">
       <p>
-        The strongest direction was to position the robot less like a household assistant and more like a responsive companion: quiet, tactile, expressive and child-led.
+        We ran an exploratory, in-person survey at Scotland's largest robotics convention. The setting gave us access to children and accompanying adults who could engage with the concept, although it also meant our sample was self-selecting and likely more interested in robotics than the wider public.
+      </p>
+      <p>
+        Across 29 family groups, the spreadsheet records <strong>44 children and 29 parents/caregivers</strong>. The child responses were 22 aged 5–8, 17 aged 9–11 and five aged 12–15. Although the wider study targeted ages 5–18, no 16–18-year-old responses appear in this dataset.
       </p>
       <div class="feature-list-clean">
         <div>
-          <span>01</span>
-          <h3>Touch-responsive behaviour</h3>
-          <p>Responds to hugs, pats and physical interaction through movement, light or vibration.</p>
+          <span>01 / PARTICIPANTS</span>
+          <h3>Two perspectives on the same concept</h3>
+          <p>We used separate child and parent/caregiver questionnaires so children's imagined experiences would not be replaced by adult assumptions about usefulness, safety or buying decisions.</p>
         </div>
         <div>
-          <span>02</span>
-          <h3>Expressive but non-verbal</h3>
-          <p>Uses LED eyes, gestures and body movement rather than relying on speech.</p>
+          <span>02 / CHILD QUESTIONNAIRE</span>
+          <h3>Less text, more accessible choices</h3>
+          <p>We reduced the number and complexity of questions across a wide age range, using concrete choices about robot role, appearance, sounds and touch. The child survey also used a drawing-based ideal-robot activity to give children room to express ideas beyond fixed answers.</p>
         </div>
         <div>
-          <span>03</span>
-          <h3>Personalised companionship</h3>
-          <p>Remembers routines, preferences and repeated play patterns over time.</p>
+          <span>03 / PARENT QUESTIONNAIRE</span>
+          <h3>Rankings, options and space for concerns</h3>
+          <p>The three-page parent survey asked adults to rank useful applications and physical priorities, select preferred interaction methods and parental involvement, and write down unwanted features or additional concerns. This captured both structured preferences and open-ended feedback.</p>
         </div>
         <div>
-          <span>04</span>
-          <h3>Parent-visible privacy</h3>
-          <p>Clear controls for microphones, cameras, memory and sensing states.</p>
+          <span>04 / ANALYSIS</span>
+          <h3>Looking beneath the overall percentages</h3>
+          <p>We organised survey responses in Excel, compared age groups and parent–child expectations, and examined response-level overlaps such as material preference versus hugging. We treated patterns and correlation checks as exploratory, not proof of causation or statistical significance.</p>
         </div>
       </div>
     </div>
@@ -405,35 +422,80 @@
 
   <section class="case-section section-split js-reveal">
     <div class="section-label">
-      <span>05 / Solution</span>
-      <h2>A robot closer to a pet than an assistant</h2>
+      <span>06 / Survey Findings</span>
+      <h2>What the research revealed</h2>
     </div>
     <div class="section-content">
       <p>
-        The robot is not intended to tidy rooms, answer homework questions or act like a general-purpose assistant. The concept is closer to a companion animal: something that reacts, learns, comforts and plays.
+        The useful findings were not simply the most popular individual answers. Several patterns complicated our early ideas — particularly differences by age, the meaning of touch, and the importance of speech. Those contradictions helped refine the research-led direction.
+      </p>
+      <div class="insight-strip">
+        <article>
+          <h3>Roles changed with age</h3>
+          <p><strong>11 of 22</strong> children aged 5–8 selected “Friend”, while <strong>8 of 17</strong> aged 9–11 selected “Helper”. The 12–15 group had only five responses, so its patterns remain tentative.</p>
+        </article>
+        <article>
+          <h3>Huggable did not mean soft</h3>
+          <p><strong>27 of 44</strong> children wanted a robot they could hug, yet <strong>23</strong> chose a hard exterior — and <strong>11</strong> chose both. Physical interaction could not be inferred from materials alone.</p>
+        </article>
+        <article>
+          <h3>Speech challenged our assumptions</h3>
+          <p><strong>32 of 44</strong> children (73%) selected a speaking robot. Our early emphasis on quiet, non-verbal interaction needed reconsidering rather than being treated as a settled requirement.</p>
+        </article>
+      </div>
+      <p>
+        <strong>Parents put practical value first.</strong> In the 29 recorded parent responses, 21 chose learning and homework as a useful application, 17 chose playtime, 22 prioritised durability, 21 wanted volume control and 19 valued ease of cleaning. Parents were also closely divided between being very involved (11) and somewhat involved (12) in their child's interactions. The original summary percentages used a base of 28; these figures are recalculated from the 29 raw parent records.
       </p>
       <p>
-        This makes the core design challenge less about productivity and more about emotional interaction: how can a robot feel present, trustworthy and supportive without becoming intrusive?
+        We also looked beyond the totals. For example, <strong>20 of the 26</strong> children who selected “Warm” also selected “Can Hug”, compared with <strong>7 of the 18</strong> children who selected “Cool”. This was a suggestive association in a small survey, not evidence that adding warmth would cause children to hug a robot.
       </p>
-      <div class="pull-quote">
-        “The goal is not to replace people. It is to design a companion that encourages comfort, play and real-world connection.”
+      <p class="pullout">
+        The strongest insight was a mismatch of priorities: children described the experience they wanted; parents also assessed the usefulness, upkeep and control of a robot living in their home.
+      </p>
+      <div class="survey-grid">
+        <figure>
+          <img src="images/surveys.png" alt="Early child and parent survey layouts developed during the research process">
+          <figcaption>Survey design iterations — simplifying children's questions while retaining more detailed parent/caregiver prompts.</figcaption>
+        </figure>
+      </div>
+      <p>
+        The original three-page parent questionnaire asked about daily use, materials, touch responses, emotional cues and the degree of parental involvement. Its final open-text questions helped capture concerns that predefined checkboxes could miss, including privacy, data use, control and the risks of over-reliance on connected technologies.
+      </p>
+      <p>
+        <strong>Research limitation:</strong> this was a convenience sample recruited at a robotics event, with a small older-child subgroup and no recorded 16–18-year-olds. These findings are useful for forming hypotheses and product priorities, but are not representative of all children or a validated test of a finished robot.
+      </p>
+    </div>
+  </section>
+
+  <section class="case-section section-split js-reveal">
+    <div class="section-label">
+      <span>07 / Research-Led Direction</span>
+      <h2>From assumptions to design implications</h2>
+    </div>
+    <div class="section-content">
+      <p>
+        The outcome of this phase was a stronger evidence base for subsequent concept and prototype decisions — not a claim that I built, tested or finalised a robot. The findings suggest exploring age-sensitive roles, supporting speech alongside physical feedback, and treating durability, cleaning and volume control as central rather than secondary considerations.
+      </p>
+      <p>
+        We also learned not to force a simple choice between a soft companion and a hard assistant. Children could want to hug a robot with a hard exterior, and parents might favour learning features even while children picture an emotional or playful relationship. Those tensions should inform prototypes and further testing, rather than be smoothed away in a single universal design.
+      </p>
+      <div class="pullout" style="font-family: Arial, Helvetica, sans-serif;">
+        “The research did not tell us to build a single ideal robot. It showed which assumptions needed challenging — and which decisions needed more testing.”
       </div>
     </div>
   </section>
 
-<section class="next-section js-reveal">
-  <h2 class="underline-wrap">
-    <span class="underline-reveal">Next Steps</span>
-  </h2>
-
-  <p>
-    The next phase will move the robot from concept direction into prototype development, sensor-led interaction testing and pilot research. The focus will be on how physical gestures such as hugging, tapping or pushing can be captured, interpreted and refined through user feedback.
-  </p>
-
-  <p>
-    Longer term, the project will support a cross-cultural dataset of emotional cues from physical interaction, helping future robots respond to people in ways that are more inclusive, adaptive and context-aware.
-  </p>
-</section>
+  <section class="next-section js-reveal">
+    <h2 class="underline-wrap">
+      <span class="underline-reveal">Next Steps</span>
+    </h2>
+    <p>
+      The survey and initial analysis phase is complete. The next logical step is to test competing robot concepts with children from different age groups: for example, speaking versus primarily non-verbal behaviour, huggability across different material types and more flexible friend/helper roles.
+    </p>
+    <p>
+      A broader sample — especially 12–18-year-olds and families who do not attend robotics conventions — would help validate the patterns. Future prototype research could also examine touch, pressure and movement in real interaction, alongside clear parental controls and safeguards. Those are <strong>future research directions</strong>, not features validated by this survey.
+    </p>
+  </section>
 
 </main>
 
@@ -477,13 +539,13 @@
     });
   }, { threshold: 0.6 });
 
-  underlineObserver.observe(underline);
+  if (underline) underlineObserver.observe(underline);
 
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY;
     const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / pageHeight) * 100;
-    progressBar.style.width = `${scrollPercent}%`;
+    progressBar.style.width = `${Number.isFinite(scrollPercent) ? scrollPercent : 0}%`;
 
     if (scrollTop > 700) {
       backToTop.classList.add("visible");
