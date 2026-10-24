@@ -1,87 +1,1360 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/tablogo.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
-  <title>Hugh Kelly - Case Study Three</title>
-	</head>
-	
-	<body>
-
-  <header class="site-header">
-    <nav class="nav">
-		<div class="logo" data-trigger="home">
-        <img src="images/logo.png" alt="HK logo">
-      </div>
-
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-		<a href="index.html?page=work">Work</a>
-		<a href="index.html?page=about">About</a>
-		<a href="index.html?page=contact">Contact</a>
-      </div>
-    </nav>
-  </header>
-
-  <main class="case-study">
-
-    <section class="case-hero">
-      <h1>Case Study Three</h1>
-      <p class="case-meta">UX Research / Product Design · 2026</p>
-    </section>
-
-    <section class="case-section">
-      <h2>Overview</h2>
-      <p>
-        Brief description of the project. What it is, who it’s for, and why it matters.
-      </p>
-    </section>
-
-    <section class="case-section">
-      <h2>Problem</h2>
-      <p>
-        What problem were you trying to solve? What was broken, unclear, or inefficient?
-      </p>
-    </section>
-
-    <section class="case-section">
-      <h2>Process</h2>
-      <p>
-        Outline your approach—research, ideation, testing, iteration.
-      </p>
-    </section>
-
-    <section class="case-section">
-      <h2>Solution</h2>
-      <p>
-        What did you design? What changed? What improved?
-      </p>
-    </section>
-
-    <section class="case-section">
-      <h2>Outcome</h2>
-      <p>
-        Results, impact, or what you learned.
-      </p>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <img src="images/footer-logo.png" alt="Hugh Kelly">
-    <p style="font-size: 10px;">© 2026 Hugh Kelly</p>
-  </footer>
-
-  <a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     class="linkedin-fixed">
-    <svg viewBox="0 0 24 24" width="18" height="18">
-      <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6 1.11 6 0 4.88 0 3.5 0 2.12 1.11 1 2.49 1 3.87 1 4.98 2.12 4.98 3.5zM.22 8.22h4.54V24H.22zM7.98 8.22h4.35v2.16h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.49 3.05 5.49 7.01V24h-4.54v-7.74c0-1.85-.03-4.23-2.58-4.23-2.58 0-2.97 2.01-2.97 4.1V24H7.98z"/>
-    </svg>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Alba Health: a work-in-progress UX research and experience strategy case study by Hugh Kelly." name="description"/>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="images/tablogo.png" rel="icon" sizes="32x32" type="image/png"/>
+  <title>
+   Alba Health &mdash; Hugh Kelly
+  </title>
+  <style>
+   :root {
+  --shell:#F7F5F1;
+  --stone:#E0DCD1;
+  --sky:#D5E3E8;
+  --honeydew:#D9E3B6;
+  --viridian:#344945;
+  --ink:#171e1c;
+  --muted:#58615d;
+  --line:rgba(22,47,40,.16);
+  --max:1160px;
+  --measure:770px
+}
+html {
+  scroll-behavior:smooth
+}
+body {
+  background:#efe0cd;
+  color:var(--ink)
+}
+/* Match Roost / portfolio paper background */ .skip-link {
+  position:fixed;
+  top:-90px;
+  left:16px;
+  padding:12px 16px;
+  background:#fff;
+  color:#111;
+  z-index:4000
+}
+.skip-link:focus {
+  top:12px
+}
+.alba-page {
+  max-width:var(--max);
+  padding:118px 24px 90px;
+  margin:0 auto
+}
+.alba-page * {
+  box-sizing:border-box
+}
+.alba-page img {
+  display:block;
+  max-width:100%
+}
+.scroll-progress {
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  background:var(--viridian);
+  width:0;
+  z-index:4000
+}
+.kicker,.caption,.micro {
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:12px;
+  color:var(--muted)
+}
+.hero {
+  padding:56px 0 68px;
+  border-bottom:1px solid var(--line)
+}
+.hero-top {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:16px;
+  justify-content:space-between
+}
+.state {
+  border:1px solid var(--line);
+  border-radius:100px;
+  padding:10px 16px;
+  background:var(--honeydew);
+  color:var(--viridian);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase
+}
+.hero h1 {
+  font-size:clamp(68px,13vw,154px);
+  line-height:.85;
+  letter-spacing:-.09em;
+  margin:30px 0 32px
+}
+.hero-lead {
+  font-size:clamp(29px,4.5vw,58px);
+  line-height:1.02;
+  letter-spacing:-.058em;
+  max-width:1000px;
+  font-weight:650;
+  margin:0
+}
+.hero-description {
+  margin:28px 0 0 auto;
+  max-width:730px;
+  font-size:clamp(18px,2vw,22px);
+  line-height:1.55
+}
+.meta {
+  margin:64px 0 0;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px
+}
+.meta div {
+  padding-top:16px;
+  border-top:1px solid var(--line)
+}
+.meta dt {
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:700;
+  margin-bottom:8px
+}
+.meta dd {
+  margin:0;
+  line-height:1.4;
+  font-size:16px
+}
+.hero-art {
+  background:var(--viridian);
+  border-radius:32px;
+  margin:50px 0 0;
+  padding:36px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  align-items:center;
+  color:var(--shell);
+  min-height:360px;
+  overflow:hidden
+}
+.hero-art .stamp {
+  font-size:clamp(46px,7vw,92px);
+  letter-spacing:-.06em;
+  line-height:.9;
+  font-weight:750
+}
+.hero-art .substamp {
+  color:var(--honeydew);
+  font-size:clamp(20px,2.3vw,28px);
+  margin-top:22px
+}
+.hero-art img {
+  border-radius:18px;
+  max-height:350px;
+  margin:auto;
+  object-fit:contain
+}
+.section {
+  padding:92px 0;
+  border-bottom:1px solid var(--line)
+}
+.section h2 {
+  font-size:clamp(38px,6vw,78px);
+  line-height:.96;
+  letter-spacing:-.068em;
+  margin:20px 0 30px;
+  max-width:960px
+}
+.section h3 {
+  font-size:clamp(22px,2.4vw,28px);
+  line-height:1.14;
+  letter-spacing:-.04em;
+  margin:0 0 13px
+}
+.section p {
+  font-size:19px;
+  line-height:1.68;
+  margin:0 0 20px
+}
+.narrow {
+  max-width:var(--measure);
+  margin-left:auto;
+  margin-right:auto
+}
+.toned {
+  margin:28px 0;
+  padding:82px 46px;
+  border-radius:32px;
+  background:var(--sky);
+  border:1px solid var(--line)
+}
+.pale {
+  background:#e9eedc
+}
+.dark {
+  background:var(--viridian);
+  color:var(--shell)
+}
+.dark .kicker,.dark .caption {
+  color:var(--honeydew)
+}
+.dark p {
+  color:var(--shell)
+}
+.quote {
+  border-left:5px solid var(--viridian);
+  margin:38px 0;
+  padding:16px 0 16px 26px;
+  font-size:clamp(25px,3.5vw,39px);
+  line-height:1.25;
+  letter-spacing:-.04em;
+  font-weight:640
+}
+.quote small {
+  display:block;
+  margin-top:16px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+  letter-spacing:0;
+  font-weight:500
+}
+.fact-list {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin:42px 0 0
+}
+.fact {
+  background:rgba(255,255,255,.49);
+  padding:25px;
+  border-radius:22px;
+  border:1px solid var(--line)
+}
+.fact b {
+  font-size:clamp(24px,2.8vw,38px);
+  letter-spacing:-.04em
+}
+.fact p {
+  font-size:16px;
+  line-height:1.5;
+  margin-top:11px
+}
+.insight-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  margin-top:38px
+}
+.insight {
+  border-top:1px solid var(--line);
+  padding:24px 4px 12px
+}
+.insight span {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--muted);
+  font-weight:700
+}
+.insight h3 {
+  margin:13px 0
+}
+.insight p {
+  font-size:17px;
+  line-height:1.55
+}
+.shift {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:43px
+}
+.shift article {
+  min-height:190px;
+  padding:24px;
+  background:#fff;
+  border-radius:23px;
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between
+}
+.shift article:last-child {
+  background:var(--honeydew)
+}
+.shift strong {
+  font-size:clamp(21px,2.5vw,30px);
+  line-height:1.12;
+  letter-spacing:-.045em
+}
+.shift span {
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted)
+}
+.artifact {
+  margin:36px 0 0
+}
+.artifact button {
+  display:block;
+  border:1px solid var(--line);
+  padding:12px;
+  width:100%;
+  background:rgba(255,255,255,.5);
+  border-radius:26px;
+  cursor:zoom-in
+}
+.artifact button img {
+  width:100%;
+  border-radius:15px
+}
+.artifact figcaption {
+  font-size:14px;
+  line-height:1.5;
+  color:var(--muted);
+  margin-top:12px
+}
+.artifact button:hover {
+  background:#fff
+}
+.asset-slot {
+  background:repeating-linear-gradient(135deg,#fff,#fff 16px,#eff2e9 16px,#eff2e9 32px);
+  border:1px dashed #83938c;
+  padding:36px;
+  border-radius:24px;
+  margin-top:25px
+}
+.asset-slot strong {
+  display:block;
+  font-size:18px
+}
+.asset-slot code {
+  word-break:break-all
+}
+.asset-slot p {
+  font-size:14px;
+  margin:12px 0 0
+}
+.principles {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+  margin:36px 0
+}
+.principle {
+  padding-top:25px;
+  border-top:1px solid var(--line)
+}
+.principle p {
+  font-size:16px
+}
+.flow {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  margin:42px 0;
+  gap:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)
+}
+.flow div {
+  padding:24px 15px;
+  min-height:150px;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between
+}
+.flow div:last-child {
+  border-right:none
+}
+.flow small {
+  font-size:11px;
+  letter-spacing:.1em;
+  color:var(--muted)
+}
+.flow strong {
+  font-size:19px;
+  line-height:1.16;
+  letter-spacing:-.03em
+}
+.decision-table {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:36px
+}
+.decision-table th,.decision-table td {
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  padding:20px 14px 20px 0;
+  line-height:1.48
+}
+.decision-table th {
+  width:26%;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted)
+}
+.palette {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin:35px 0
+}
+.swatch {
+  height:142px;
+  border-radius:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:14px;
+  font-size:13px;
+  font-weight:700;
+  border:1px solid var(--line)
+}
+.status-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+  margin-top:38px
+}
+.status-grid article {
+  padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.4)
+}
+.status-grid h3 {
+  font-size:23px
+}
+.status-grid p {
+  font-size:16px;
+  line-height:1.5
+}
+.closing {
+  text-align:center;
+  margin-top:35px;
+  border-radius:38px;
+  background:var(--honeydew);
+  padding:100px 35px
+}
+.closing h2 {
+  margin:15px auto 28px;
+  max-width:950px
+}
+.closing p {
+  max-width:700px;
+  margin:auto
+}
+.back-to-top {
+  position:fixed;
+  right:18px;
+  bottom:60px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--shell);
+  padding:12px 18px;
+  z-index:700;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s;
+  cursor:pointer
+}
+.back-to-top.visible {
+  opacity:1;
+  pointer-events:auto
+}
+.js-reveal {
+  opacity:0;
+  transform:translateY(20px);
+  transition:transform .75s ease,opacity .75s ease
+}
+.js-reveal.visible {
+  opacity:1;
+  transform:none
+}
+.image-modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(4,18,14,.94);
+  z-index:5000;
+  align-items:center;
+  justify-content:center;
+  padding:58px 16px 18px
+}
+.image-modal.active {
+  display:flex
+}
+.image-modal img {
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain
+}
+.image-modal .close {
+  position:absolute;
+  right:20px;
+  top:16px;
+  padding:8px 13px;
+  border-radius:8px;
+  font-size:25px;
+  background:#fff;
+  color:#111;
+  border:0;
+  cursor:pointer
+}
+:focus-visible {
+  outline:3px solid #c67c39;
+  outline-offset:4px
+}
+@media(max-width:850px) {
+  .fact-list,.shift,.status-grid {
+    grid-template-columns:1fr
+  }
+  .hero-art {
+    grid-template-columns:1fr
+  }
+  .meta,.insight-grid,.principles {
+    grid-template-columns:repeat(2,1fr)
+  }
+  .flow {
+    grid-template-columns:1fr
+  }
+  .flow div {
+    min-height:100px;
+    border-right:none;
+    border-bottom:1px solid var(--line)
+  }
+  .flow div:last-child {
+    border-bottom:none
+  }
+}
+@media(max-width:650px) {
+  .alba-page {
+    padding:88px 16px 65px
+  }
+  .hero {
+    padding:28px 0 45px
+  }
+  .hero h1 {
+    font-size:clamp(58px,17vw,96px)
+  }
+  .hero-description {
+    margin-left:0
+  }
+  .meta,.insight-grid,.principles {
+    grid-template-columns:1fr
+  }
+  .section {
+    padding:65px 0
+  }
+  .toned {
+    padding:55px 20px;
+    border-radius:25px
+  }
+  .palette {
+    grid-template-columns:repeat(2,1fr)
+  }
+  .swatch {
+    height:120px
+  }
+  .hero-art {
+    padding:23px
+  }
+  .closing {
+    padding:65px 20px
+  }
+  .decision-table th,.decision-table td {
+    display:block;
+    width:100%;
+    padding:10px 0
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior:auto
+  }
+  .js-reveal {
+    opacity:1;
+    transform:none;
+    transition:none
+  }
+  .back-to-top {
+    transition:none
+  }
+}
+  </style>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to content
   </a>
+  <div aria-hidden="true" class="scroll-progress" id="scrollProgress">
+  </div>
+  <header class="site-header">
+   <nav aria-label="Main navigation" class="nav">
+    <a class="logo" href="index.html">
+     <img alt="Hugh Kelly home" src="images/logo.png"/>
+    </a>
+    <div class="nav-links">
+     <a href="index.html">
+      Home
+     </a>
+     <a href="index.html?page=work">
+      Work
+     </a>
+     <a href="index.html?page=about">
+      About
+     </a>
+     <a href="index.html?page=contact">
+      Contact
+     </a>
+    </div>
+   </nav>
+  </header>
+  <main class="alba-page" id="main">
+   <section aria-labelledby="page-title" class="hero js-reveal">
+    <div class="hero-top">
+     <span class="kicker">
+      UX Research / Experience Strategy / Brand Direction
+     </span>
+     <span class="state">
+      Work in progress
+     </span>
+    </div>
+    <h1 id="page-title">
+     Alba Health.
+    </h1>
+    <p class="hero-lead">
+     The brief asked for more information. The research pointed towards something clearer.
+    </p>
+    <p class="hero-description">
+     A private healthcare app concept exploring how a fragmented, sometimes confusing patient experience might become easier to understand and navigate. This is a look at the research, the decisions it influenced and the questions I still need to answer.
+    </p>
+    <dl class="meta">
+     <div>
+      <dt>
+       Project
+      </dt>
+      <dd>
+       Private healthcare app concept
+      </dd>
+     </div>
+     <div>
+      <dt>
+       Research
+      </dt>
+      <dd>
+       8 semi-structured interviews
+      </dd>
+     </div>
+     <div>
+      <dt>
+       Focus
+      </dt>
+      <dd>
+       Patient understanding and continuity
+      </dd>
+     </div>
+     <div>
+      <dt>
+       Status
+      </dt>
+      <dd>
+       Research and early direction
+      </dd>
+     </div>
+    </dl>
+    <div class="hero-art">
+     <div>
+      <div class="stamp">
+       Alba
+       <br/>
+       Health.
+      </div>
+      <div class="substamp">
+       Healthcare, made
+       <br/>
+       clear &amp; connected.
+      </div>
+     </div>
+     <img alt="Alba Health colour palette, logo and early brand exploration" src="images/alba-slide-10.png"/>
+    </div>
+   </section>
+   <section class="section narrow js-reveal">
+    <span class="kicker">
+     01 / The brief
+    </span>
+    <h2>
+     Everyone likes apps. Apparently.
+    </h2>
+    <p>
+     The starting point was fairly straightforward: a client brief proposing an app for private healthcare patients, with more detailed appointment information, clearer explanations of procedures and results, and more information about what happened before and after treatment.
+    </p>
+    <p>
+     There were also wider ambitions: unify services, make remote consultations possible, educate patients, expand reach and build trust. All reasonable things to investigate. But there were a couple of assumptions hiding inside the brief.
+    </p>
+    <blockquote class="quote">
+     &ldquo;Everyone likes apps, so it&rsquo;s the best way forward.&rdquo;
+     <small>
+      Starting assumption from the project brief
+     </small>
+    </blockquote>
+    <p>
+     That felt like exactly the kind of sentence worth testing. An app can be a helpful tool, but only if it makes something easier. I wanted to understand what was actually difficult about the healthcare journey before deciding how much technology to put in front of it.
+    </p>
+   </section>
+   <section class="section toned js-reveal">
+    <span class="kicker">
+     02 / Research
+    </span>
+    <h2>
+     People had information. They couldn't always use it.
+    </h2>
+    <p>
+     We carried out eight semi-structured interviews with adults in their 40s&ndash;60s about healthcare experiences across private and NHS services. The conversational format felt appropriate for a sensitive subject: rather than making people fit neatly into a questionnaire, it gave them room to describe what had frustrated or worried them.
+    </p>
+    <p>
+     The sample was small and exploratory, so it isn't representative of every healthcare user. It did, however, show repeated points of friction that were worth designing around.
+    </p>
+    <div class="fact-list">
+     <article class="fact">
+      <b>
+       8 interviews
+      </b>
+      <p>
+       Qualitative conversations exploring real healthcare experiences.
+      </p>
+     </article>
+     <article class="fact">
+      <b>
+       5 themes
+      </b>
+      <p>
+       Our research synthesis grouped the problems into five recurring areas.
+      </p>
+     </article>
+     <article class="fact">
+      <b>
+       One shift
+      </b>
+      <p>
+       The problem appeared to be clarity and continuity, not simply the volume of information.
+      </p>
+     </article>
+    </div>
+    <div class="insight-grid">
+     <article class="insight">
+      <span>
+       01
+      </span>
+      <h3>
+       Feeling unheard
+      </h3>
+      <p>
+       Some participants described rushed or impersonal consultations and feeling that symptoms weren't taken seriously.
+      </p>
+     </article>
+     <article class="insight">
+      <span>
+       02
+      </span>
+      <h3>
+       Unclear next steps
+      </h3>
+      <p>
+       Waiting for results, understanding prices or knowing what to do after treatment could leave patients uncertain.
+      </p>
+     </article>
+     <article class="insight">
+      <span>
+       03
+      </span>
+      <h3>
+       Results without meaning
+      </h3>
+      <p>
+       Numbers, flags and medical terms were not always accompanied by explanations people could understand.
+      </p>
+     </article>
+     <article class="insight">
+      <span>
+       04
+      </span>
+      <h3>
+       Disconnected information
+      </h3>
+      <p>
+       Booking, insurance, medical records, results and follow-up were split across systems and phone calls.
+      </p>
+     </article>
+     <article class="insight">
+      <span>
+       05
+      </span>
+      <h3>
+       Digital friction
+      </h3>
+      <p>
+       Broken forms, difficult navigation and app sign-up problems sometimes pushed patients back to the phone.
+      </p>
+     </article>
+    </div>
+    <blockquote class="quote">
+     &ldquo;Because it was in red, I immediately assumed the worst...&rdquo;
+     <small>
+      Participant describing a flagged test result with no explanation, excerpted from the research synthesis
+     </small>
+    </blockquote>
+    <figure class="artifact">
+     <button aria-label="Enlarge interview research synthesis" class="zoomable" type="button">
+      <img alt="Research synthesis slide displaying five problem areas and supporting interview excerpts" loading="lazy" src="images/alba-slide-3.png"/>
+     </button>
+     <figcaption>
+      The original research synthesis, bringing interview observations into five themes. Click to enlarge.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="section narrow js-reveal">
+    <span class="kicker">
+     03 / Reframing the problem
+    </span>
+    <h2>
+     More information wasn't necessarily more useful information.
+    </h2>
+    <p>
+     One participant had seen a flagged result without any notes to explain it. Another described bouncing between three different systems to sort out one issue. Neither problem would automatically be solved by adding another screen of medical terminology.
+    </p>
+    <p>
+     What seemed to matter was whether the information helped someone understand their situation and know what came next.
+    </p>
+    <div class="shift">
+     <article>
+      <span>
+       Initial assumption
+      </span>
+      <strong>
+       Patients need more information.
+      </strong>
+     </article>
+     <article>
+      <span>
+       Research signal
+      </span>
+      <strong>
+       Patients need information that makes sense.
+      </strong>
+     </article>
+     <article>
+      <span>
+       Working direction
+      </span>
+      <strong>
+       A clear, connected journey with visible next steps.
+      </strong>
+     </article>
+    </div>
+    <p style="margin-top:32px">
+     This wasn't a tested final solution. It was a better problem definition to take into design.
+    </p>
+   </section>
+   <section class="section toned pale js-reveal">
+    <span class="kicker">
+     04 / Design principles
+    </span>
+    <h2>
+     Turning the findings into something we could design around.
+    </h2>
+    <div class="principles">
+     <article class="principle">
+      <h3>
+       Keep the journey together
+      </h3>
+      <p>
+       Reduce unnecessary jumps between appointments, results, prescriptions and follow-up.
+      </p>
+     </article>
+     <article class="principle">
+      <h3>
+       Explain before expanding
+      </h3>
+      <p>
+       Lead with plain-language meaning, and let people access detail when they need it.
+      </p>
+     </article>
+     <article class="principle">
+      <h3>
+       Always show what happens next
+      </h3>
+      <p>
+       Give each stage a clear status, expected timeline or next action wherever possible.
+      </p>
+     </article>
+     <article class="principle">
+      <h3>
+       Make digital earn its place
+      </h3>
+      <p>
+       If the app creates more work than calling someone, the app hasn't solved the problem.
+      </p>
+     </article>
+    </div>
+    <p>
+     These became working principles, not validated rules. They helped keep the experience focused as the project moved from research into structure.
+    </p>
+   </section>
+   <section class="section js-reveal">
+    <span class="kicker">
+     05 / Competitor analysis
+    </span>
+    <h2>
+     Plenty of services. Not always one journey.
+    </h2>
+    <p class="narrow">
+     I reviewed Bupa, Nuffield Health, Vitality and the NHS App, comparing who each experience served, its core features, strengths, weaknesses and possible opportunities. The research showed useful patterns around booking, records and access to care, but also suggested how fragmented a patient's journey could become when different services lived in different places.
+    </p>
+    <p class="narrow">
+     The opportunity for Alba wasn't to compete on the longest feature list. It was to make the important parts feel joined up, with clear priorities and fewer unnecessary hand-offs.
+    </p>
+    <figure class="artifact">
+     <button aria-label="Enlarge competitor analysis" class="zoomable" type="button">
+      <img alt="Competitor comparison matrix for Bupa, Nuffield Health, Vitality and NHS App" loading="lazy" src="images/alba-slide-4.png"/>
+     </button>
+     <figcaption>
+      Competitor analysis completed as part of the original discovery work. A snapshot of the products at the time, not a current market audit.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="section js-reveal">
+    <span class="kicker">
+     06 / Customer journey
+    </span>
+    <h2>
+     Looking beyond the appointment itself.
+    </h2>
+    <p class="narrow">
+     The persona and journey map let me consider more than the moment someone presses &ldquo;Book&rdquo;. The relationship starts with discovering a service, passes through comparing options and arranging care, then continues into managing results, medication and follow-up.
+    </p>
+    <p class="narrow">
+     I used Helen, the working persona in the project, as a way of keeping that journey human. She is digitally confident and health-conscious, yet still wants her information together in one place. The persona is a design tool rather than another interview, so the participants' stories remain the real evidence.
+    </p>
+    <p class="narrow">
+     The mapping exercise surfaced opportunities around transparent costs, easier sign-in, simpler booking and explanations of results. It also showed how the experience could lose someone's trust long after the initial appointment.
+    </p>
+    <figure class="artifact">
+     <button aria-label="Enlarge customer journey map" class="zoomable" type="button">
+      <img alt="Helen persona and journey map across awareness, consideration, booking, managing care and recommendation" loading="lazy" src="images/alba-slide-5.png"/>
+     </button>
+     <figcaption>
+      Working persona and customer journey, from awareness through managing care and recommending the service.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="section js-reveal">
+    <span class="kicker">
+     07 / Information architecture
+    </span>
+    <h2>
+     Getting the moving parts into one picture.
+    </h2>
+    <p class="narrow">
+     The first sitemap was deliberately broad. It brought together history, booking, results, prescriptions, account details and an activity feed. At this stage I wanted to see where the journeys touched, not pretend that every branch was already essential.
+    </p>
+    <p class="narrow">
+     That exercise was useful, but it also left an obvious next question: which actions deserve prominence on the home screen, and which can stay a level deeper? That's a decision I'd want to test rather than make on instinct alone.
+    </p>
+    <figure class="artifact">
+     <button aria-label="Enlarge preliminary sitemap" class="zoomable" type="button">
+      <img alt="Hand-drawn sitemap outlining sign-in, patient history, booking, results inbox and personal details" loading="lazy" src="images/alba-slide-8.png"/>
+     </button>
+     <figcaption>
+      The early sitemap brings the proposed services together. A later pass should simplify it around the journeys patients use most.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="section toned js-reveal">
+    <span class="kicker">
+     08 / Core flows
+    </span>
+    <h2>
+     Three journeys, each solving a slightly different problem.
+    </h2>
+    <p>
+     The interview themes gave us a way to judge the early flows: could booking be easier to understand, could results give people useful context, and could routine repeat prescriptions be simpler to request?
+    </p>
+    <h3>
+     Appointment booking
+    </h3>
+    <p>
+     Service, clinician, appointment type, availability, cost or cover, and confirmation are all accounted for. In particular, checking cost and cover before the final confirmation addresses a frustration surfaced in the interviews.
+    </p>
+    <div class="flow">
+     <div>
+      <small>
+       01
+      </small>
+      <strong>
+       Choose service
+      </strong>
+     </div>
+     <div>
+      <small>
+       02
+      </small>
+      <strong>
+       Select clinician
+      </strong>
+     </div>
+     <div>
+      <small>
+       03
+      </small>
+      <strong>
+       Pick visit and time
+      </strong>
+     </div>
+     <div>
+      <small>
+       04
+      </small>
+      <strong>
+       Review cost / cover
+      </strong>
+     </div>
+     <div>
+      <small>
+       05
+      </small>
+      <strong>
+       Confirm booking
+      </strong>
+     </div>
+    </div>
+    <figure class="artifact">
+     <button aria-label="Enlarge appointment booking flow" class="zoomable" type="button">
+      <img alt="Early user flow showing the steps from opening Alba Health through booking confirmation" loading="lazy" src="images/alba-slide-6.png"/>
+     </button>
+     <figcaption>
+      Early appointment booking flow, including choice of visit type and checking cost or cover before confirmation.
+     </figcaption>
+    </figure>
+    <h3 style="margin-top:57px">
+     Results and prescriptions
+    </h3>
+    <p>
+     The results flow is where the research connection becomes particularly clear. It doesn't end when somebody opens a result. It continues through details, an explanation and next steps, with a proposed route into follow-up.
+    </p>
+    <p>
+     A separate prescriptions flow explores how a repeat request might work without a phone call. These are flow proposals rather than working interfaces, and both still need usability testing.
+    </p>
+    <figure class="artifact">
+     <button aria-label="Enlarge results and prescriptions user flows" class="zoomable" type="button">
+      <img alt="Proposed results and repeat-prescription user flows" loading="lazy" src="images/alba-slide-7.png"/>
+     </button>
+     <figcaption>
+      Results and prescriptions flows. The extra explanation and next-steps stages are especially important to the research-led direction.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="section narrow js-reveal">
+    <span class="kicker">
+     09 / Decisions and next tests
+    </span>
+    <h2>
+     What changed, and what I still need to prove.
+    </h2>
+    <p>
+     One benefit of laying this out as a work in progress is that the difference between an insight and a successful solution stays visible. The work so far supports these design directions; it doesn't yet prove that the proposed flows work.
+    </p>
+    <table class="decision-table">
+     <tbody>
+      <tr>
+       <th>
+        Research signal
+       </th>
+       <td>
+        Patients could feel anxious seeing unexplained flags or numbers.
+       </td>
+       <td>
+        <b>
+         Design response:
+        </b>
+        Explain results and show next steps.
+        <br/>
+        <b>
+         To test:
+        </b>
+        Can people interpret status and identify an appropriate next action?
+       </td>
+      </tr>
+      <tr>
+       <th>
+        Research signal
+       </th>
+       <td>
+        People moved between separate apps, portals and calls.
+       </td>
+       <td>
+        <b>
+         Design response:
+        </b>
+        Connect records, booking and follow-up in one proposed architecture.
+        <br/>
+        <b>
+         To test:
+        </b>
+        Can people locate the right task quickly without becoming lost?
+       </td>
+      </tr>
+      <tr>
+       <th>
+        Research signal
+       </th>
+       <td>
+        Unexpected costs and unclear waits led to uncertainty.
+       </td>
+       <td>
+        <b>
+         Design response:
+        </b>
+        Include cost or cover review and clearer booking stages.
+        <br/>
+        <b>
+         To test:
+        </b>
+        Can people tell what is confirmed, what they'll pay and what happens next?
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+   <section class="section js-reveal">
+    <span class="kicker">
+     10 / Brand direction
+    </span>
+    <h2>
+     Professional, without feeling clinical or cold.
+    </h2>
+    <p class="narrow">
+     The visual direction started to respond to the same ideas as the UX: reassurance, clarity and a feeling of care. I explored a Celtic-inspired mark, an earthy green, softer supporting colours and welcoming sans-serif typography. It was an attempt to make the experience feel calm and human rather than intimidating.
+    </p>
+    <p class="narrow">
+     That is the intention behind the brand, not something I have yet validated with patients.
+    </p>
+    <div aria-label="Alba Health proposed colour palette" class="palette" role="list">
+     <div class="swatch" role="listitem" style="background:#F7F5F1">
+      Shell
+      <br/>
+      #F7F5F1
+     </div>
+     <div class="swatch" role="listitem" style="background:#E0DCD1">
+      Stone
+      <br/>
+      #E0DCD1
+     </div>
+     <div class="swatch" role="listitem" style="background:#D5E3E8">
+      Sky
+      <br/>
+      #D5E3E8
+     </div>
+     <div class="swatch" role="listitem" style="background:#D9E3B6">
+      Honeydew
+      <br/>
+      #D9E3B6
+     </div>
+     <div class="swatch" role="listitem" style="background:#344945;color:white">
+      Viridian
+      <br/>
+      #344945
+     </div>
+    </div>
+    <figure class="artifact">
+     <button aria-label="Enlarge Alba Health brand board" class="zoomable" type="button">
+      <img alt="Alba Health visual identity exploration with logo, phone splash screen, palette and typography" loading="lazy" src="images/alba-slide-10.png"/>
+     </button>
+     <figcaption>
+      Early visual identity explorations. The image is an export of the working presentation, rather than a polished final brand specification.
+     </figcaption>
+    </figure>
+   </section>
+   <section class="section toned dark js-reveal">
+    <span class="kicker">
+     11 / Where things stand
+    </span>
+    <h2>
+     This is still a work in progress. Deliberately.
+    </h2>
+    <p>
+     There's no polished end-to-end interface or usability-tested prototype here yet, and I don't want to pretend there is. What's valuable at this point is that the research has moved the project away from the initial assumption and towards some specific experience questions worth answering.
+    </p>
+    <div class="status-grid">
+     <article>
+      <h3>
+       Done so far
+      </h3>
+      <p>
+       Interview research, synthesis, competitor review, working persona, customer journey, sitemap, core flows and early brand direction.
+      </p>
+     </article>
+     <article>
+      <h3>
+       Still exploratory
+      </h3>
+      <p>
+       Screen hierarchy, content design, real interactions, narrowing the most important tasks and how the brand works across a full interface.
+      </p>
+     </article>
+     <article>
+      <h3>
+       Next up
+      </h3>
+      <p>
+       Prototype and test booking and results journeys, involve people with varied digital confidence, assess accessibility and seek appropriate clinical review for medical information.
+      </p>
+     </article>
+    </div>
+    <div class="asset-slot" style="background:#456358;border-color:#abc0b5;color:white">
+     <strong>
+      Future UI prototype / iterations
+     </strong>
+     <p style="color:white">
+      When interface screens are ready, add them here with the decisions that changed after testing. This space deliberately does not imply the work already exists.
+     </p>
+    </div>
+   </section>
+   <section class="section narrow js-reveal">
+    <span class="kicker">
+     12 / Reflection
+    </span>
+    <h2>
+     Good research should change the question.
+    </h2>
+    <p>
+     At the start, the job seemed to be building an app that gave patients more information. By the end of this stage, the interesting challenge was different: how could we give people a clearer sense of where they are in their healthcare journey, what their information means and what they should do next?
+    </p>
+    <p>
+     There is a lot still to figure out. But the early research made it easier to see which problems were worth tackling first, and that feels like a more useful foundation than racing straight into high-fidelity screens.
+    </p>
+   </section>
+   <section class="section closing js-reveal">
+    <span class="kicker">
+     Design direction
+    </span>
+    <h2>
+     Healthcare, made clear &amp; connected.
+    </h2>
+    <p>
+     Less about another app for its own sake. More about making a complicated experience feel a little easier to navigate.
+    </p>
+   </section>
+  </main>
+  <button aria-label="Back to top" class="back-to-top" id="backToTop" type="button">
+   Top &uarr;
+  </button>
+  <footer class="site-footer">
+   <img alt="Hugh Kelly" src="images/footer-logo.png"/>
+   <p style="font-size:10px">
+    &copy; 2026 Hugh Kelly
+   </p>
+  </footer>
+  <a aria-label="LinkedIn profile" class="linkedin-fixed" href="https://www.linkedin.com/in/hugh-kelly-a348a1112/" rel="noopener noreferrer" target="_blank">
+   <svg aria-hidden="true" height="18" viewbox="0 0 24 24" width="18">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6 1.11 6 0 4.88 0 3.5 0 2.12 1.11 1 2.49 1 3.87 1 4.98 2.12 4.98 3.5zM.22 8.22h4.54V24H.22zM7.98 8.22h4.35v2.16h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.49 3.05 5.49 7.01V24h-4.54v-7.74c0-1.85-.03-4.23-2.58-4.23-2.58 0-2.97 2.01-2.97 4.1V24H7.98z">
+    </path>
+   </svg>
+  </a>
+  <div aria-hidden="true" aria-label="Enlarged project image" aria-modal="true" class="image-modal" id="imageModal" role="dialog">
+   <button aria-label="Close image" class="close" id="closeModal" type="button">
+    &times;
+   </button>
+   <img alt="" id="modalImage"/>
+  </div>
+  <script>
+   document.addEventListener('DOMContentLoaded',()=> {
+  const progress=document.getElementById('scrollProgress'),back=document.getElementById('backToTop');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveal=document.querySelectorAll('.js-reveal');
+  if(!reduced && 'IntersectionObserver' in window) {
+    const obs=new IntersectionObserver(entries=> {
+      entries.forEach(e=> {
+        if(e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target)
+        }
+      }
+      )
+    }
+    , {
+      threshold:.08
+    }
+    );
+    reveal.forEach(el=>obs.observe(el))
+  }
+  else {
+    reveal.forEach(el=>el.classList.add('visible'))
+  }
+  const update=()=> {
+    let height=document.documentElement.scrollHeight-innerHeight;
+    progress.style.width=(height>0?scrollY/height*100:0)+'%';
+    back.classList.toggle('visible',scrollY>700)
+  }
+  ;
+  addEventListener('scroll',update, {
+    passive:true
+  }
+  );
+  update();
+  back.addEventListener('click',()=>scrollTo( {
+    top:0,behavior:reduced?'instant':'smooth'
+  }
+  ));
+  const modal=document.getElementById('imageModal'),modalImg=document.getElementById('modalImage'),close=document.getElementById('closeModal');
+  let origin=null;
+  const hide=()=> {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden','true');
+    modalImg.removeAttribute('src');
+    if(origin)origin.focus()
+  }
+  ;
+  document.querySelectorAll('.zoomable').forEach(btn=>btn.addEventListener('click',()=> {
+    origin=btn;
+    const source=btn.querySelector('img');
+    modalImg.src=source.src;
+    modalImg.alt=source.alt;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden','false');
+    close.focus()
+  }
+  ));
+  close.addEventListener('click',hide);
+  modal.addEventListener('click',e=> {
+    if(e.target===modal)hide()
+  }
+  );
+  document.addEventListener('keydown',e=> {
+    if(!modal.classList.contains('active'))return;
+    if(e.key==='Escape')hide();
+    if(e.key==='Tab') {
+      e.preventDefault();
+      close.focus()
+    }
+  }
+  );
+}
+);
+  </script>
+ </body>
+</html>
 
-</body>
