@@ -7,7 +7,66 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/tablogo.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
   <title>Hugh Kelly — UX Portfolio</title>
-	</head>
+	
+  <!-- CV-style double rules. Inline so this works with the existing styles.css. -->
+  <style>
+    :root {
+      --cv-line-black: #101010;
+      --cv-line-yellow: #f5c400;
+    }
+
+    /* The header rule stays INSIDE the header, so it cannot get clipped
+       by the header's overflow and spans the full viewport width. */
+    .site-header {
+      position: relative !important;
+      border-bottom: none !important;
+    }
+    .cv-header-rule {
+      position: absolute !important;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 10px;
+      background: linear-gradient(to bottom,
+        var(--cv-line-black) 0 3px,
+        transparent 3px 6px,
+        var(--cv-line-yellow) 6px 9px,
+        transparent 9px 100%);
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    /* The lower rule belongs to the HERO, not the main content.
+       Match the existing page divider's inset/max-width. */
+    .hero {
+      position: relative !important;
+      border-bottom: none !important;
+    }
+    .hero-inner { border-bottom: none !important; }
+    .cv-hero-rule {
+      position: absolute !important;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 64px);
+      max-width: 1780px;
+      height: 10px;
+      background: linear-gradient(to bottom,
+        var(--cv-line-black) 0 3px,
+        transparent 3px 6px,
+        var(--cv-line-yellow) 6px 9px,
+        transparent 9px 100%);
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    /* No overlay on Selected work: allow space after the hero rule. */
+    #work.page-section { padding-top: 36px; }
+
+    /* Hide the old light-grey separator where the external CSS places it. */
+    main { border-top-color: transparent !important; }
+  </style>
+</head>
 
 <body>
 <header class="site-header">
@@ -23,6 +82,7 @@
       <a data-trigger="contact">Contact</a>
     </div>
   </nav>
+  <div class="cv-header-rule" aria-hidden="true"></div>
   </header>
 
   <section class="hero">
@@ -43,6 +103,7 @@
       <span>Scroll / explore</span>
     </div>
   </div>
+  <div class="cv-hero-rule" aria-hidden="true"></div>
 </section>
 
   <main>
