@@ -1,26 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="images/tablogo.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/tablogo.png">
+
   <title>Hugh Kelly — UX Portfolio</title>
-	
-  <!-- CV-style double rules. Inline so this works with the existing styles.css. -->
+
   <style>
+    /* Existing CV-style double dividers */
     :root {
       --cv-line-black: #101010;
       --cv-line-yellow: #f5c400;
     }
 
-    /* The header rule stays INSIDE the header, so it cannot get clipped
-       by the header's overflow and spans the full viewport width. */
     .site-header {
       position: relative !important;
       border-bottom: none !important;
     }
+
     .cv-header-rule {
       position: absolute !important;
       left: 0;
@@ -36,13 +38,15 @@
       pointer-events: none;
     }
 
-    /* The lower rule belongs to the HERO, not the main content.
-       Match the existing page divider's inset/max-width. */
     .hero {
       position: relative !important;
       border-bottom: none !important;
     }
-    .hero-inner { border-bottom: none !important; }
+
+    .hero-inner {
+      border-bottom: none !important;
+    }
+
     .cv-hero-rule {
       position: absolute !important;
       bottom: 0;
@@ -60,15 +64,196 @@
       pointer-events: none;
     }
 
-    /* No overlay on Selected work: allow space after the hero rule. */
-    #work.page-section { padding-top: 36px; }
+    #work.page-section {
+      padding-top: 36px;
+    }
 
-    /* Hide the old light-grey separator where the external CSS places it. */
-    main { border-top-color: transparent !important; }
+    main {
+      border-top-color: transparent !important;
+    }
+
+    /* ==========================================
+       HIDDEN RETRO RUNNER — GAME-SPECIFIC STYLES
+       ========================================== */
+
+    /* UX remains visually unchanged until hovered. */
+    #board .tile.ux-launch {
+      cursor: pointer !important;
+    }
+
+    #board .tile.ux-launch:hover {
+      outline: 2px solid #f5c400;
+      outline-offset: -2px;
+    }
+
+    #board .tile.ux-launch:focus-visible {
+      outline: 3px solid #f5c400;
+      outline-offset: 2px;
+    }
+
+    /* Game mode uses the actual split-flap tiles
+       as a low-resolution pixel display. */
+    #board.game-active .tile {
+      background: #151515 !important;
+      border-color: #292929 !important;
+      color: transparent !important;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    #board.game-active .tile .char {
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+
+    #board.game-active .tile.pixel-ground {
+      background: #615015 !important;
+    }
+
+    #board.game-active .tile.pixel-player {
+      background: #f5c400 !important;
+      box-shadow:
+        inset 0 2px rgba(255,255,255,0.22),
+        inset 0 -3px rgba(0,0,0,0.22) !important;
+    }
+
+    #board.game-active .tile.pixel-obstacle {
+      background: #f0ede1 !important;
+      box-shadow:
+        inset 0 2px rgba(255,255,255,0.28),
+        inset 0 -3px rgba(0,0,0,0.18) !important;
+    }
+
+    #board.game-active .tile.pixel-spark {
+      background: #6e6a58 !important;
+    }
+
+    #board.game-active {
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    /* Hidden completely during normal portfolio use. */
+    .runner-controls[hidden] {
+      display: none !important;
+    }
+
+    .runner-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 16px 0 8px;
+      padding: 12px 14px;
+      border: 1px solid #303030;
+      border-left: 4px solid #f5c400;
+      background: #151515;
+      color: #f5c400;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .runner-information {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .runner-score {
+      color: #f0ede1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .runner-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .runner-button {
+      appearance: none;
+      border: 1px solid #f5c400;
+      border-radius: 0;
+      padding: 9px 13px;
+      background: transparent;
+      color: #f5c400;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .runner-button:hover,
+    .runner-button:focus-visible {
+      background: #f5c400;
+      color: #111;
+    }
+
+    .runner-button:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    .runner-button-primary {
+      background: #f5c400;
+      color: #111;
+    }
+
+    .runner-button-primary:hover {
+      background: #fff1a4;
+    }
+
+    .runner-jump {
+      display: none;
+    }
+
+    .runner-button[hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 700px) {
+      .runner-controls {
+        gap: 14px;
+        padding: 12px;
+        font-size: 11px;
+      }
+
+      .runner-information {
+        width: 100%;
+      }
+
+      .runner-actions {
+        width: 100%;
+      }
+
+      .runner-button {
+        flex: 1;
+        min-height: 44px;
+      }
+
+      .runner-jump {
+        display: inline-block;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #board.game-active .tile,
+      .runner-button {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
   </style>
 </head>
 
 <body>
+
 <header class="site-header">
   <nav class="nav">
     <div class="logo" data-trigger="home">
@@ -76,16 +261,17 @@
     </div>
 
     <div class="nav-links">
-	  <a data-trigger="home">Home</a>
-	  <a data-trigger="work">Work</a>
+      <a data-trigger="home">Home</a>
+      <a data-trigger="work">Work</a>
       <a data-trigger="about">About</a>
       <a data-trigger="contact">Contact</a>
     </div>
   </nav>
-  <div class="cv-header-rule" aria-hidden="true"></div>
-  </header>
 
-  <section class="hero">
+  <div class="cv-header-rule" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
   <div class="hero-bg-glow"></div>
 
   <div class="hero-inner">
@@ -98,117 +284,214 @@
       <div class="board" id="board"></div>
     </div>
 
+    <!-- Only appears after clicking UX on Home. -->
+    <div class="runner-controls" id="runnerControls" hidden>
+      <div class="runner-information">
+        <span id="runnerStatus" role="status" aria-live="polite">
+          JUMP OVER THE OBSTACLES
+        </span>
+        <span class="runner-score" id="runnerScore">
+          SCORE 0000 / BEST 0000
+        </span>
+      </div>
+
+      <div class="runner-actions">
+        <button
+          type="button"
+          class="runner-button runner-button-primary runner-jump"
+          id="runnerJump"
+        >
+          ↑ Jump
+        </button>
+
+        <button
+          type="button"
+          class="runner-button"
+          id="runnerRetry"
+          hidden
+        >
+          ↻ Retry
+        </button>
+
+        <button
+          type="button"
+          class="runner-button"
+          id="runnerExit"
+        >
+          ✕ Exit
+        </button>
+      </div>
+    </div>
+
     <div class="hero-bottomline">
       <span>Interactive portfolio</span>
       <span>Scroll / explore</span>
     </div>
   </div>
+
   <div class="cv-hero-rule" aria-hidden="true"></div>
 </section>
 
-  <main>
-	  <section class="page-section active" id="home">
-		<section class="intro">
-		  <p class="section-label">Profile</p>
-		  <p class="intro-text">
-			Edinburgh-based <u>design enthusiast</u> and <u>lifelong puzzle nerd</u> focused on finding clear, useful and <b>creative solutions</b> for <b>complex problems.</b>
-		  </p>
-		</section>
+<main>
 
-		<section class="featured-image">
-		  <img src="images/footerimg.png" alt="Featured project preview">
-		</section>
-	  </section>
+  <section class="page-section active" id="home">
+    <section class="intro">
+      <p class="section-label">Profile</p>
 
-	  <section class="page-section" id="about">
-      <section class="about-page">
-        <div class="about-image">
-          <img src="images/me.png" alt="Hugh Kelly portrait">
-        </div>
+      <p class="intro-text">
+        Edinburgh-based <u>design enthusiast</u> and
+        <u>lifelong puzzle nerd</u> focused on finding clear,
+        useful and <b>creative solutions</b> for
+        <b>complex problems.</b>
+      </p>
+    </section>
 
-        <div>
-          <p class="section-label"></p>
-		  <br>
-          <p class="intro-text" style="font-size: 40px;">
+    <section class="featured-image">
+      <img
+        src="images/footerimg.png"
+        alt="Featured project preview"
+      >
+    </section>
+  </section>
+
+  <section class="page-section" id="about">
+    <section class="about-page">
+      <div class="about-image">
+        <img src="images/me.png" alt="Hugh Kelly portrait">
+      </div>
+
+      <div>
+        <p class="section-label"></p>
+        <br>
+
+        <p class="intro-text" style="font-size: 40px;">
           <u>It's nice to meet you!</u>
-          </p>
-		  <br>
-          <p class="intro-text" style="font-size: 20px; line-height: 155%;">
-            I spent a large chunk of my 20's working in the music industry. This gave me a lot of interesting experiences and stories, from 
-			<a href="https://www.thesun.co.uk/tvandshowbiz/10070098/bill-murray-student-party-fife/">jamming with Bill Murray</a> and accidentally getting him involved in a tabloid scandal (sorry Bill), to winning Best Original Score 
-			at the Berlin Independent Film Festival (which I still haven't collected, eek).
-          </p>
-		  <br>
-		  <p class="intro-text" style="font-size: 20px; line-height: 155%;">
-           Eventually, I wanted to channel that same creativity into solving practical problems for people. Fuelled by a slightly unhealthy addiction to the daily NYT puzzles, UX and Product Design turned out to be the perfect fit, and I haven’t looked back. Drop me a wee email to say hello if you would like to chat more!
-          </p>
-        </div>
-      </section>
+        </p>
+
+        <br>
+
+        <p
+          class="intro-text"
+          style="font-size: 20px; line-height: 155%;"
+        >
+          I spent a large chunk of my 20's working in the music
+          industry. This gave me a lot of interesting experiences
+          and stories, from
+          <a href="https://www.thesun.co.uk/tvandshowbiz/10070098/bill-murray-student-party-fife/">
+            jamming with Bill Murray
+          </a>
+          and accidentally getting him involved in a tabloid
+          scandal (sorry Bill), to winning Best Original Score
+          at the Berlin Independent Film Festival (which I
+          still haven't collected, eek).
+        </p>
+
+        <br>
+
+        <p
+          class="intro-text"
+          style="font-size: 20px; line-height: 155%;"
+        >
+          Eventually, I wanted to channel that same creativity
+          into solving practical problems for people. Fuelled
+          by a slightly unhealthy addiction to the daily NYT
+          puzzles, UX and Product Design turned out to be the
+          perfect fit, and I haven’t looked back. Drop me a wee
+          email to say hello if you would like to chat more!
+        </p>
+      </div>
     </section>
+  </section>
 
-    <section class="page-section" id="work">
-      <section class="work-preview">
-        <p class="section-label">Selected work</p>
+  <section class="page-section" id="work">
+    <section class="work-preview">
+      <p class="section-label">Selected work</p>
 
-       <div class="work-list">
+      <div class="work-list">
 
-      <a class="work-card" href="case-study-one.html">
-        <img src="images/mockup.jpeg" alt="ROOST app preview">
-        <div class="work-card-text">
-          <h2>Case study one | ROOST.</h2>
-          <p>UX Research / Branding / UX/UI Design</p>
-        </div>
-      </a>
+        <a class="work-card" href="case-study-one.html">
+          <img
+            src="images/mockup.jpeg"
+            alt="ROOST app preview"
+          >
+          <div class="work-card-text">
+            <h2>Case study one | ROOST.</h2>
+            <p>UX Research / Branding / UX/UI Design</p>
+          </div>
+        </a>
 
-      <a class="work-card" href="case-study-two.html">
-        <img src="images/macytherobotalt.png" alt="Macy the Robot preview">
-        <div class="work-card-text">
-          <h2>Case study two | Children's Robot</h2>
-          <p>UX Research</p>
-        </div>
-      </a>
+        <a class="work-card" href="case-study-two.html">
+          <img
+            src="images/macytherobotalt.png"
+            alt="Macy the Robot preview"
+          >
+          <div class="work-card-text">
+            <h2>Case study two | Children's Robot</h2>
+            <p>UX Research</p>
+          </div>
+        </a>
 
-      <a class="work-card" href="case-study-three.html">
-        <img src="images/alba-slide-10.png" alt="AlbaHealthpreview">
-        <div class="work-card-text">
-          <h2>Case study three | Alba Health</h2>
-          <p>UX Research / UX Design / Branding</p>
-        </div>
-      </a>
+        <a class="work-card" href="case-study-three.html">
+          <img
+            src="images/alba-slide-10.png"
+            alt="AlbaHealthpreview"
+          >
+          <div class="work-card-text">
+            <h2>Case study three | Alba Health</h2>
+            <p>UX Research / UX Design / Branding</p>
+          </div>
+        </a>
 
-    </div>
-      </section>
+      </div>
     </section>
+  </section>
 
-    <section class="page-section" id="contact">
-      <section class="contact-page">
-  <p class="section-label">Contact</p>
+  <section class="page-section" id="contact">
+    <section class="contact-page">
+      <p class="section-label">Contact</p>
 
-  <div class="contact-content">
-    <h1 class="contact-heading">
-      Interested in working together? <u>Get in touch</u> and let’s talk.
-    </h1>
+      <div class="contact-content">
+        <h1 class="contact-heading">
+          Interested in working together?
+          <u>Get in touch</u> and let’s talk.
+        </h1>
 
-    <p class="contact-copy">
-      Drop me an email <a href="mailto:you@email.com">here</a> or connect with me on
-      <a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/?skipRedirect=true">LinkedIn.</a>
-    </p>
+        <p class="contact-copy">
+          Drop me an email
+          <a href="mailto:you@email.com">here</a>
+          or connect with me on
+          <a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/?skipRedirect=true">
+            LinkedIn.
+          </a>
+        </p>
 
-    <a class="resume-btn" href="files/HughKellyCV.pdf" target="_blank">
-      View Resume
-    </a>
-  </div>
-</section>
+        <a
+          class="resume-btn"
+          href="files/HughKellyCV.pdf"
+          target="_blank"
+        >
+          View Resume
+        </a>
+      </div>
     </section>
-  </main>
+  </section>
 
-  <script>
-  const isMobile = window.matchMedia("(max-width: 700px)").matches;
+</main>
+
+<script>
+  /* ==========================================
+     ORIGINAL SPLIT-FLAP PORTFOLIO
+     ========================================== */
+
+  const isMobile = window.matchMedia(
+    "(max-width: 700px)"
+  ).matches;
 
   const rows = isMobile ? 9 : 6;
   const columns = isMobile ? 9 : 28;
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
   const board = document.getElementById("board");
   const boardShell = document.getElementById("boardShell");
 
@@ -261,7 +544,22 @@
   let finalMap = new Map();
   const tiles = [];
 
+  let currentPage = "home";
+
+  /*
+   * Every portfolio animation has a version number.
+   * Starting the game invalidates older animations,
+   * so delayed letter flips cannot overwrite gameplay.
+   */
+  let boardVersion = 0;
+
   board.style.setProperty("--columns", columns);
+
+  function randomLetter() {
+    return alphabet[
+      Math.floor(Math.random() * alphabet.length)
+    ];
+  }
 
   for (let i = 0; i < rows * columns; i++) {
     const tile = document.createElement("div");
@@ -277,10 +575,6 @@
     tiles.push({ tile, char, index: i });
   }
 
-  function randomLetter() {
-    return alphabet[Math.floor(Math.random() * alphabet.length)];
-  }
-
   function flip(tileObj, value) {
     tileObj.tile.classList.remove("flipping");
     void tileObj.tile.offsetWidth;
@@ -293,72 +587,177 @@
 
     words.forEach(word => {
       [...word.text].forEach((letter, i) => {
-        const index = word.row * columns + word.column + i;
+        const index =
+          word.row * columns + word.column + i;
+
         finalMap.set(index, letter);
       });
     });
   }
 
-  function showPage(pageName) {
-    document.querySelectorAll(".page-section").forEach(section => {
-      section.classList.remove("active");
-    });
+  function clearUXLaunchTiles() {
+    tiles.forEach(({ tile }) => {
+      if (!tile.classList.contains("ux-launch")) {
+        return;
+      }
 
-    const targetPage = document.getElementById(pageName);
-    if (targetPage) targetPage.classList.add("active");
-
-    document.querySelectorAll("[data-trigger]").forEach(link => {
-      link.classList.toggle("active-nav", link.dataset.trigger === pageName);
+      tile.classList.remove("ux-launch");
+      tile.removeAttribute("role");
+      tile.removeAttribute("tabindex");
+      tile.removeAttribute("aria-label");
+      tile.removeAttribute("title");
     });
   }
 
-  function animateBoard(layoutName = "home", isInitialLoad = false) {
-    buildFinalMap(layouts[layoutName] || layouts.home);
+  function markUXLaunchTiles() {
+    clearUXLaunchTiles();
+
+    if (currentPage !== "home") {
+      return;
+    }
+
+    const uxWord = layouts.home.find(
+      word => word.text === "UX"
+    );
+
+    if (!uxWord) {
+      return;
+    }
+
+    for (let i = 0; i < 2; i++) {
+      const index =
+        uxWord.row * columns + uxWord.column + i;
+
+      const tileObj = tiles[index];
+
+      if (!tileObj) {
+        continue;
+      }
+
+      tileObj.tile.classList.add("ux-launch");
+      tileObj.tile.setAttribute("role", "button");
+      tileObj.tile.setAttribute("tabindex", "0");
+      tileObj.tile.setAttribute(
+        "aria-label",
+        "Play the hidden retro runner game"
+      );
+      tileObj.tile.setAttribute(
+        "title",
+        "Click UX to play"
+      );
+    }
+  }
+
+  function showPage(pageName) {
+    currentPage = layouts[pageName] ? pageName : "home";
+
+    document.querySelectorAll(".page-section").forEach(
+      section => {
+        section.classList.remove("active");
+      }
+    );
+
+    const targetPage = document.getElementById(
+      currentPage
+    );
+
+    if (targetPage) {
+      targetPage.classList.add("active");
+    }
+
+    document.querySelectorAll("[data-trigger]").forEach(
+      link => {
+        link.classList.toggle(
+          "active-nav",
+          link.dataset.trigger === currentPage
+        );
+      }
+    );
+  }
+
+  function animateBoard(
+    layoutName = "home",
+    isInitialLoad = false
+  ) {
+    const version = ++boardVersion;
+
+    buildFinalMap(
+      layouts[layoutName] || layouts.home
+    );
+
+    board.classList.remove("is-animating");
+
+    /*
+     * The UX hotspot is only available on Home.
+     * No visible PLAY button is added to the portfolio.
+     */
+    markUXLaunchTiles();
 
     if (isMobile) {
-  tiles.forEach(tileObj => {
-    const finalLetter = finalMap.get(tileObj.index);
+      tiles.forEach(tileObj => {
+        const finalLetter = finalMap.get(
+          tileObj.index
+        );
 
-    tileObj.tile.classList.remove("flipping");
+        tileObj.tile.classList.remove("flipping");
 
-    if (finalLetter) {
-      tileObj.char.textContent = finalLetter;
-      tileObj.tile.classList.add("final");
-      tileObj.tile.classList.remove("empty");
-    } else {
-      tileObj.char.textContent = " ";
-      tileObj.tile.classList.remove("final");
-      tileObj.tile.classList.add("empty");
+        if (finalLetter) {
+          tileObj.char.textContent = finalLetter;
+          tileObj.tile.classList.add("final");
+          tileObj.tile.classList.remove("empty");
+        } else {
+          tileObj.char.textContent = " ";
+          tileObj.tile.classList.remove("final");
+          tileObj.tile.classList.add("empty");
+        }
+      });
+
+      return;
     }
-  });
-
-  return;
-}
 
     board.classList.add("is-animating");
 
     tiles.forEach(tileObj => {
       tileObj.tile.classList.remove("empty");
 
-      const row = Math.floor(tileObj.index / columns);
+      const row = Math.floor(
+        tileObj.index / columns
+      );
+
       const col = tileObj.index % columns;
 
-      const delay = isMobile
-        ? col * 35 + row * 42 + Math.random() * 70
-        : col * 45 + row * 35 + Math.random() * 90;
+      const delay =
+        col * 45 +
+        row * 35 +
+        Math.random() * 90;
 
-      const flips = isMobile
-        ? 1 + Math.floor(Math.random() * 2)
-        : isInitialLoad
-          ? 2 + Math.floor(Math.random() * 4)
-          : 1 + Math.floor(Math.random() * 3);
+      const flips = isInitialLoad
+        ? 2 + Math.floor(Math.random() * 4)
+        : 1 + Math.floor(Math.random() * 3);
 
-      const finalLetter = finalMap.get(tileObj.index);
+      const finalLetter = finalMap.get(
+        tileObj.index
+      );
 
       setTimeout(() => {
+        if (
+          version !== boardVersion ||
+          game.mode !== "off"
+        ) {
+          return;
+        }
+
         let count = 0;
 
         const interval = setInterval(() => {
+          if (
+            version !== boardVersion ||
+            game.mode !== "off"
+          ) {
+            clearInterval(interval);
+            return;
+          }
+
           count++;
 
           if (count < flips) {
@@ -377,75 +776,820 @@
             tileObj.tile.classList.remove("final");
             tileObj.tile.classList.add("empty");
           }
-        }, isMobile ? 145 + Math.random() * 55 : 110 + Math.random() * 45);
+        }, 110 + Math.random() * 45);
       }, delay);
     });
 
     setTimeout(() => {
-      board.classList.remove("is-animating");
-    }, isMobile ? 1700 : 1900);
+      if (version === boardVersion) {
+        board.classList.remove("is-animating");
+      }
+    }, 1900);
   }
 
-  document.querySelectorAll("[data-trigger]").forEach(item => {
-    item.addEventListener("click", () => {
-      const page = item.dataset.trigger || "home";
-      animateBoard(page, false);
-      showPage(page);
-      history.replaceState(null, "", page === "home" ? "index.html" : `index.html?page=${page}`);
+  /* ==========================================
+     THE HIDDEN SPLIT-FLAP RUNNER
+     ========================================== */
+
+  const runnerControls = document.getElementById(
+    "runnerControls"
+  );
+
+  const runnerStatus = document.getElementById(
+    "runnerStatus"
+  );
+
+  const runnerScore = document.getElementById(
+    "runnerScore"
+  );
+
+  const runnerJump = document.getElementById(
+    "runnerJump"
+  );
+
+  const runnerRetry = document.getElementById(
+    "runnerRetry"
+  );
+
+  const runnerExit = document.getElementById(
+    "runnerExit"
+  );
+
+  const GROUND_ROW = rows - 1;
+
+  /*
+   * Desktop: two-tile-wide little runner.
+   * Mobile: one-tile-wide runner, allowing
+   * more room on the nine-column display.
+   */
+  const PLAYER_X = isMobile ? 1 : 3;
+  const PLAYER_WIDTH = isMobile ? 1 : 2;
+  const PLAYER_HEIGHT = 2;
+
+  const JUMP_VELOCITY = 11.5;
+  const GRAVITY = 23;
+
+  const PIXEL_CLASSES = [
+    "",
+    "pixel-ground",
+    "pixel-player",
+    "pixel-obstacle",
+    "pixel-spark"
+  ];
+
+  const paintedPixels = new Uint8Array(
+    rows * columns
+  );
+
+  function readBestScore() {
+    try {
+      return Number(
+        localStorage.getItem("hk-retro-runner-best")
+      ) || 0;
+    } catch (error) {
+      return 0;
+    }
+  }
+
+  function saveBestScore(score) {
+    try {
+      localStorage.setItem(
+        "hk-retro-runner-best",
+        String(score)
+      );
+    } catch (error) {
+      /* Game still works when storage is unavailable. */
+    }
+  }
+
+  const game = {
+    mode: "off",
+    score: 0,
+    best: readBestScore(),
+    playerY: 0,
+    playerVelocity: 0,
+    obstacles: [],
+    spawnTimer: 0,
+    lastFrame: 0,
+    frameId: null
+  };
+
+  function formatScore(value) {
+    return String(Math.floor(value)).padStart(
+      4,
+      "0"
+    );
+  }
+
+  function updateScore() {
+    runnerScore.textContent =
+      "SCORE " +
+      formatScore(game.score) +
+      " / BEST " +
+      formatScore(game.best);
+  }
+
+  function clearGamePixels() {
+    tiles.forEach(({ tile }) => {
+      tile.classList.remove(
+        "pixel-ground",
+        "pixel-player",
+        "pixel-obstacle",
+        "pixel-spark"
+      );
     });
+
+    paintedPixels.fill(0);
+  }
+
+  function paintCell(pixelMap, x, y, type) {
+    if (
+      x < 0 ||
+      x >= columns ||
+      y < 0 ||
+      y >= rows
+    ) {
+      return;
+    }
+
+    pixelMap[y * columns + x] = type;
+  }
+
+  /*
+   * Builds the entire game scene from tile pixels.
+   * No canvas, SVG character or external game library.
+   */
+  function renderGame() {
+    if (game.mode === "off") {
+      return;
+    }
+
+    const nextPixels = new Uint8Array(
+      rows * columns
+    );
+
+    /* Ground: one row of dark gold tiles. */
+    for (let x = 0; x < columns; x++) {
+      paintCell(
+        nextPixels,
+        x,
+        GROUND_ROW,
+        1
+      );
+    }
+
+    /* Obstacles: ivory one- or two-tile pillars. */
+    game.obstacles.forEach(obstacle => {
+      const x = Math.round(obstacle.x);
+
+      for (let h = 1; h <= obstacle.height; h++) {
+        paintCell(
+          nextPixels,
+          x,
+          GROUND_ROW - h,
+          3
+        );
+      }
+    });
+
+    /*
+     * Runner: yellow mechanical pixel figure.
+     * The upper tile is the head, lower tiles
+     * form the body and legs.
+     */
+    const bottom =
+      GROUND_ROW - game.playerY;
+
+    const lowerRow = Math.floor(bottom - 1);
+    const upperRow = Math.floor(bottom - 2);
+
+    if (isMobile) {
+      paintCell(
+        nextPixels,
+        PLAYER_X,
+        upperRow,
+        2
+      );
+
+      paintCell(
+        nextPixels,
+        PLAYER_X,
+        lowerRow,
+        2
+      );
+    } else {
+      /* Head */
+      paintCell(
+        nextPixels,
+        PLAYER_X + 1,
+        upperRow,
+        2
+      );
+
+      /* Body and feet */
+      paintCell(
+        nextPixels,
+        PLAYER_X,
+        lowerRow,
+        2
+      );
+
+      paintCell(
+        nextPixels,
+        PLAYER_X + 1,
+        lowerRow,
+        2
+      );
+    }
+
+    /*
+     * Update only tiles whose pixel state changed.
+     * This avoids unnecessary DOM work every frame.
+     */
+    nextPixels.forEach((pixelType, index) => {
+      if (paintedPixels[index] === pixelType) {
+        return;
+      }
+
+      const tile = tiles[index].tile;
+
+      PIXEL_CLASSES.slice(1).forEach(className => {
+        tile.classList.remove(className);
+      });
+
+      if (pixelType !== 0) {
+        tile.classList.add(
+          PIXEL_CLASSES[pixelType]
+        );
+      }
+
+      paintedPixels[index] = pixelType;
+    });
+  }
+
+  function getGameSpeed() {
+    const baseSpeed = isMobile ? 2.6 : 5.2;
+
+    const increase = Math.min(
+      1.6,
+      game.score / 180
+    );
+
+    return baseSpeed + increase;
+  }
+
+  function spawnObstacle() {
+    /*
+     * Mobile obstacles stay one tile high.
+     * Desktop occasionally introduces taller ones.
+     */
+    const height = isMobile
+      ? 1
+      : Math.random() < 0.25 ? 2 : 1;
+
+    game.obstacles.push({
+      x: columns,
+      width: 1,
+      height
+    });
+  }
+
+  function checkCollision() {
+    const playerLeft = PLAYER_X + 0.15;
+    const playerRight =
+      PLAYER_X + PLAYER_WIDTH - 0.15;
+
+    const playerTop =
+      GROUND_ROW -
+      PLAYER_HEIGHT -
+      game.playerY;
+
+    const playerBottom =
+      GROUND_ROW -
+      game.playerY;
+
+    return game.obstacles.some(obstacle => {
+      const obstacleLeft = obstacle.x;
+      const obstacleRight =
+        obstacle.x + obstacle.width;
+
+      const obstacleTop =
+        GROUND_ROW - obstacle.height;
+
+      const obstacleBottom = GROUND_ROW;
+
+      const overlapsHorizontally =
+        playerRight > obstacleLeft &&
+        playerLeft < obstacleRight;
+
+      const overlapsVertically =
+        playerBottom > obstacleTop + 0.12 &&
+        playerTop < obstacleBottom - 0.12;
+
+      return (
+        overlapsHorizontally &&
+        overlapsVertically
+      );
+    });
+  }
+
+  function finishGame() {
+    game.mode = "over";
+
+    if (game.frameId !== null) {
+      cancelAnimationFrame(game.frameId);
+      game.frameId = null;
+    }
+
+    const finalScore = Math.floor(game.score);
+
+    if (finalScore > game.best) {
+      game.best = finalScore;
+      saveBestScore(finalScore);
+    }
+
+    updateScore();
+
+    runnerStatus.textContent =
+      "GAME OVER — ONE MORE GO?";
+
+    runnerRetry.hidden = false;
+
+    renderGame();
+  }
+
+  function gameFrame(timestamp) {
+    if (game.mode !== "running") {
+      return;
+    }
+
+    if (!game.lastFrame) {
+      game.lastFrame = timestamp;
+    }
+
+    /*
+     * Cap delta time so changing browser tabs
+     * doesn't cause huge physics jumps.
+     */
+    const dt = Math.min(
+      (timestamp - game.lastFrame) / 1000,
+      0.05
+    );
+
+    game.lastFrame = timestamp;
+
+    /* Jump physics */
+    if (
+      game.playerY > 0 ||
+      game.playerVelocity > 0
+    ) {
+      game.playerVelocity -= GRAVITY * dt;
+      game.playerY += game.playerVelocity * dt;
+
+      if (game.playerY <= 0) {
+        game.playerY = 0;
+        game.playerVelocity = 0;
+      }
+    }
+
+    /* Move obstacles towards the runner. */
+    const speed = getGameSpeed();
+
+    game.obstacles.forEach(obstacle => {
+      obstacle.x -= speed * dt;
+    });
+
+    game.obstacles = game.obstacles.filter(
+      obstacle => obstacle.x > -2
+    );
+
+    game.spawnTimer -= dt;
+
+    if (game.spawnTimer <= 0) {
+      spawnObstacle();
+
+      game.spawnTimer = isMobile
+        ? 1.8 + Math.random() * 0.7
+        : 1.65 + Math.random() * 0.75;
+    }
+
+    game.score += dt * 10;
+
+    updateScore();
+    renderGame();
+
+    if (checkCollision()) {
+      finishGame();
+      return;
+    }
+
+    game.frameId = requestAnimationFrame(
+      gameFrame
+    );
+  }
+
+  function startGame() {
+    /*
+     * Stop any pending portfolio letter animations.
+     */
+    boardVersion++;
+
+    if (game.frameId !== null) {
+      cancelAnimationFrame(game.frameId);
+      game.frameId = null;
+    }
+
+    game.mode = "running";
+    game.score = 0;
+    game.playerY = 0;
+    game.playerVelocity = 0;
+    game.obstacles = [];
+
+    game.spawnTimer = isMobile ? 1.4 : 1.8;
+    game.lastFrame = 0;
+
+    clearUXLaunchTiles();
+    clearGamePixels();
+
+    board.classList.remove("is-animating");
+    board.classList.add("game-active");
+
+    tiles.forEach(({ tile, char }) => {
+      tile.classList.remove(
+        "final",
+        "empty",
+        "flipping",
+        "ambient-flash"
+      );
+
+      char.textContent = " ";
+    });
+
+    runnerControls.hidden = false;
+    runnerRetry.hidden = true;
+
+    runnerStatus.textContent = isMobile
+      ? "TAP TO JUMP — AVOID THE BLOCKS"
+      : "SPACE / ↑ TO JUMP — ESC TO EXIT";
+
+    boardShell.style.transform =
+      "rotateX(0deg) rotateY(0deg)";
+
+    boardShell.setAttribute("tabindex", "-1");
+
+    updateScore();
+    renderGame();
+
+    /*
+     * Put keyboard focus on the game board,
+     * not the Exit button.
+     */
+    boardShell.focus({
+      preventScroll: true
+    });
+
+    game.frameId = requestAnimationFrame(
+      gameFrame
+    );
+  }
+
+  function jump() {
+    if (game.mode === "over") {
+      startGame();
+      game.playerVelocity = JUMP_VELOCITY;
+      return;
+    }
+
+    if (game.mode !== "running") {
+      return;
+    }
+
+    /* No double jumping while airborne. */
+    if (game.playerY > 0) {
+      return;
+    }
+
+    game.playerVelocity = JUMP_VELOCITY;
+  }
+
+  function exitGame(restoreBoard = true) {
+    if (game.mode === "off") {
+      return;
+    }
+
+    if (game.frameId !== null) {
+      cancelAnimationFrame(game.frameId);
+      game.frameId = null;
+    }
+
+    game.mode = "off";
+
+    runnerControls.hidden = true;
+    runnerRetry.hidden = true;
+
+    board.classList.remove("game-active");
+
+    boardShell.removeAttribute("tabindex");
+    boardShell.style.transform =
+      "rotateX(0deg) rotateY(0deg)";
+
+    clearGamePixels();
+
+    if (restoreBoard) {
+      animateBoard(currentPage, false);
+
+      /*
+       * Return focus to the UX launcher
+       * for keyboard users.
+       */
+      const launcher = board.querySelector(
+        ".ux-launch"
+      );
+
+      if (launcher) {
+        launcher.focus({
+          preventScroll: true
+        });
+      }
+    }
+  }
+
+  /* ==========================================
+     GAME INPUTS
+     ========================================== */
+
+  /*
+   * Clicking either U or X launches the game.
+   * Clicking the board during gameplay jumps.
+   */
+  board.addEventListener("click", event => {
+    if (game.mode !== "off") {
+      jump();
+      return;
+    }
+
+    const launcher = event.target.closest(
+      ".ux-launch"
+    );
+
+    if (
+      launcher &&
+      currentPage === "home"
+    ) {
+      startGame();
+    }
   });
 
+  /*
+   * Keyboard users can focus either UX tile
+   * and press Enter or Space to launch.
+   */
+  board.addEventListener("keydown", event => {
+    if (game.mode !== "off") {
+      return;
+    }
+
+    const launcher = event.target.closest(
+      ".ux-launch"
+    );
+
+    if (!launcher) {
+      return;
+    }
+
+    if (
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
+      event.preventDefault();
+      startGame();
+    }
+  });
+
+  window.addEventListener("keydown", event => {
+    if (game.mode === "off") {
+      return;
+    }
+
+    const target = event.target;
+
+    if (
+      target instanceof HTMLElement &&
+      (
+        target.matches("input, textarea, select") ||
+        target.isContentEditable
+      )
+    ) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      exitGame();
+      return;
+    }
+
+    if (
+      event.key === " " ||
+      event.key === "ArrowUp" ||
+      event.key.toLowerCase() === "w"
+    ) {
+      event.preventDefault();
+      jump();
+      return;
+    }
+
+    if (event.key.toLowerCase() === "r") {
+      event.preventDefault();
+      startGame();
+    }
+  });
+
+  runnerJump.addEventListener("click", jump);
+
+  runnerRetry.addEventListener(
+    "click",
+    startGame
+  );
+
+  runnerExit.addEventListener("click", () => {
+    exitGame();
+  });
+
+  /*
+   * Prevent a long browser-tab absence from
+   * advancing the game unexpectedly.
+   */
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+      if (
+        !document.hidden &&
+        game.mode === "running"
+      ) {
+        game.lastFrame = performance.now();
+      }
+    }
+  );
+
+  /* ==========================================
+     PORTFOLIO NAVIGATION
+     ========================================== */
+
+  document.querySelectorAll("[data-trigger]").forEach(
+    item => {
+      item.addEventListener("click", () => {
+        const requestedPage =
+          item.dataset.trigger || "home";
+
+        const page = layouts[requestedPage]
+          ? requestedPage
+          : "home";
+
+        /*
+         * Switching pages exits the game
+         * without first animating Home.
+         */
+        if (game.mode !== "off") {
+          exitGame(false);
+        }
+
+        showPage(page);
+        animateBoard(page, false);
+
+        history.replaceState(
+          null,
+          "",
+          page === "home"
+            ? "index.html"
+            : `index.html?page=${page}`
+        );
+      });
+    }
+  );
+
   function getPageFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("page") || "home";
+    const params = new URLSearchParams(
+      window.location.search
+    );
+
+    const requested = params.get("page") || "home";
+
+    return layouts[requested]
+      ? requested
+      : "home";
   }
 
   const initialPage = getPageFromURL();
-  animateBoard(initialPage, true);
+
   showPage(initialPage);
+  animateBoard(initialPage, true);
+
+  /* ==========================================
+     ORIGINAL BOARD MOUSE TILT
+     ========================================== */
 
   if (boardShell && !isMobile) {
-    boardShell.addEventListener("mousemove", event => {
-      const rect = boardShell.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
+    boardShell.addEventListener(
+      "mousemove",
+      event => {
+        /*
+         * Disable tilt during gameplay,
+         * making pixel movement easier to read.
+         */
+        if (game.mode !== "off") {
+          return;
+        }
 
-      const rotateY = ((x / rect.width) - 0.5) * 5;
-      const rotateX = ((y / rect.height) - 0.5) * -5;
+        const rect =
+          boardShell.getBoundingClientRect();
 
-      boardShell.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
 
-    boardShell.addEventListener("mouseleave", () => {
-      boardShell.style.transform = "rotateX(0deg) rotateY(0deg)";
-    });
+        const rotateY =
+          ((x / rect.width) - 0.5) * 5;
+
+        const rotateX =
+          ((y / rect.height) - 0.5) * -5;
+
+        boardShell.style.transform =
+          `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }
+    );
+
+    boardShell.addEventListener(
+      "mouseleave",
+      () => {
+        boardShell.style.transform =
+          "rotateX(0deg) rotateY(0deg)";
+      }
+    );
   }
+
+  /* ==========================================
+     ORIGINAL AMBIENT TILE FLASHES
+     ========================================== */
 
   if (!isMobile) {
     setInterval(() => {
-      const visibleTiles = tiles.filter(tileObj => !tileObj.tile.classList.contains("empty"));
-      const chosen = visibleTiles[Math.floor(Math.random() * visibleTiles.length)];
+      /*
+       * Ambient flashes are disabled in game mode.
+       */
+      if (game.mode !== "off") {
+        return;
+      }
 
-      if (!chosen) return;
+      const visibleTiles = tiles.filter(
+        tileObj =>
+          !tileObj.tile.classList.contains(
+            "empty"
+          )
+      );
 
-      chosen.tile.classList.add("ambient-flash");
+      const chosen = visibleTiles[
+        Math.floor(
+          Math.random() * visibleTiles.length
+        )
+      ];
+
+      if (!chosen) {
+        return;
+      }
+
+      chosen.tile.classList.add(
+        "ambient-flash"
+      );
 
       setTimeout(() => {
-        chosen.tile.classList.remove("ambient-flash");
+        chosen.tile.classList.remove(
+          "ambient-flash"
+        );
       }, 420);
     }, 1300);
   }
 </script>
-  
-  <footer class="site-footer">
-  <img src="images/footer-logo.png" alt="Hugh Kelly">
-  <p class="intro-text" style="font-size: 10px;">© 2026 Hugh Kelly</p>
+
+<footer class="site-footer">
+  <img
+    src="images/footer-logo.png"
+    alt="Hugh Kelly"
+  >
+
+  <p
+    class="intro-text"
+    style="font-size: 10px;"
+  >
+    © 2026 Hugh Kelly
+  </p>
 </footer>
 
-<a href="https://www.linkedin.com/in/hugh-kelly-a348a1112/" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="linkedin-fixed">
+<a
+  href="https://www.linkedin.com/in/hugh-kelly-a348a1112/"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="linkedin-fixed"
+>
   <svg viewBox="0 0 24 24" width="18" height="18">
     <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6 1.11 6 0 4.88 0 3.5 0 2.12 1.11 1 2.49 1 3.87 1 4.98 2.12 4.98 3.5zM.22 8.22h4.54V24H.22zM7.98 8.22h4.35v2.16h.06c.61-1.16 2.1-2.39 4.33-2.39 4.63 0 5.49 3.05 5.49 7.01V24h-4.54v-7.74c0-1.85-.03-4.23-2.58-4.23-2.58 0-2.97 2.01-2.97 4.1V24H7.98z"/>
   </svg>
